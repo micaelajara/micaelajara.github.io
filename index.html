@@ -67,6 +67,10 @@
     }
     .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
+    .lang-en { display: none; }
+    body.en .lang-es { display: none; }
+    body.en .lang-en { display: block; }
+
     /* LAYOUT */
     .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
 
@@ -359,6 +363,62 @@
 
     .empty-state { text-align: center; padding: 3rem; color: #c8bab5; font-size: 0.9rem; }
 
+    /* CONTACTO */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+    @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .contact-intro {
+      font-size: 1rem; font-weight: 300; color: #555; line-height: 1.85;
+    }
+    .contact-intro p + p { margin-top: 1rem; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; font-weight: 500; color: var(--text);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link span { font-size: 1rem; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .form-input, .form-textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 2px;
+      font-size: 0.9rem; font-family: var(--sans);
+      background: white; color: var(--text); outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit {
+      background: var(--accent); color: white;
+      border: none; border-radius: 2px;
+      padding: 0.75rem 1.5rem; font-size: 0.85rem;
+      font-weight: 600; font-family: var(--sans);
+      letter-spacing: 0.04em; cursor: pointer;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .form-submit:hover { background: #c4496a; }
+
+    .form-success {
+      display: none; background: #f0fdf4; border: 1px solid #bbf7d0;
+      color: #15803d; padding: 0.85rem 1rem; border-radius: 2px;
+      font-size: 0.87rem;
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border); padding: 2.5rem 2rem;
@@ -395,7 +455,7 @@
     <p class="hero-eyebrow" data-es="QA · Tech Enthusiast · Project Maker" data-en="QA · Tech Enthusiast · Project Maker">QA · Tech Enthusiast · Project Maker</p>
     <h1>Micaela<br/>Jara</h1>
     <p class="hero-sub">quality, culture & everything in between.</p>
-    <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano — pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things — thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano — pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
+    <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things, thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
     <div class="hero-links">
       <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
       <a href="#proyectos" class="btn btn-outline" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a>
@@ -416,8 +476,8 @@
     <div class="about-grid">
       <img src="IMG-20260520-WA0019.jpg" alt="Micaela Jara" class="about-photo" />
       <div class="about-text">
-        <p data-es="QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa — Penske Truck Rental — haciendo QA de features nuevas, redesigns y validación prelaunch." data-en="QA with experience in enterprise projects, focused on quality, processes, and user experience. I worked at RebelMouse testing the company's largest site — Penske Truck Rental — covering new features, redesigns, and prelaunch QA.">QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa — Penske Truck Rental — haciendo QA de features nuevas, redesigns y validación prelaunch.</p>
-        <p data-es="Fuera de lo tech, soy productora de Club Classics, un ciclo de cine independiente donde combino curaduría, gestión de artistas y producción técnica. Estudio gestión cultural porque creo que el contexto y las personas son parte del trabajo — en tech y en cualquier otro lado." data-en="Outside of tech, I produce Club Classics, an independent film cycle where I combine curation, artist coordination, and technical production. I study cultural management because I believe context and people are part of the work — in tech and everywhere else.">Fuera de lo tech, soy productora de Club Classics, un ciclo de cine independiente donde combino curaduría, gestión de artistas y producción técnica. Estudio gestión cultural porque creo que el contexto y las personas son parte del trabajo — en tech y en cualquier otro lado.</p>
+        <p data-es="QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa, Penske Truck Rental, haciendo QA de features nuevas, redesigns y validación prelaunch." data-en="QA with experience in enterprise projects, focused on quality, processes, and user experience. I worked at RebelMouse testing the company's largest site, Penske Truck Rental, covering new features, redesigns, and prelaunch QA.">QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa, Penske Truck Rental, haciendo QA de features nuevas, redesigns y validación prelaunch.</p>
+        <p data-es="Fuera de lo tech, soy productora de Club Classics, un ciclo de cine independiente donde combino curaduría, gestión de artistas y producción técnica. Estudio gestión cultural porque creo que el contexto y las personas son parte del trabajo, en tech y en cualquier otro lado." data-en="Outside of tech, I produce Club Classics, an independent film cycle where I combine curation, artist coordination, and technical production. I study cultural management because I believe context and people are part of the work, in tech and everywhere else.">Fuera de lo tech, soy productora de Club Classics, un ciclo de cine independiente donde combino curaduría, gestión de artistas y producción técnica. Estudio gestión cultural porque creo que el contexto y las personas son parte del trabajo, en tech y en cualquier otro lado.</p>
       </div>
     </div>
   </div>
@@ -436,7 +496,7 @@
         <span class="project-tag">QA · RebelMouse</span>
         <h3 class="project-title">Penske Truck Rental</h3>
         <p class="project-subtitle">Cliente enterprise principal</p>
-        <p class="project-desc">Testing end-to-end del sitio más grande de la empresa — features nuevas, redesigns y QA prelaunch para un cliente enterprise con código propio integrado.</p>
+        <p class="project-desc">Testing end-to-end del sitio más grande de la empresa, features nuevas, redesigns y QA prelaunch para un cliente enterprise con código propio integrado.</p>
         <ul class="project-highlights">
           <li>Testing de features nuevas, redesigns y validación prelaunch</li>
           <li>Regresión en cliente con código personalizado integrado</li>
@@ -449,7 +509,7 @@
         <span class="project-tag culture">Producción · Cultura</span>
         <h3 class="project-title">Club Classics</h3>
         <p class="project-subtitle">Ciclo de cine independiente</p>
-        <p class="project-desc">Productora de un ciclo de cine donde combino lo técnico con lo curatorial — desde la proyección hasta entender qué quiere la audiencia.</p>
+        <p class="project-desc">Productora de un ciclo de cine donde combino lo técnico con lo curatorial, desde la proyección hasta entender qué quiere la audiencia.</p>
         <ul class="project-highlights">
           <li>Curaduría de programación y selección de films</li>
           <li>Contacto y coordinación con artistas para exposiciones</li>
@@ -470,7 +530,7 @@
     <p class="section-eyebrow">Herramientas</p>
     <h2 class="section-title">Con qué trabajo.</h2>
     <div class="stack-group">
-      <p class="stack-sublabel">Uso actualmente</p>
+      <p class="stack-sublabel" data-es="Uso actualmente" data-en="Currently using">Uso actualmente</p>
       <div class="stack-list">
         <span class="stack-tag">Postman</span>
         <span class="stack-tag">Jira</span>
@@ -480,7 +540,7 @@
       </div>
     </div>
     <div class="stack-group">
-      <p class="stack-sublabel">Aprendiendo</p>
+      <p class="stack-sublabel" data-es="Aprendiendo" data-en="Learning">Aprendiendo</p>
       <div class="stack-list">
         <span class="stack-tag learning">SQL</span>
         <span class="stack-tag learning">Playwright</span>
@@ -500,13 +560,12 @@
     <p class="section-eyebrow">Intereses</p>
     <h2 class="section-title">Lo que me mueve.</h2>
     <div class="interests-grid">
-      <div class="interest-card"><div class="interest-icon">🔍</div><div class="interest-label">Product thinking</div></div>
-      <div class="interest-card"><div class="interest-icon">💻</div><div class="interest-label">Tecnología</div></div>
-      <div class="interest-card"><div class="interest-icon">🏛️</div><div class="interest-label">Gestión cultural</div></div>
-      <div class="interest-card"><div class="interest-icon">🎬</div><div class="interest-label">Cine</div></div>
-      <div class="interest-card"><div class="interest-icon">🎨</div><div class="interest-label">Arte</div></div>
-      <div class="interest-card"><div class="interest-icon">📚</div><div class="interest-label">Lectura</div></div>
-      <div class="interest-card"><div class="interest-icon">🎵</div><div class="interest-label">Música</div></div>
+      <div class="interest-card"><div class="interest-icon">🔍</div><div class="interest-label" data-es="Product thinking" data-en="Product thinking">Product thinking</div></div>
+      <div class="interest-card"><div class="interest-icon">💻</div><div class="interest-label" data-es="Tecnología" data-en="Technology">Tecnología</div></div>
+      <div class="interest-card"><div class="interest-icon">🏛️</div><div class="interest-label" data-es="Gestión cultural" data-en="Cultural management">Gestión cultural</div></div>
+      <div class="interest-card"><div class="interest-icon">🎬</div><div class="interest-label" data-es="Cine" data-en="Film">Cine</div></div>
+      <div class="interest-card"><div class="interest-icon">🎨</div><div class="interest-label" data-es="Arte" data-en="Art">Arte</div></div>
+      <div class="interest-card"><div class="interest-icon">📚</div><div class="interest-label" data-es="Lectura" data-en="Reading">Lectura</div></div>
     </div>
   </div>
 </section>
@@ -522,72 +581,82 @@
     <div class="qa-controls">
       <input type="text" id="search" placeholder="Buscar..." />
       <div class="filters">
-        <button class="filter-btn active" data-filter="all">Todo</button>
-        <button class="filter-btn" data-filter="qa">QA</button>
-        <button class="filter-btn" data-filter="tools">Herramientas</button>
-        <button class="filter-btn" data-filter="process">Proceso</button>
-        <button class="filter-btn" data-filter="production">Producción</button>
-        <button class="filter-btn" data-filter="learning">Aprendiendo</button>
+        <button class="filter-btn active" data-filter="all" data-es="Todo" data-en="All">Todo</button>
+        <button class="filter-btn" data-filter="qa" data-es="QA" data-en="QA">QA</button>
+        <button class="filter-btn" data-filter="tools" data-es="Herramientas" data-en="Tools">Herramientas</button>
+        <button class="filter-btn" data-filter="process" data-es="Proceso" data-en="Process">Proceso</button>
+        <button class="filter-btn" data-filter="production" data-es="Producción" data-en="Production">Producción</button>
+        <button class="filter-btn" data-filter="learning" data-es="Aprendiendo" data-en="Learning">Aprendiendo</button>
       </div>
       <div class="counter" id="counter"></div>
     </div>
 
     <!-- QA -->
     <div class="block-section" data-block="qa">
-      <div class="block-title">QA</div>
+      <div class="block-title" data-es="QA" data-en="QA">QA</div>
 
       <div class="card" data-block="qa">
         <div class="card-header">
-          <span class="question">Prelaunch QA & regresión</span>
-          <span class="tag tag-b1">QA</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Prelaunch QA & regresión" data-en="Prelaunch QA & regression">Prelaunch QA & regresión</span>
+          <span class="tag tag-b1">QA</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">En Penske Truck Rental era responsable del QA antes y después de cada deploy. Hacía regresión en las funcionalidades críticas del sitio — especialmente en las áreas que tocaba cada cambio — y comparaba contra producción para asegurarme de que nada se hubiera roto. Identifiqué varios bugs severos antes de que llegaran a los usuarios.</div>
+          <div class="answer">
+            <span class="lang-es">En Penske Truck Rental era responsable del QA antes y después de cada deploy. Hacía regresión en las funcionalidades críticas del sitio, especialmente en las áreas que tocaba cada cambio, y comparaba contra producción para asegurarme de que nada se hubiera roto. Identifiqué varios bugs severos antes de que llegaran a los usuarios.</span>
+            <span class="lang-en">At Penske Truck Rental I was responsible for QA before and after every deploy. I ran regression on critical site features, especially areas touched by each change, and compared against production to make sure nothing broke. I caught several severe bugs before they reached users.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="qa">
         <div class="card-header">
-          <span class="question">Testing de features nuevas y redesigns</span>
-          <span class="tag tag-b1">QA</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Testing de features nuevas y redesigns" data-en="New features & redesign testing">Testing de features nuevas y redesigns</span>
+          <span class="tag tag-b1">QA</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Cubrí el testing end-to-end de features nuevas en Penske — desde revisar los criterios de aceptación en los tickets hasta validar la implementación final. En los redesigns comparaba la implementación contra el Figma: colores, tipografía, espaciado, comportamiento responsive. Una cosa es que funcione, otra es que se vea como se especificó.</div>
+          <div class="answer">
+            <span class="lang-es">Cubrí el testing end-to-end de features nuevas en Penske, desde revisar los criterios de aceptación en los tickets hasta validar la implementación final. En los redesigns comparaba la implementación contra el Figma: colores, tipografía, espaciado, comportamiento responsive. Una cosa es que funcione, otra es que se vea como se especificó.</span>
+            <span class="lang-en">I covered end-to-end testing of new features at Penske, from reviewing acceptance criteria in tickets to validating the final implementation. For redesigns, I compared the build against Figma: colors, typography, spacing, responsive behavior. Working is not the same as looking right.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="qa">
         <div class="card-header">
-          <span class="question">Reporte de bugs</span>
-          <span class="tag tag-b1">QA</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Reporte de bugs" data-en="Bug reporting">Reporte de bugs</span>
+          <span class="tag tag-b1">QA</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Mis reportes siempre incluyen título claro, ambiente, pasos para reproducir, resultado actual vs esperado, severidad y evidencia visual. En Penske esto era crítico porque el código personalizado del cliente hacía que los bugs fueran difíciles de reproducir para el equipo de desarrollo. Con un buen reporte, el tiempo de resolución se reducía significativamente.</div>
+          <div class="answer">
+            <span class="lang-es">Mis reportes siempre incluyen título claro, ambiente, pasos para reproducir, resultado actual vs esperado, severidad y evidencia visual. En Penske esto era crítico porque el código personalizado del cliente hacía que los bugs fueran difíciles de reproducir para el equipo de desarrollo. Con un buen reporte, el tiempo de resolución se reducía significativamente.</span>
+            <span class="lang-en">My bug reports always include a clear title, environment, steps to reproduce, actual vs expected result, severity, and visual evidence. At Penske this was critical because the client's custom code made bugs hard to reproduce for the dev team. A good report meant faster resolution.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="qa">
         <div class="card-header">
-          <span class="question">Testing exploratorio</span>
-          <span class="tag tag-b1">QA</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Testing exploratorio" data-en="Exploratory testing">Testing exploratorio</span>
+          <span class="tag tag-b1">QA</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Gran parte de mi trabajo en RebelMouse era exploratorio aunque no lo llamara así: navegaba el sitio como un usuario real, siguiendo flujos que nadie había documentado como caso de prueba. Encontré bugs que los test cases formales no habrían cubierto — sobre todo en las intersecciones entre el código del cliente y las features nuevas de la plataforma.</div>
+          <div class="answer">
+            <span class="lang-es">Gran parte de mi trabajo en RebelMouse era exploratorio aunque no lo llamara así: navegaba el sitio como un usuario real, siguiendo flujos que nadie había documentado como caso de prueba. Encontré bugs que los test cases formales no habrían cubierto, sobre todo en las intersecciones entre el código del cliente y las features nuevas de la plataforma.</span>
+            <span class="lang-en">Much of my work at RebelMouse was exploratory even before I had a name for it: I navigated the site as a real user, following flows no one had documented as test cases. I found bugs that formal test cases would have missed, especially at the intersection of client code and new platform features.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="qa">
         <div class="card-header">
-          <span class="question">Priorización bajo presión</span>
-          <span class="tag tag-b1">QA</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Priorización bajo presión" data-en="Prioritization under pressure">Priorización bajo presión</span>
+          <span class="tag tag-b1">QA</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Con tiempos ajustados antes de cada deploy, siempre empezaba por lo que más impacto tenía en el negocio: funcionalidades core del sitio, flujos de usuario críticos, y las áreas que tocaba el cambio. En un cliente enterprise como Penske, una hora con algo roto era una hora con impacto real en su operación.</div>
+          <div class="answer">
+            <span class="lang-es">Con tiempos ajustados antes de cada deploy, siempre empezaba por lo que más impacto tenía en el negocio: funcionalidades core del sitio, flujos de usuario críticos, y las áreas que tocaba el cambio. En un cliente enterprise como Penske, una hora con algo roto era una hora con impacto real en su operación.</span>
+            <span class="lang-en">With tight timelines before each deploy, I always started with what mattered most to the business: core site features, critical user flows, and areas touched by the change. For an enterprise client like Penske, one hour with something broken was one hour of real operational impact.</span>
+          </div>
         </div>
       </div>
 
@@ -595,49 +664,57 @@
 
     <!-- HERRAMIENTAS -->
     <div class="block-section" data-block="tools">
-      <div class="block-title">Herramientas</div>
+      <div class="block-title" data-es="Herramientas" data-en="Tools">Herramientas</div>
 
       <div class="card" data-block="tools">
         <div class="card-header">
-          <span class="question">Postman & testing de APIs</span>
-          <span class="tag tag-b2">Tools</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Postman & testing de APIs" data-en="Postman & API testing">Postman & testing de APIs</span>
+          <span class="tag tag-b2">Tools</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Uso Postman para testear APIs REST — verifico status codes, el body de la respuesta y que la información del JSON sea correcta. También valido autenticación: si una acción devuelve 401 o 403, el problema es distinto y el fix es diferente. Uso variables de entorno para testear contra distintos ambientes sin modificar cada request a mano.</div>
+          <div class="answer">
+            <span class="lang-es">Uso Postman para testear APIs REST, verifico status codes, el body de la respuesta y que la información del JSON sea correcta. También valido autenticación: si una acción devuelve 401 o 403, el problema es distinto y el fix es diferente. Uso variables de entorno para testear contra distintos ambientes sin modificar cada request a mano.</span>
+            <span class="lang-en">I use Postman to test REST APIs, verifying status codes, response body, and JSON data accuracy. I also validate authentication: a 401 and a 403 mean different things and require different fixes. I use environment variables to test across environments without modifying each request manually.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="tools">
         <div class="card-header">
-          <span class="question">DevTools & análisis de red</span>
-          <span class="tag tag-b2">Tools</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="DevTools & análisis de red" data-en="DevTools & network analysis">DevTools & análisis de red</span>
+          <span class="tag tag-b2">Tools</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">DevTools era mi herramienta diaria en Penske para inspeccionar requests, analizar respuestas de API, detectar errores de consola y revisar cómo se cargaban los recursos del sitio. Cuando el sitio tenía problemas de rendimiento, la pestaña de red era el primer lugar donde miraba.</div>
+          <div class="answer">
+            <span class="lang-es">DevTools era mi herramienta diaria en Penske para inspeccionar requests, analizar respuestas de API, detectar errores de consola y revisar cómo se cargaban los recursos del sitio. Cuando el sitio tenía problemas de rendimiento, la pestaña de red era el primer lugar donde miraba.</span>
+            <span class="lang-en">DevTools was my daily tool at Penske for inspecting requests, analyzing API responses, catching console errors, and reviewing how site resources loaded. When the site had performance issues, the network tab was the first place I looked.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="tools">
         <div class="card-header">
-          <span class="question">Jira & gestión de bugs</span>
-          <span class="tag tag-b2">Tools</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Jira & gestión de bugs" data-en="Jira & bug management">Jira & gestión de bugs</span>
+          <span class="tag tag-b2">Tools</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Documenté y trackeé todos los bugs en Jira — creando tickets con suficiente contexto para que desarrollo pudiera reproducirlos sin preguntar. También seguía el lifecycle de cada bug: si volvía como Fixed, lo verificaba yo antes de cerrarlo. Si no estaba resuelto, lo reabrí con evidencia.</div>
+          <div class="answer">
+            <span class="lang-es">Documenté y trackeé todos los bugs en Jira, creando tickets con suficiente contexto para que desarrollo pudiera reproducirlos sin preguntar. También seguía el lifecycle de cada bug: si volvía como Fixed, lo verificaba yo antes de cerrarlo. Si no estaba resuelto, lo reabrí con evidencia.</span>
+            <span class="lang-en">I tracked all bugs in Jira, writing tickets with enough context for devs to reproduce them without back-and-forth. I also followed each bug's lifecycle: if it came back as Fixed, I verified it before closing. If it wasn't resolved, I reopened it with evidence.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="tools">
         <div class="card-header">
-          <span class="question">SQL — en aprendizaje</span>
-          <span class="tag tag-learning">Aprendiendo</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="SQL: en aprendizaje" data-en="SQL: learning">SQL: en aprendizaje</span>
+          <span class="tag tag-learning" data-es="Aprendiendo" data-en="Learning">Aprendiendo</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Estoy incorporando SQL para agregar una capa más al testing: poder verificar directamente en la base de datos que los datos se guardaron correctamente después de una acción en la app. Manejo SELECT, WHERE y JOIN — lo suficiente para validar datos sin depender de que otro me los muestre.</div>
+          <div class="answer">
+            <span class="lang-es">Estoy incorporando SQL para agregar una capa más al testing: poder verificar directamente en la base de datos que los datos se guardaron correctamente después de una acción en la app. Manejo SELECT, WHERE y JOIN, lo suficiente para validar datos sin depender de que otro me los muestre.</span>
+            <span class="lang-en">I'm adding SQL to my testing toolkit to verify data directly in the database after an action in the app. I work with SELECT, WHERE, and JOIN, enough to validate data without depending on someone else to show me.</span>
+          </div>
           <code>SELECT * FROM users WHERE email = 'test@test.com';
 
 SELECT users.name, orders.product
@@ -648,12 +725,14 @@ JOIN orders ON users.id = orders.user_id;</code>
 
       <div class="card" data-block="tools">
         <div class="card-header">
-          <span class="question">Playwright — en aprendizaje</span>
-          <span class="tag tag-learning">Aprendiendo</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Playwright: en aprendizaje" data-en="Playwright: learning">Playwright: en aprendizaje</span>
+          <span class="tag tag-learning" data-es="Aprendiendo" data-en="Learning">Aprendiendo</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Estoy aprendiendo Playwright para dar el salto al testing automatizado. La idea es poder automatizar flujos repetitivos — como el smoke testing que hacía manualmente antes de cada deploy en Penske — y liberar tiempo para testing más exploratorio y de mayor valor.</div>
+          <div class="answer">
+            <span class="lang-es">Estoy aprendiendo Playwright para dar el salto al testing automatizado. La idea es poder automatizar flujos repetitivos, como el smoke testing que hacía manualmente antes de cada deploy en Penske, y liberar tiempo para testing más exploratorio y de mayor valor.</span>
+            <span class="lang-en">I'm learning Playwright to move into automated testing. The goal is to automate repetitive flows, like the smoke testing I used to do manually before each Penske deploy, and free up time for more exploratory, higher-value testing.</span>
+          </div>
         </div>
       </div>
 
@@ -661,38 +740,44 @@ JOIN orders ON users.id = orders.user_id;</code>
 
     <!-- PROCESO -->
     <div class="block-section" data-block="process">
-      <div class="block-title">Proceso</div>
+      <div class="block-title" data-es="Proceso" data-en="Process">Proceso</div>
 
       <div class="card" data-block="process">
         <div class="card-header">
-          <span class="question">Mejora de procesos con el cliente</span>
-          <span class="tag tag-b3">Proceso</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Mejora de procesos con el cliente" data-en="Client-facing process improvement">Mejora de procesos con el cliente</span>
+          <span class="tag tag-b3">Proceso</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">En Penske mejoré la forma en que le mostrábamos los test cases al cliente. Antes el proceso era poco claro — el cliente no sabía qué se había testeado y qué no. Implementé una forma de presentar la cobertura de testing que daba visibilidad real: qué features se cubrieron, qué quedó fuera y por qué. Eso generó más confianza y menos idas y vueltas.</div>
+          <div class="answer">
+            <span class="lang-es">En Penske mejoré la forma en que le mostrábamos los test cases al cliente. Antes el proceso era poco claro, el cliente no sabía qué se había testeado y qué no. Implementé una forma de presentar la cobertura de testing que daba visibilidad real: qué features se cubrieron, qué quedó fuera y por qué. Eso generó más confianza y menos idas y vueltas.</span>
+            <span class="lang-en">At Penske I improved how we presented test cases to the client. The previous process was unclear, the client didn't know what had been tested and what hadn't. I implemented a coverage presentation that gave real visibility: what features were covered, what was left out, and why. That built trust and reduced back-and-forth.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="process">
         <div class="card-header">
-          <span class="question">Test design aplicado</span>
-          <span class="tag tag-b3">Proceso</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Test design aplicado" data-en="Applied test design">Test design aplicado</span>
+          <span class="tag tag-b3">Proceso</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Para decidir qué casos testear uso equivalence partitioning — agrupar inputs que se comportan igual y testear uno por clase, en lugar de repetir casos redundantes — y boundary value analysis para los límites, donde suelen aparecer los bugs. En formularios y validaciones de Penske esto me permitía cubrir más con menos casos.</div>
+          <div class="answer">
+            <span class="lang-es">Para decidir qué casos testear uso equivalence partitioning, agrupar inputs que se comportan igual y testear uno por clase, en lugar de repetir casos redundantes, y boundary value analysis para los límites, donde suelen aparecer los bugs. En formularios y validaciones de Penske esto me permitía cubrir más con menos casos.</span>
+            <span class="lang-en">To decide what to test I use equivalence partitioning, grouping inputs that behave the same and testing one per class instead of repeating redundant cases, and boundary value analysis for the edges, where bugs tend to show up. In Penske's forms and validations, this let me cover more with fewer test cases.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="process">
         <div class="card-header">
-          <span class="question">Trabajo con equipos de desarrollo</span>
-          <span class="tag tag-b3">Proceso</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Trabajo con equipos de desarrollo" data-en="Working with dev teams">Trabajo con equipos de desarrollo</span>
+          <span class="tag tag-b3">Proceso</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">En RebelMouse trabajaba directamente con el equipo de desarrollo — reportaba bugs, los discutía y los escalaba cuando era necesario. Cuando un dev decía que algo no era un bug, pedía que me mostraran cómo lo reproducían. A veces era un tema de ambiente o datos de prueba. Si no, escalaba con evidencia. El objetivo siempre fue resolver el problema, no tener razón.</div>
+          <div class="answer">
+            <span class="lang-es">En RebelMouse trabajaba directamente con el equipo de desarrollo, reportaba bugs, los discutía y los escalaba cuando era necesario. Cuando un dev decía que algo no era un bug, pedía que me mostraran cómo lo reproducían. A veces era un tema de ambiente o datos de prueba. Si no, escalaba con evidencia. El objetivo siempre fue resolver el problema, no tener razón.</span>
+            <span class="lang-en">At RebelMouse I worked directly with the dev team, reporting bugs, discussing them, and escalating when needed. When a dev said something wasn't a bug, I asked them to show me how they reproduced it. Sometimes it was an environment or test data issue. If not, I escalated with evidence. The goal was always to solve the problem, not to be right.</span>
+          </div>
         </div>
       </div>
 
@@ -700,38 +785,44 @@ JOIN orders ON users.id = orders.user_id;</code>
 
     <!-- PRODUCCIÓN -->
     <div class="block-section" data-block="production">
-      <div class="block-title">Producción — Club Classics</div>
+      <div class="block-title" data-es="Producción: Club Classics" data-en="Production: Club Classics">Producción: Club Classics</div>
 
       <div class="card" data-block="production">
         <div class="card-header">
-          <span class="question">Curaduría y programación</span>
-          <span class="tag tag-b4">Producción</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Curaduría y programación" data-en="Curation & programming">Curaduría y programación</span>
+          <span class="tag tag-b4">Producción</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Selecciono los films de cada edición de Club Classics con criterio curatorial — pensando en qué funciona como ciclo, qué quiere ver la audiencia y qué propuesta artística tiene sentido en cada contexto. También coordino con artistas para las exposiciones que acompañan las proyecciones.</div>
+          <div class="answer">
+            <span class="lang-es">Selecciono los films de cada edición de Club Classics con criterio curatorial, pensando en qué funciona como ciclo, qué quiere ver la audiencia y qué propuesta artística tiene sentido en cada contexto. También coordino con artistas para las exposiciones que acompañan las proyecciones.</span>
+            <span class="lang-en">I select the films for each Club Classics edition with curatorial judgment, thinking about what works as a cycle, what the audience wants to see, and what artistic proposition makes sense in each context. I also coordinate with artists for the exhibitions that accompany screenings.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="production">
         <div class="card-header">
-          <span class="question">Producción técnica & operación</span>
-          <span class="tag tag-b4">Producción</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Producción técnica & operación" data-en="Technical production & operations">Producción técnica & operación</span>
+          <span class="tag tag-b4">Producción</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Me encargo de la parte técnica de la proyección — setup, calibración y operación durante el evento. Es una habilidad que no se aprende de un día para el otro y que combina atención al detalle con capacidad de resolver problemas en vivo, sin margen de error frente a la audiencia.</div>
+          <div class="answer">
+            <span class="lang-es">Me encargo de la parte técnica de la proyección, setup, calibración y operación durante el evento. Es una habilidad que no se aprende de un día para el otro y que combina atención al detalle con capacidad de resolver problemas en vivo, sin margen de error frente a la audiencia.</span>
+            <span class="lang-en">I handle the technical side of projection, setup, calibration, and live operation during events. It's a skill that takes time to build and combines attention to detail with the ability to solve problems in real time, with no margin for error in front of an audience.</span>
+          </div>
         </div>
       </div>
 
       <div class="card" data-block="production">
         <div class="card-header">
-          <span class="question">Análisis de audiencia & mejora continua</span>
-          <span class="tag tag-b4">Producción</span>
-          <span class="chevron">▼</span>
+          <span class="question" data-es="Análisis de audiencia & mejora continua" data-en="Audience analysis & continuous improvement">Análisis de audiencia & mejora continua</span>
+          <span class="tag tag-b4">Producción</span><span class="chevron">▼</span>
         </div>
         <div class="card-body">
-          <div class="answer">Manejo las redes del ciclo y analizo cómo responde la audiencia para mejorar cada edición. Qué convoca, qué no, qué momento del año funciona mejor. El mismo pensamiento de mejora continua que aplico en QA — medir, aprender, ajustar — lo aplico en la producción cultural.</div>
+          <div class="answer">
+            <span class="lang-es">Manejo las redes del ciclo y analizo cómo responde la audiencia para mejorar cada edición. Qué convoca, qué no, qué momento del año funciona mejor. El mismo pensamiento de mejora continua que aplico en QA, medir, aprender, ajustar, lo aplico en la producción cultural.</span>
+            <span class="lang-en">I manage the cycle's social media and analyze audience response to improve each edition. What draws people, what doesn't, what time of year works best. The same continuous improvement mindset I apply in QA, measure, learn, adjust, I apply in cultural production.</span>
+          </div>
         </div>
       </div>
 
@@ -742,6 +833,50 @@ JOIN orders ON users.id = orders.user_id;</code>
 
   </div>
 </section>
+
+<hr class="divider" />
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <p class="section-eyebrow" data-es="Contacto" data-en="Contact">Contacto</p>
+    <h2 class="section-title" data-es="Hablemos." data-en="Let's talk.">Hablemos.</h2>
+    <div class="contact-grid">
+
+      <div class="contact-intro">
+        <p data-es="Si querés hablar de trabajo, proyectos o simplemente conectar, escribime." data-en="If you want to talk about work, projects or just connect, reach out.">Si querés hablar de trabajo, proyectos o simplemente conectar, escribime.</p>
+        <div class="contact-links">
+          <a href="mailto:micaaelajara@gmail.com" class="contact-link">
+            <span>✉</span> micaaelajara@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="contact-link">
+            <span>↗</span> linkedin.com/in/micaela-jara
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/REEMPLAZAR" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="name" data-es="Nombre" data-en="Name">Nombre</label>
+          <input class="form-input" type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
+          <textarea class="form-textarea" id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" data-es="Enviar" data-en="Send">Enviar</button>
+        <div class="form-success" id="form-success">¡Mensaje enviado! Te respondo pronto.</div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
 
 <footer>
   <p class="footer-name">Micaela Jara</p>
@@ -791,21 +926,42 @@ JOIN orders ON users.id = orders.user_id;</code>
   searchInput.addEventListener('input', updateVisibility);
   updateVisibility();
 
+  // Contact form
+  const contactForm = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      const res = await fetch(contactForm.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (res.ok) {
+        contactForm.reset();
+        formSuccess.style.display = 'block';
+      }
+    });
+  }
+
   // Language toggle
   let lang = 'es';
   const langBtn = document.getElementById('lang-btn');
-  const translatables = document.querySelectorAll('[data-es]');
 
   langBtn.addEventListener('click', () => {
     lang = lang === 'es' ? 'en' : 'es';
     langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
-    translatables.forEach(el => {
+
+    if (lang === 'en') document.body.classList.add('en');
+    else document.body.classList.remove('en');
+
+    document.querySelectorAll('[data-es]').forEach(el => {
       const text = el.dataset[lang];
-      if (text) {
-        if (el.tagName === 'A' || el.tagName === 'BUTTON') el.textContent = text;
-        else el.textContent = text;
-      }
+      if (text) el.textContent = text;
     });
+
+    const searchEl = document.getElementById('search');
+    if (searchEl) searchEl.placeholder = lang === 'en' ? 'Search...' : 'Buscar...';
+
+    const successEl = document.getElementById('form-success');
+    if (successEl) successEl.textContent = lang === 'en' ? "Message sent! I'll get back to you soon." : '¡Mensaje enviado! Te respondo pronto.';
   });
 </script>
 
