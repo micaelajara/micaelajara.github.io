@@ -741,8 +741,14 @@
 
     /* ROTATING PHRASE */
     .footer-phrase {
-      font-size: 0.78rem; color: #bbb;
-      min-height: 1.2em;
+      font-family: var(--display);
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--accent);
+      min-height: 1.4em;
+      margin-top: 1.25rem;
       transition: opacity 0.4s;
     }
     .footer-phrase.fade { opacity: 0; }
