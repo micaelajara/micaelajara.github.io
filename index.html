@@ -583,11 +583,89 @@
       font-family: var(--display); font-weight: 900;
       font-size: 1.4rem; letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--text); margin-bottom: 0.5rem;
+      color: var(--text); margin-bottom: 0.85rem;
     }
-    footer p { font-size: 0.78rem; color: #aaa; }
-    footer a { color: var(--accent); text-decoration: none; font-size: 1rem; font-weight: 500; }
-    footer a:hover { text-decoration: underline; }
+
+    /* OPEN TO WORK BADGE */
+    .footer-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #f0faf2; border: 1px solid #a8d8b0;
+      border-radius: 20px; padding: 0.3rem 0.85rem;
+      font-size: 0.72rem; font-weight: 500; color: #3a7a48;
+      text-decoration: none; margin-bottom: 1.5rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .footer-badge:hover { background: #e0f5e4; box-shadow: 0 2px 8px rgba(60,120,70,0.12); }
+    .badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4caf72;
+      box-shadow: 0 0 0 0 rgba(76,175,114,0.6);
+      animation: pulse-dot 1.8s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-dot {
+      0%   { box-shadow: 0 0 0 0 rgba(76,175,114,0.55); }
+      70%  { box-shadow: 0 0 0 7px rgba(76,175,114,0); }
+      100% { box-shadow: 0 0 0 0 rgba(76,175,114,0); }
+    }
+
+    /* SOCIAL BUTTONS */
+    .footer-socials {
+      display: flex; justify-content: center; gap: 0.75rem;
+      margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.55rem 1.1rem; border-radius: 2px;
+      border: 1.5px solid var(--border);
+      font-size: 0.8rem; font-weight: 500; color: var(--text);
+      text-decoration: none; background: white;
+      transition: all 0.22s; position: relative; overflow: hidden;
+    }
+    .social-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.22s ease;
+      z-index: 0;
+    }
+    .social-btn:hover::before { transform: scaleX(1); }
+    .social-btn:hover { color: white; border-color: var(--accent); }
+    .social-btn span { position: relative; z-index: 1; }
+    .social-btn svg { position: relative; z-index: 1; width: 15px; height: 15px; }
+
+    /* ROTATING PHRASE */
+    .footer-phrase {
+      font-size: 0.78rem; color: #bbb;
+      min-height: 1.2em;
+      transition: opacity 0.4s;
+    }
+    .footer-phrase.fade { opacity: 0; }
+
+    /* SCROLL TO TOP */
+    .scroll-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px; border-radius: 2px;
+      background: var(--accent); color: white; border: none;
+      font-size: 1.1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(8px);
+      z-index: 300;
+    }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .scroll-top:hover { background: #a05555; }
+
+    /* COPY TOAST */
+    .copy-toast {
+      position: fixed; bottom: 4.5rem; right: 1.5rem;
+      background: #1a1a1a; color: white;
+      font-size: 0.75rem; padding: 0.4rem 0.85rem;
+      border-radius: 2px; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s; z-index: 300;
+    }
+    .copy-toast.show { opacity: 1; }
   </style>
 </head>
 <body>
@@ -1097,8 +1175,29 @@ JOIN orders ON users.id = orders.user_id;</code>
 
 <footer>
   <p class="footer-name">Micaela Jara</p>
-  <p><a href="https://linkedin.com/in/micaela-jara" target="_blank">LinkedIn</a></p>
+  <a class="footer-badge" href="#contacto">
+    <span class="badge-dot"></span>
+    <span data-es="Disponible para trabajar" data-en="Open to work">Disponible para trabajar</span>
+  </a>
+  <div class="footer-socials">
+    <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="social-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57A1.32 1.32 0 0 1 14.24 12.25A1.32 1.32 0 0 1 15.56 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/></svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://github.com/micaelajara" target="_blank" class="social-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+      <span>GitHub</span>
+    </a>
+    <button class="social-btn" id="copy-email-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <span data-es="Copiar email" data-en="Copy email">Copiar email</span>
+    </button>
+  </div>
+  <p class="footer-phrase" id="footer-phrase"></p>
 </footer>
+
+<button class="scroll-top" id="scroll-top" aria-label="Volver arriba">↑</button>
+<div class="copy-toast" id="copy-toast">¡Copiado!</div>
 
 <script>
   // Flip cards
@@ -1243,6 +1342,49 @@ JOIN orders ON users.id = orders.user_id;</code>
 
     const successEl = document.getElementById('form-success');
     if (successEl) successEl.textContent = lang === 'en' ? "Message sent! I'll get back to you soon." : '¡Mensaje enviado! Te respondo pronto.';
+
+    const badgeSpan = document.querySelector('.footer-badge span:last-child');
+    if (badgeSpan) badgeSpan.textContent = lang === 'en' ? 'Open to work' : 'Disponible para trabajar';
+    const copyBtn = document.querySelector('#copy-email-btn span');
+    if (copyBtn) copyBtn.textContent = lang === 'en' ? 'Copy email' : 'Copiar email';
+  });
+
+  // Rotating footer phrases
+  const phrases = [
+    'Siempre pregunto el por qué antes del cómo.',
+    'Ready to work.',
+    'QA · Tech Enthusiast · Project Maker.',
+    'El detalle importa.',
+    'Construyo procesos donde no había ninguno.',
+  ];
+  const phraseEl = document.getElementById('footer-phrase');
+  let phraseIdx = 0;
+  function rotatePhrases() {
+    phraseEl.classList.add('fade');
+    setTimeout(() => {
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      phraseEl.textContent = phrases[phraseIdx];
+      phraseEl.classList.remove('fade');
+    }, 400);
+  }
+  phraseEl.textContent = phrases[0];
+  setInterval(rotatePhrases, 3200);
+
+  // Scroll to top
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Copy email
+  const copyEmailBtn = document.getElementById('copy-email-btn');
+  const copyToast = document.getElementById('copy-toast');
+  copyEmailBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('micaaelajara@gmail.com').then(() => {
+      copyToast.classList.add('show');
+      setTimeout(() => copyToast.classList.remove('show'), 2000);
+    });
   });
 </script>
 
