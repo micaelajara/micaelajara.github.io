@@ -115,7 +115,7 @@
       .section-title { font-size: clamp(1.3rem, 6vw, 1.8rem); margin-bottom: 1.1rem; }
 
       .about-grid { gap: 1.25rem; }
-      .about-photo { max-width: 150px; }
+      .about-photo-wrap { max-width: 150px; }
 
       .project-card { flex: 0 0 100%; margin-right: 1rem; padding: 1rem; }
       .project-highlights { margin-top: 0.65rem; }
@@ -243,10 +243,32 @@
     }
     @media (max-width: 580px) { .about-grid { grid-template-columns: 1fr; } }
 
+    .about-photo-wrap {
+      position: relative; display: inline-block; width: 100%;
+    }
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      opacity: 0.2;
+      pointer-events: none;
+    }
     .about-photo {
       width: 100%; aspect-ratio: 3/4; object-fit: cover;
       border-radius: 3px; display: block;
       filter: grayscale(15%);
+      position: relative;
     }
 
     .about-text {
@@ -610,7 +632,9 @@
     <p class="section-eyebrow" data-es="Sobre mí" data-en="About me">Sobre mí</p>
     <h2 class="section-title" data-es="Quién soy." data-en="Who I am.">Quién soy.</h2>
     <div class="about-grid">
-      <img src="IMG-20260520-WA0019.jpg" alt="Micaela Jara" class="about-photo" />
+      <div class="about-photo-wrap">
+        <img src="IMG-20260520-WA0019.jpg" alt="Micaela Jara" class="about-photo" />
+      </div>
       <div class="about-text">
         <p data-es="QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa, Penske Truck Rental, haciendo QA de features nuevas, redesigns y validación prelaunch." data-en="QA with experience in enterprise projects, focused on quality, processes, and user experience. I worked at RebelMouse testing the company's largest site, Penske Truck Rental, covering new features, redesigns, and prelaunch QA.">QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa, Penske Truck Rental, haciendo QA de features nuevas, redesigns y validación prelaunch.</p>
         <p data-es="Fuera de lo tech, soy productora de Club Classics, un ciclo de cine independiente donde combino curaduría, gestión de artistas y producción técnica. Estudio gestión cultural porque creo que el contexto y las personas son parte del trabajo, en tech y en cualquier otro lado." data-en="Outside of tech, I produce Club Classics, an independent film cycle where I combine curation, artist coordination, and technical production. I study cultural management because I believe context and people are part of the work, in tech and everywhere else.">Fuera de lo tech, soy productora de Club Classics, un ciclo de cine independiente donde combino curaduría, gestión de artistas y producción técnica. Estudio gestión cultural porque creo que el contexto y las personas son parte del trabajo, en tech y en cualquier otro lado.</p>
