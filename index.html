@@ -117,8 +117,7 @@
       .about-grid { gap: 1.25rem; }
       .about-photo { max-width: 150px; }
 
-      .projects-grid { gap: 1rem; }
-      .project-card { padding: 1rem; }
+      .project-card { flex: 0 0 100%; margin-right: 1rem; padding: 1rem; }
       .project-highlights { margin-top: 0.65rem; }
 
       .qa-controls { gap: 0.5rem; margin-bottom: 0.75rem; }
@@ -257,23 +256,59 @@
 
     .about-text p + p { margin-top: 1rem; }
 
-    /* PROYECTOS */
-    .projects-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    /* PROYECTOS — CARRUSEL */
+    .carousel-wrap { position: relative; }
+
+    .carousel-track-outer {
+      overflow: hidden;
+      border-radius: 3px;
     }
-    @media (max-width: 580px) { .projects-grid { grid-template-columns: 1fr; } }
+    .projects-grid {
+      display: flex;
+      transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
+    }
 
     .project-card {
+      flex: 0 0 calc(50% - 0.625rem);
+      margin-right: 1.25rem;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 3px;
       padding: 1.75rem;
       display: flex; flex-direction: column; gap: 0.85rem;
       transition: box-shadow 0.2s, border-color 0.2s;
+      box-sizing: border-box;
     }
+    .project-card:last-child { margin-right: 0; }
     .project-card:hover {
       box-shadow: 0 6px 24px rgba(196,73,106,0.08);
       border-color: #d8b0bc;
+    }
+
+    .carousel-nav {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; margin-top: 1.25rem;
+    }
+    .carousel-btn {
+      background: none; border: 1px solid var(--border);
+      border-radius: 2px; width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text); font-size: 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .carousel-btn:disabled { opacity: 0.3; cursor: default; }
+    .carousel-dots { display: flex; gap: 0.45rem; }
+    .carousel-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--border); border: none; padding: 0; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-dot.active { background: var(--accent); transform: scale(1.25); }
+
+    @media (max-width: 580px) {
+      .project-card { flex: 0 0 100%; margin-right: 1rem; }
     }
 
     .project-tag {
@@ -567,7 +602,9 @@
   <div class="container">
     <p class="section-eyebrow">Proyectos</p>
     <h2 class="section-title">Lo que hice.</h2>
-    <div class="projects-grid">
+    <div class="carousel-wrap">
+    <div class="carousel-track-outer">
+    <div class="projects-grid" id="projects-track">
 
       <div class="project-card">
         <span class="project-tag">QA · RebelMouse</span>
@@ -608,7 +645,15 @@
         </ul>
       </div>
 
+    </div><!-- /projects-grid -->
+    </div><!-- /carousel-track-outer -->
+
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="proj-prev" aria-label="Anterior">&#8592;</button>
+      <div class="carousel-dots" id="proj-dots"></div>
+      <button class="carousel-btn" id="proj-next" aria-label="Siguiente">&#8594;</button>
     </div>
+    </div><!-- /carousel-wrap -->
   </div>
 </section>
 
@@ -974,6 +1019,52 @@ JOIN orders ON users.id = orders.user_id;</code>
 </footer>
 
 <script>
+  // Projects carousel
+  (function() {
+    const track = document.getElementById('projects-track');
+    const prevBtn = document.getElementById('proj-prev');
+    const nextBtn = document.getElementById('proj-next');
+    const dotsWrap = document.getElementById('proj-dots');
+    if (!track) return;
+
+    const projectCards = track.querySelectorAll('.project-card');
+    const isMobile = () => window.innerWidth <= 580;
+    const perPage = () => isMobile() ? 1 : 2;
+    let current = 0;
+
+    const total = () => Math.ceil(projectCards.length / perPage());
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      for (let i = 0; i < total(); i++) {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Ir a slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+      }
+    }
+
+    function goTo(n) {
+      current = Math.max(0, Math.min(n, total() - 1));
+      const pp = perPage();
+      const cardW = projectCards[0].offsetWidth + (isMobile() ? 16 : 20);
+      track.style.transform = 'translateX(-' + (current * pp * cardW) + 'px)';
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= total() - 1;
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    buildDots();
+    goTo(0);
+    window.addEventListener('resize', () => { buildDots(); goTo(0); });
+  })();
+
   const cards = document.querySelectorAll('.card');
   const searchInput = document.getElementById('search');
   const filterBtns = document.querySelectorAll('.filter-btn');
