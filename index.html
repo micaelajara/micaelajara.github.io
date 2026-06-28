@@ -758,6 +758,23 @@
     .scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .scroll-top:hover { background: #a05555; }
 
+    /* PROJECTS HEADER */
+    .projects-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .projects-deco {
+      width: 160px; height: 110px;
+      object-fit: cover; object-position: center top;
+      border-radius: 3px;
+      filter: grayscale(20%);
+      flex-shrink: 0;
+    }
+    @media (max-width: 640px) {
+      .projects-deco { width: 110px; height: 75px; }
+    }
+
     /* COPY TOAST */
     .copy-toast {
       position: fixed; bottom: 4.5rem; right: 1.5rem;
@@ -827,8 +844,13 @@
 <!-- PROYECTOS -->
 <section id="proyectos">
   <div class="container">
-    <p class="section-eyebrow">Proyectos</p>
-    <h2 class="section-title">Lo que hice.</h2>
+    <div class="projects-header">
+      <div>
+        <p class="section-eyebrow">Proyectos</p>
+        <h2 class="section-title">Lo que hice.</h2>
+      </div>
+      <img src="carrie.jpg" alt="Working" class="projects-deco" />
+    </div>
     <div class="carousel-wrap">
     <div class="carousel-track-outer">
     <div class="projects-grid" id="projects-track">
