@@ -370,14 +370,38 @@
       gap: 0.85rem;
     }
     .interest-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 3px; padding: 1.1rem 0.85rem; text-align: center;
-      transition: border-color 0.2s;
+      perspective: 600px;
+      height: 110px;
+      cursor: pointer;
     }
-    .interest-card:hover { border-color: #d8b0bc; }
+    .interest-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .interest-card.flipped .interest-inner { transform: rotateY(180deg); }
+
+    .interest-front, .interest-back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      border-radius: 3px; border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 0.85rem 0.7rem; text-align: center;
+      background: var(--bg-card);
+    }
+    .interest-front { transition: border-color 0.2s; }
+    .interest-card:hover .interest-front { border-color: #d8b0bc; }
+    .interest-back {
+      transform: rotateY(180deg);
+      background: var(--accent-light);
+      border-color: #f0c0ce;
+    }
+
     .interest-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
-    .interest-label {
-      font-size: 0.78rem; font-weight: 400; color: var(--text);
+    .interest-label { font-size: 0.78rem; font-weight: 400; color: var(--text); }
+    .interest-back-text {
+      font-size: 0.73rem; line-height: 1.45; color: var(--text);
     }
 
     /* QA CONTROLS */
@@ -695,12 +719,42 @@
     <p class="section-eyebrow">Intereses</p>
     <h2 class="section-title">Lo que me mueve.</h2>
     <div class="interests-grid">
-      <div class="interest-card"><div class="interest-icon">🔍</div><div class="interest-label" data-es="Product thinking" data-en="Product thinking">Product thinking</div></div>
-      <div class="interest-card"><div class="interest-icon">💻</div><div class="interest-label" data-es="Tecnología" data-en="Technology">Tecnología</div></div>
-      <div class="interest-card"><div class="interest-icon">🏛️</div><div class="interest-label" data-es="Gestión cultural" data-en="Cultural management">Gestión cultural</div></div>
-      <div class="interest-card"><div class="interest-icon">🎬</div><div class="interest-label" data-es="Cine" data-en="Film">Cine</div></div>
-      <div class="interest-card"><div class="interest-icon">🎨</div><div class="interest-label" data-es="Arte" data-en="Art">Arte</div></div>
-      <div class="interest-card"><div class="interest-icon">📚</div><div class="interest-label" data-es="Lectura" data-en="Reading">Lectura</div></div>
+      <div class="interest-card">
+        <div class="interest-inner">
+          <div class="interest-front"><div class="interest-icon">🔍</div><div class="interest-label">Product thinking</div></div>
+          <div class="interest-back"><p class="interest-back-text" data-es="Siempre pregunto por qué antes de cómo." data-en="I always ask why before how.">Siempre pregunto por qué antes de cómo.</p></div>
+        </div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-inner">
+          <div class="interest-front"><div class="interest-icon">💻</div><div class="interest-label" data-es="Tecnología" data-en="Technology">Tecnología</div></div>
+          <div class="interest-back"><p class="interest-back-text" data-es="Me gusta entender cómo funcionan las cosas por dentro." data-en="I like understanding how things work under the hood.">Me gusta entender cómo funcionan las cosas por dentro.</p></div>
+        </div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-inner">
+          <div class="interest-front"><div class="interest-icon">🏛️</div><div class="interest-label" data-es="Gestión cultural" data-en="Cultural management">Gestión cultural</div></div>
+          <div class="interest-back"><p class="interest-back-text" data-es="Produzco Club Classics, un ciclo de cine independiente." data-en="I produce Club Classics, an independent film cycle.">Produzco Club Classics, un ciclo de cine independiente.</p></div>
+        </div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-inner">
+          <div class="interest-front"><div class="interest-icon">🎬</div><div class="interest-label" data-es="Cine" data-en="Film">Cine</div></div>
+          <div class="interest-back"><p class="interest-back-text" data-es="Me interesan las películas que incomodan o proponen algo." data-en="I'm drawn to films that challenge or propose something.">Me interesan las películas que incomodan o proponen algo.</p></div>
+        </div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-inner">
+          <div class="interest-front"><div class="interest-icon">🎨</div><div class="interest-label" data-es="Arte" data-en="Art">Arte</div></div>
+          <div class="interest-back"><p class="interest-back-text" data-es="El arte como forma de entender el contexto." data-en="Art as a way of understanding context.">El arte como forma de entender el contexto.</p></div>
+        </div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-inner">
+          <div class="interest-front"><div class="interest-icon">📚</div><div class="interest-label" data-es="Lectura" data-en="Reading">Lectura</div></div>
+          <div class="interest-back"><p class="interest-back-text" data-es="Leo ensayo, ficción y cualquier cosa que me haga pensar distinto." data-en="I read essays, fiction, and anything that makes me think differently.">Leo ensayo, ficción y cualquier cosa que me haga pensar distinto.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1022,6 +1076,11 @@ JOIN orders ON users.id = orders.user_id;</code>
 </footer>
 
 <script>
+  // Flip cards
+  document.querySelectorAll('.interest-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+
   // Projects carousel
   (function() {
     const track = document.getElementById('projects-track');
