@@ -22,7 +22,6 @@
   <meta name="twitter:image" content="https://micaelajara.github.io/preview.png" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -588,8 +587,41 @@
     .contact-intro p + p { margin-top: 1rem; }
 
     .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
-    .badge-wrap { margin-top: 1.5rem; }
-    .badge-wrap .LI-simple-link { display: none !important; }
+    .li-card {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1rem 1.1rem;
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: white;
+    }
+    .li-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(180,100,100,0.09);
+    }
+    .li-card-photo {
+      width: 48px; height: 48px; border-radius: 50%;
+      object-fit: cover; object-position: top;
+      flex-shrink: 0;
+      border: 2px solid var(--accent-light);
+    }
+    .li-card-info { flex: 1; min-width: 0; }
+    .li-card-name {
+      font-family: var(--display); font-weight: 900;
+      font-size: 0.85rem; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .li-card-title {
+      font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;
+    }
+    .li-card-arrow {
+      font-size: 1rem; color: var(--accent); flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .li-card:hover .li-card-arrow { transform: translateX(3px); }
 
     .contact-link {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -1244,9 +1276,14 @@ JOIN orders ON users.id = orders.user_id;</code>
             <span>↗</span> github.com/micaelajara
           </a>
         </div>
-        <div class="badge-wrap">
-          <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="micaela-jara" data-version="v1"></div>
-        </div>
+        <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="li-card">
+          <img src="micaela.jpg" alt="Micaela Jara" class="li-card-photo" />
+          <div class="li-card-info">
+            <p class="li-card-name">Micaela Jara</p>
+            <p class="li-card-title" data-es="QA Engineer · Tech Enthusiast · Project Maker" data-en="QA Engineer · Tech Enthusiast · Project Maker">QA Engineer · Tech Enthusiast · Project Maker</p>
+          </div>
+          <span class="li-card-arrow">↗</span>
+        </a>
       </div>
 
       <form class="contact-form" id="contact-form" action="https://formspree.io/f/xwvdbgdr" method="POST">
