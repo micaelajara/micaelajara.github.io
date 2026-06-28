@@ -71,6 +71,75 @@
     body.en .lang-es { display: none; }
     body.en .lang-en { display: block; }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: white; border-bottom: 1px solid var(--border);
+        padding: 0.5rem 0; z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block; padding: 0.75rem 2rem;
+        font-size: 0.82rem;
+      }
+      .nav-links li:last-child { padding: 0.75rem 2rem; }
+      .lang-toggle { font-size: 0.7rem; }
+
+      .hero { padding: 3rem 1.25rem 2.5rem; gap: 1rem; }
+      .hero h1 { font-size: clamp(2.8rem, 14vw, 4rem); margin-bottom: 0.85rem; }
+      .hero-sub { font-size: 0.88rem; margin-bottom: 1.25rem; }
+      .hero-bio { font-size: 0.92rem; margin-bottom: 1.75rem; }
+
+      .container { padding: 0 1.25rem; }
+      section { padding: 2.5rem 0; }
+      .section-title { font-size: clamp(1.4rem, 7vw, 2rem); margin-bottom: 1.5rem; }
+
+      .about-grid { gap: 1.5rem; }
+      .about-photo { max-width: 180px; }
+
+      .project-card { padding: 1.25rem; }
+
+      .qa-controls { gap: 0.65rem; }
+      .filters {
+        flex-wrap: nowrap; overflow-x: auto;
+        padding-bottom: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .filters::-webkit-scrollbar { display: none; }
+      .filter-btn { flex-shrink: 0; }
+
+      .card-header { padding: 0.85rem 1rem; }
+      .card-body { padding: 0 1rem 1rem; }
+
+      .contact-grid { gap: 2rem; }
+      .contact-links { margin-top: 1rem; }
+
+      .interests-grid { grid-template-columns: repeat(3, 1fr); gap: 0.65rem; }
+      .interest-card { padding: 0.85rem 0.5rem; }
+
+      footer { padding: 1.75rem 1.25rem; }
+    }
+
     /* LAYOUT */
     .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
 
@@ -439,7 +508,10 @@
 
 <nav>
   <span class="nav-name">Micaela Jara</span>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#sobre-mi" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
     <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
     <li><a href="#stack">Stack</a></li>
@@ -940,6 +1012,20 @@ JOIN orders ON users.id = orders.user_id;</code>
       }
     });
   }
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
 
   // Language toggle
   let lang = 'es';
