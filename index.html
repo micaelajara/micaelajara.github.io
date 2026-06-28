@@ -764,15 +764,37 @@
       justify-content: space-between; gap: 1.5rem;
       margin-bottom: 1.75rem;
     }
-    .projects-deco {
-      width: 160px; height: 110px;
-      object-fit: cover; object-position: center top;
+    .projects-deco-wrap {
+      position: relative; display: inline-block;
+      flex-shrink: 0; width: 200px;
+    }
+    .projects-deco-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .projects-deco-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 1px solid var(--accent);
       border-radius: 3px;
-      filter: grayscale(20%);
-      flex-shrink: 0;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .projects-deco {
+      width: 100%; height: 140px;
+      object-fit: cover; object-position: center top;
+      border-radius: 3px; display: block;
+      filter: grayscale(15%);
     }
     @media (max-width: 640px) {
-      .projects-deco { width: 110px; height: 75px; }
+      .projects-deco-wrap { width: 130px; }
+      .projects-deco { height: 90px; }
     }
 
     /* COPY TOAST */
@@ -849,7 +871,9 @@
         <p class="section-eyebrow">Proyectos</p>
         <h2 class="section-title">Lo que hice.</h2>
       </div>
-      <img src="carrie.jpg" alt="Working" class="projects-deco" />
+      <div class="projects-deco-wrap">
+        <img src="carrie.jpg" alt="Working" class="projects-deco" />
+      </div>
     </div>
     <div class="carousel-wrap">
     <div class="carousel-track-outer">
