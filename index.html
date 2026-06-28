@@ -680,6 +680,10 @@
       border-top: 1px solid var(--border); padding: 2.5rem 2rem;
       text-align: center;
     }
+    .footer-cat {
+      width: 90px; opacity: 0.88;
+      margin-bottom: 0.5rem;
+    }
     .footer-name {
       font-family: var(--display); font-weight: 900;
       font-size: 1.4rem; letter-spacing: 0.06em;
@@ -1004,8 +1008,15 @@
 <!-- INTERESES -->
 <section id="intereses">
   <div class="container">
-    <p class="section-eyebrow">Intereses</p>
-    <h2 class="section-title">Lo que me mueve.</h2>
+    <div class="projects-header">
+      <div>
+        <p class="section-eyebrow">Intereses</p>
+        <h2 class="section-title">Lo que me mueve.</h2>
+      </div>
+      <div class="projects-deco-wrap">
+        <img src="gatitos.jpg" alt="Gatitos" class="projects-deco" style="object-fit: contain; background: white;" />
+      </div>
+    </div>
     <div class="interests-grid">
       <div class="interest-card">
         <div class="interest-inner">
@@ -1380,6 +1391,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 <hr class="divider" />
 
 <footer>
+  <img src="gatito1.jpg" alt="" class="footer-cat" />
   <p class="footer-name">Micaela Jara</p>
   <a class="footer-badge" href="#contacto">
     <span class="badge-dot"></span>
