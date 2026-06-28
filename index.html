@@ -386,21 +386,61 @@
     }
 
     /* STACK */
-    .stack-group { margin-bottom: 1.5rem; }
+    .stack-group { margin-bottom: 2rem; }
     .stack-sublabel {
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.7rem;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.9rem;
     }
-    .stack-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .stack-tag {
-      background: var(--accent-light); color: var(--accent);
-      font-size: 0.8rem; font-weight: 400;
-      padding: 0.3rem 0.85rem; border-radius: 2px;
-      border: 1px solid #ecc0c0;
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
     }
-    .stack-tag.learning {
-      background: #fef3c7; color: #92400e;
-      border-color: #fcd34d;
+    .stack-card {
+      position: relative; overflow: hidden;
+      border: 1px solid var(--border); border-radius: 3px;
+      padding: 1rem 1rem 0.85rem;
+      cursor: default;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      background: white;
+    }
+    .stack-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--accent-light);
+      transform: translateY(100%);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+      z-index: 0;
+    }
+    .stack-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(180,100,100,0.10); }
+    .stack-card:hover::after { transform: translateY(0); }
+
+    .stack-card-name {
+      font-family: var(--display);
+      font-size: 0.8rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text);
+      position: relative; z-index: 1;
+      margin-bottom: 0.5rem;
+      transition: color 0.25s;
+    }
+    .stack-card:hover .stack-card-name { color: var(--accent); }
+
+    .stack-card-desc {
+      font-size: 0.73rem; color: var(--text-muted); line-height: 1.45;
+      position: relative; z-index: 1;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.28s ease, opacity 0.25s;
+      opacity: 0;
+    }
+    .stack-card:hover .stack-card-desc { max-height: 4rem; opacity: 1; }
+
+    .stack-card.learning { border-style: dashed; border-color: #fcd34d; }
+    .stack-card.learning::after { background: #fef9ec; }
+    .stack-card.learning:hover { border-color: #f59e0b; box-shadow: 0 4px 16px rgba(180,140,0,0.08); }
+    .stack-card.learning:hover .stack-card-name { color: #92400e; }
+    .stack-card.learning .stack-card-name::after {
+      content: ' ✦'; font-size: 0.55rem; vertical-align: super; color: #f59e0b;
     }
 
     /* INTERESES */
@@ -809,24 +849,60 @@
     <h2 class="section-title">Con qué trabajo.</h2>
     <div class="stack-group">
       <p class="stack-sublabel" data-es="Uso actualmente" data-en="Currently using">Uso actualmente</p>
-      <div class="stack-list">
-        <span class="stack-tag">Postman</span>
-        <span class="stack-tag">Jira</span>
-        <span class="stack-tag">DevTools</span>
-        <span class="stack-tag">Figma</span>
-        <span class="stack-tag">Notion</span>
-        <span class="stack-tag">HTML</span>
-        <span class="stack-tag">CSS</span>
-        <span class="stack-tag">JavaScript</span>
+      <div class="stack-grid">
+        <div class="stack-card">
+          <p class="stack-card-name">Postman</p>
+          <p class="stack-card-desc" data-es="Testing de APIs, colecciones y variables de entorno" data-en="API testing, collections and environment variables">Testing de APIs, colecciones y variables de entorno</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">Jira</p>
+          <p class="stack-card-desc" data-es="Seguimiento de tickets, bugs y sprints" data-en="Ticket, bug and sprint tracking">Seguimiento de tickets, bugs y sprints</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">DevTools</p>
+          <p class="stack-card-desc" data-es="Inspección de requests, respuestas HTTP y network" data-en="Inspecting requests, HTTP responses and network">Inspección de requests, respuestas HTTP y network</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">Figma</p>
+          <p class="stack-card-desc" data-es="Comparación de diseños para testing visual" data-en="Design comparison for visual testing">Comparación de diseños para testing visual</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">Notion</p>
+          <p class="stack-card-desc" data-es="Documentación de casos de prueba y procesos" data-en="Test case and process documentation">Documentación de casos de prueba y procesos</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">HTML</p>
+          <p class="stack-card-desc" data-es="Estructura de páginas web" data-en="Web page structure">Estructura de páginas web</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">CSS</p>
+          <p class="stack-card-desc" data-es="Estilos y diseño responsive" data-en="Styles and responsive design">Estilos y diseño responsive</p>
+        </div>
+        <div class="stack-card">
+          <p class="stack-card-name">JavaScript</p>
+          <p class="stack-card-desc" data-es="Interactividad y lógica del frontend" data-en="Frontend interactivity and logic">Interactividad y lógica del frontend</p>
+        </div>
       </div>
     </div>
     <div class="stack-group">
       <p class="stack-sublabel" data-es="Aprendiendo" data-en="Learning">Aprendiendo</p>
-      <div class="stack-list">
-        <span class="stack-tag learning">SQL</span>
-        <span class="stack-tag learning">Playwright</span>
-        <span class="stack-tag learning">Claude Code</span>
-        <span class="stack-tag learning">Git</span>
+      <div class="stack-grid">
+        <div class="stack-card learning">
+          <p class="stack-card-name">SQL</p>
+          <p class="stack-card-desc" data-es="Consultas para validar datos directo en la base de datos" data-en="Queries to validate data directly in the database">Consultas para validar datos directo en la base de datos</p>
+        </div>
+        <div class="stack-card learning">
+          <p class="stack-card-name">Playwright</p>
+          <p class="stack-card-desc" data-es="Automatización de testing end-to-end" data-en="End-to-end test automation">Automatización de testing end-to-end</p>
+        </div>
+        <div class="stack-card learning">
+          <p class="stack-card-name">Claude Code</p>
+          <p class="stack-card-desc" data-es="Desarrollo asistido por IA" data-en="AI-assisted development">Desarrollo asistido por IA</p>
+        </div>
+        <div class="stack-card learning">
+          <p class="stack-card-name">Git</p>
+          <p class="stack-card-desc" data-es="Control de versiones y repositorios" data-en="Version control and repositories">Control de versiones y repositorios</p>
+        </div>
       </div>
     </div>
   </div>
