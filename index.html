@@ -133,7 +133,6 @@
       .nav-links li:last-child { padding: 0.75rem 2rem; }
       .lang-toggle { font-size: 0.7rem; }
 
-      .hero { padding: 1.75rem 1rem 1.25rem; gap: 0.75rem; }
       .hero h1 { font-size: clamp(2.4rem, 12vw, 3.5rem); margin-bottom: 0.65rem; }
       .hero-eyebrow { font-size: 0.58rem; letter-spacing: 0.1em; }
       .hero-sub { font-size: 0.85rem; margin-bottom: 1rem; }
@@ -184,38 +183,8 @@
     .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
 
     /* HERO */
-    .hero {
-      max-width: 780px; margin: 0 auto;
-      padding: 6rem 2rem 5rem;
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 2rem;
-      align-items: end;
-    }
+    .hero { display: block; }
     .hero-content { display: flex; flex-direction: column; }
-    .hero-snoopy { display: flex; align-items: flex-end; justify-content: center; }
-    .hero-snoopy-wrap {
-      position: relative; display: inline-block;
-    }
-    .hero-snoopy-wrap::before {
-      content: '';
-      position: absolute; inset: -8px;
-      border: 2px solid var(--accent);
-      border-radius: 4px; opacity: 0.45;
-      pointer-events: none;
-    }
-    .hero-snoopy-wrap::after {
-      content: '';
-      position: absolute; inset: -4px;
-      border: 1px solid var(--accent);
-      border-radius: 3px; opacity: 0.2;
-      pointer-events: none;
-    }
-    .hero-snoopy img { width: 180px; opacity: 0.92; display: block; border-radius: 3px; }
-    @media (max-width: 600px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-snoopy { display: none; }
-    }
 
     .hero-eyebrow {
       font-family: var(--display);
@@ -1107,6 +1076,123 @@
       transform: translateY(0);
     }
 
+    /* HERO COLORED REDESIGN */
+    .hero-colored {
+      background: var(--accent);
+      max-width: 100%;
+      padding-left: 0; padding-right: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-colored .hero-content,
+    .hero-colored .hero-snoopy { position: relative; z-index: 2; }
+
+    /* Grain texture */
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      opacity: 0.14; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+    }
+
+    /* Content width inside colored hero */
+    .hero-colored > .hero-content,
+    .hero-colored > .hero-snoopy {
+      /* managed by existing grid via wrapper below */
+    }
+    .hero-inner {
+      max-width: 780px; margin: 0 auto;
+      padding: 5.5rem 2rem 4.5rem;
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    /* Text colors on salmon */
+    .hero-colored .hero-eyebrow { color: rgba(255,255,255,0.7); }
+    .hero-colored h1 { color: #fff; }
+    .hero-colored .hero-greeting { color: rgba(255,255,255,0.8); }
+    .hero-colored .greeting-cursor { background: #fff; }
+    .hero-colored .hero-sub { color: rgba(255,255,255,0.72); }
+    .hero-colored .hero-bio { color: rgba(255,255,255,0.85); }
+
+    /* Badges on salmon */
+    .hero-colored .hero-badge.available {
+      background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); color: #fff;
+    }
+    .hero-colored .hero-badge.available .badge-dot { background: #7fff9a; }
+    .hero-colored .hero-badge.lang {
+      background: rgba(0,0,0,0.22); border-color: rgba(255,255,255,0.3); color: #fff;
+    }
+    .hero-colored .hero-badge.exp {
+      background: rgba(0,0,0,0.18); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9);
+    }
+
+    /* Buttons on salmon */
+    .hero-colored .btn-primary { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+    .hero-colored .btn-primary:hover { background: #333; border-color: #333; }
+    .hero-colored .btn-outline { border-color: rgba(255,255,255,0.55); color: #fff; }
+    .hero-colored .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* "meet the" badge */
+    .hero-meet-badge {
+      display: inline-block; background: #1a1a1a; color: #fff;
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 600;
+      padding: 0.27rem 0.8rem; border-radius: 4px;
+      letter-spacing: 0.07em; margin-bottom: 0.7rem;
+    }
+
+    /* Photo B&W */
+    .hero-visual { display: flex; align-items: flex-end; justify-content: center; position: relative; }
+    .hero-photo-main-wrap { position: relative; z-index: 2; }
+    .hero-photo-bw {
+      width: 200px; display: block; border-radius: 4px;
+      filter: grayscale(100%) contrast(1.15) brightness(0.9);
+      mix-blend-mode: multiply;
+    }
+
+    /* Snoopy repositioned as sticker */
+    .hero-colored .hero-snoopy-wrap {
+      position: absolute; bottom: -10px; right: -18px;
+      width: 80px; z-index: 3; transform: rotate(7deg);
+    }
+    .hero-colored .hero-snoopy-wrap img { width: 100%; border-radius: 3px; }
+    .hero-colored .hero-snoopy-wrap::before,
+    .hero-colored .hero-snoopy-wrap::after { display: none; }
+
+    /* Stickers */
+    .hero-stickers {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    }
+    .sticker { position: absolute; color: #fff; user-select: none; pointer-events: none; }
+    .s-star1 { width: 54px; height: 54px; left: 3%; bottom: 14%; transform: rotate(-18deg); }
+    .s-star2 { width: 26px; height: 26px; right: 26%; top: 16%; transform: rotate(22deg); }
+    .s-star3 { width: 18px; height: 18px; right: 18%; bottom: 12%; opacity: 0.75; }
+    .s-spark  { width: 32px; height: 32px; left: 5%; top: 10%; opacity: 0.65; }
+    .s-pill {
+      border: 2px solid rgba(255,255,255,0.8); border-radius: 100px;
+      padding: 5px 14px; font-size: 0.6rem; font-family: var(--sans);
+      font-weight: 500; letter-spacing: 0.08em; white-space: nowrap;
+      bottom: 20%; right: 4%; transform: rotate(-7deg);
+    }
+    .s-check {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.07em;
+      background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 100px; padding: 4px 12px;
+      top: 12%; right: 2%; transform: rotate(4deg);
+    }
+
+    @media (max-width: 600px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.25rem 1.75rem;
+      }
+      .hero-visual { display: none; }
+      .hero-stickers { display: none; }
+    }
+
     /* HERO GREETING */
     .hero-greeting {
       font-family: var(--sans);
@@ -1198,33 +1284,58 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <p class="hero-eyebrow" data-es="QA · Tech Enthusiast · Project Maker" data-en="QA · Tech Enthusiast · Project Maker">QA · Tech Enthusiast · Project Maker</p>
-    <p class="hero-greeting"><span id="greeting-text"></span><span class="greeting-cursor" id="greeting-cursor"></span></p>
-    <h1>Micaela<br/>Jara</h1>
-    <p class="hero-sub">quality, culture & everything in between.</p>
-    <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things, thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
-    <div class="hero-badges">
-      <span class="hero-badge available">
-        <span class="badge-dot"></span>
-        <span data-es="Disponible para trabajar" data-en="Open to work">Disponible para trabajar</span>
-      </span>
-      <span class="hero-badge lang">
-        <span data-es="Inglés C1" data-en="English C1">Inglés C1</span>
-      </span>
-      <span class="hero-badge exp" id="exp-badge" data-es="4+ años en QA" data-en="4+ years in QA">4+ años en QA</span>
+<div class="hero hero-colored">
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-meet-badge">meet the</span>
+      <p class="hero-eyebrow" data-es="QA · Tech Enthusiast · Project Maker" data-en="QA · Tech Enthusiast · Project Maker">QA · Tech Enthusiast · Project Maker</p>
+      <p class="hero-greeting"><span id="greeting-text"></span><span class="greeting-cursor" id="greeting-cursor"></span></p>
+      <h1>Micaela<br/>Jara</h1>
+      <p class="hero-sub">quality, culture & everything in between.</p>
+      <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things, thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
+      <div class="hero-badges">
+        <span class="hero-badge available">
+          <span class="badge-dot"></span>
+          <span data-es="Disponible para trabajar" data-en="Open to work">Disponible para trabajar</span>
+        </span>
+        <span class="hero-badge lang">
+          <span data-es="Inglés C1" data-en="English C1">Inglés C1</span>
+        </span>
+        <span class="hero-badge exp" id="exp-badge" data-es="4+ años en QA" data-en="4+ years in QA">4+ años en QA</span>
+      </div>
+      <div class="hero-links">
+        <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
+        <a href="pdf/cv-micaela-jara.pdf" download class="btn btn-outline" data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a>
+        <a href="#proyectos" class="btn btn-outline" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a>
+      </div>
     </div>
-    <div class="hero-links">
-      <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
-      <a href="pdf/cv-micaela-jara.pdf" download class="btn btn-outline" data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a>
-      <a href="#proyectos" class="btn btn-outline" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a>
+
+    <div class="hero-visual">
+      <div class="hero-photo-main-wrap">
+        <img src="img/micaela.jpg" alt="Micaela Jara" class="hero-photo-bw" />
+      </div>
+      <div class="hero-snoopy-wrap">
+        <img src="img/snoopy.jpg" alt="Snoopy" />
+      </div>
     </div>
   </div>
-  <div class="hero-snoopy">
-    <div class="hero-snoopy-wrap">
-      <img src="img/snoopy.jpg" alt="Snoopy" />
-    </div>
+
+  <!-- Stickers decorativos -->
+  <div class="hero-stickers" aria-hidden="true">
+    <!-- Estrella grande outlined -->
+    <svg class="sticker s-star1" viewBox="0 0 50 50" fill="none" stroke="white" stroke-width="2.5"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18"/></svg>
+    <!-- Estrella pequeña filled -->
+    <svg class="sticker s-star2" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
+    <!-- Estrella mini filled -->
+    <svg class="sticker s-star3" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
+    <!-- Sparkle 4 puntas -->
+    <svg class="sticker s-spark" viewBox="0 0 40 40"><path d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z" fill="white"/></svg>
+    <!-- Pill badge -->
+    <span class="sticker s-pill">QA · Project Maker</span>
+    <!-- Check badge -->
+    <span class="sticker s-check">✓ available</span>
   </div>
 </div>
 
