@@ -457,11 +457,15 @@
     .stack-card.learning:hover .stack-card-name { color: #92400e; }
     .gatitos-deco {
       object-fit: contain !important;
-      height: 160px !important;
+      height: 220px !important;
+    }
+    .gatitos-wrap {
+      width: 160px !important;
     }
     @media (max-width: 640px) {
       .stack-grid { grid-template-columns: repeat(2, 1fr); }
-      .gatitos-deco { height: 100px !important; }
+      .gatitos-deco { height: 150px !important; }
+      .gatitos-wrap { width: 120px !important; }
     }
 
     .stack-card.learning .stack-card-name::after {
@@ -1035,7 +1039,7 @@
         <p class="section-eyebrow">Intereses</p>
         <h2 class="section-title">Lo que me mueve.</h2>
       </div>
-      <div class="projects-deco-wrap">
+      <div class="projects-deco-wrap gatitos-wrap">
         <img src="gatitos.png" alt="Gatitos" class="projects-deco gatitos-deco" />
       </div>
     </div>
