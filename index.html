@@ -263,6 +263,9 @@
       background: var(--accent-light); border: 1px solid var(--accent); color: var(--accent);
       opacity: 0.85;
     }
+    .hero-badge.exp {
+      background: #f5f5f5; border: 1px solid #d8d8d8; color: #555;
+    }
     .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
     .btn {
@@ -1027,6 +1030,17 @@
       color: var(--accent); opacity: 0.65; margin-bottom: 0.25rem;
     }
 
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* COPY TOAST */
     .copy-toast {
       position: fixed; bottom: 4.5rem; right: 1.5rem;
@@ -1073,6 +1087,7 @@
       <span class="hero-badge lang">
         <span data-es="Inglés C1" data-en="English C1">Inglés C1</span>
       </span>
+      <span class="hero-badge exp" id="exp-badge" data-es="4+ años en QA" data-en="4+ years in QA">4+ años en QA</span>
     </div>
     <div class="hero-links">
       <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
@@ -2073,6 +2088,18 @@ JOIN orders ON users.id = orders.user_id;</code>
     window.addEventListener('resize', () => { buildDots(); goTo(0); });
   })();
 
+  // Auto-calculate QA experience years from March 2022
+  const qaYears = Math.floor((new Date() - new Date('2022-03-01')) / (365.25 * 24 * 60 * 60 * 1000));
+  const expBadge = document.getElementById('exp-badge');
+  if (expBadge) {
+    expBadge.dataset.es = qaYears + '+ años en QA';
+    expBadge.dataset.en = qaYears + '+ years in QA';
+    expBadge.textContent = qaYears + '+ años en QA';
+  }
+
+  // Language toggle — CV download switches file based on lang
+  const cvBtn = document.querySelector('a[download]');
+
   // Language toggle
   const storedLang = localStorage.getItem('lang');
   const browserLang = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
@@ -2094,6 +2121,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
     const successEl = document.getElementById('form-success');
     if (successEl) successEl.textContent = lang === 'en' ? "Message sent! I'll get back to you soon." : '¡Mensaje enviado! Te respondo pronto.';
+
+    if (cvBtn) {
+      cvBtn.href = lang === 'en' ? 'cv-micaela-jara-en.pdf' : 'cv-micaela-jara.pdf';
+    }
 
     const badgeSpan = document.querySelector('.footer-badge span:last-child');
     if (badgeSpan) badgeSpan.textContent = lang === 'en' ? 'Open to work' : 'Disponible para trabajar';
@@ -2136,6 +2167,22 @@ JOIN orders ON users.id = orders.user_id;</code>
     scrollBtn.classList.toggle('visible', window.scrollY > 400);
   });
   scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Reveal on scroll
+  (function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('section .container').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  })();
 
   // Copy email
   const copyEmailBtn = document.getElementById('copy-email-btn');
