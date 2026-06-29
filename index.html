@@ -2097,9 +2097,6 @@ JOIN orders ON users.id = orders.user_id;</code>
     expBadge.textContent = qaYears + '+ años en QA';
   }
 
-  // Language toggle — CV download switches file based on lang
-  const cvBtn = document.querySelector('a[download]');
-
   // Language toggle
   const storedLang = localStorage.getItem('lang');
   const browserLang = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
@@ -2121,10 +2118,6 @@ JOIN orders ON users.id = orders.user_id;</code>
 
     const successEl = document.getElementById('form-success');
     if (successEl) successEl.textContent = lang === 'en' ? "Message sent! I'll get back to you soon." : '¡Mensaje enviado! Te respondo pronto.';
-
-    if (cvBtn) {
-      cvBtn.href = lang === 'en' ? 'cv-micaela-jara-en.pdf' : 'cv-micaela-jara.pdf';
-    }
 
     const badgeSpan = document.querySelector('.footer-badge span:last-child');
     if (badgeSpan) badgeSpan.textContent = lang === 'en' ? 'Open to work' : 'Disponible para trabajar';
