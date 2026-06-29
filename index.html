@@ -844,6 +844,76 @@
       .projects-deco { height: 90px; }
     }
 
+    /* CÓMO TRABAJO — MANIFESTO */
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 640px) {
+      .manifesto-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    }
+    .manifesto-card {
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      padding: 1.5rem;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .manifesto-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(201,107,107,0.08);
+    }
+    .manifesto-num {
+      font-family: var(--display);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      opacity: 0.6;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .manifesto-title {
+      font-family: var(--display);
+      font-size: 0.92rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.65rem;
+      line-height: 1.25;
+    }
+    .manifesto-desc {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* PROJECT CALLOUT */
+    .project-callout {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 2px 2px 0;
+    }
+    .callout-label {
+      font-family: var(--display);
+      font-size: 0.6rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .project-callout p {
+      font-size: 0.83rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
     /* COPY TOAST */
     .copy-toast {
       position: fixed; bottom: 4.5rem; right: 1.5rem;
@@ -864,6 +934,7 @@
   </button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#sobre-mi" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+    <li><a href="#como-trabajo" data-es="Cómo trabajo" data-en="How I work">Cómo trabajo</a></li>
     <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#intereses" data-es="Intereses" data-en="Interests">Intereses</a></li>
@@ -881,6 +952,7 @@
     <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things, thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
     <div class="hero-links">
       <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
+      <a href="cv-micaela-jara.pdf" download class="btn btn-outline" data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a>
       <a href="#proyectos" class="btn btn-outline" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a>
     </div>
   </div>
@@ -912,6 +984,38 @@
 
 <hr class="divider" />
 
+<!-- CÓMO TRABAJO -->
+<section id="como-trabajo">
+  <div class="container">
+    <p class="section-eyebrow" data-es="Mi forma de trabajar" data-en="How I work">Mi forma de trabajar</p>
+    <h2 class="section-title" data-es="Cómo trabajo." data-en="How I work.">Cómo trabajo.</h2>
+    <div class="manifesto-grid">
+      <div class="manifesto-card">
+        <span class="manifesto-num">01</span>
+        <p class="manifesto-title" data-es="Pregunto el por qué antes de testear" data-en="I ask why before testing">Pregunto el por qué antes de testear</p>
+        <p class="manifesto-desc" data-es="El testing sin contexto es disparar al aire. Antes de armar un caso de prueba, entiendo qué flujo protege y qué impacto tiene si falla." data-en="Testing without context is shooting in the dark. Before writing a test case, I understand what flow it protects and what the impact is if it fails.">El testing sin contexto es disparar al aire. Antes de armar un caso de prueba, entiendo qué flujo protege y qué impacto tiene si falla.</p>
+      </div>
+      <div class="manifesto-card">
+        <span class="manifesto-num">02</span>
+        <p class="manifesto-title" data-es="Construyo procesos donde no los había" data-en="I build process where there was none">Construyo procesos donde no los había</p>
+        <p class="manifesto-desc" data-es="Entré a RebelMouse sin QA formal y construí el proceso desde cero. Si algo no existe y hace falta, lo creo." data-en="I joined RebelMouse with no formal QA process and built it from scratch. If something doesn't exist and is needed, I create it.">Entré a RebelMouse sin QA formal y construí el proceso desde cero. Si algo no existe y hace falta, lo creo.</p>
+      </div>
+      <div class="manifesto-card">
+        <span class="manifesto-num">03</span>
+        <p class="manifesto-title" data-es="Un bug no reportado no existe" data-en="An unreported bug doesn't exist">Un bug no reportado no existe</p>
+        <p class="manifesto-desc" data-es="El mejor hallazgo vale poco si no se comunica bien. Cada reporte que hago tiene lo necesario para que desarrollo lo entienda, reproduzca y priorice sin preguntar." data-en="The best find is worth little if it's not communicated well. Every report I write has what development needs to understand, reproduce, and prioritize it without asking.">El mejor hallazgo vale poco si no se comunica bien. Cada reporte que hago tiene lo necesario para que desarrollo lo entienda, reproduzca y priorice sin preguntar.</p>
+      </div>
+      <div class="manifesto-card">
+        <span class="manifesto-num">04</span>
+        <p class="manifesto-title" data-es="Me muevo entre lo técnico y lo humano" data-en="I move between the technical and the human">Me muevo entre lo técnico y lo humano</p>
+        <p class="manifesto-desc" data-es="Inspecciono network requests y hablo con clientes enterprise. Los dos lados del problema importan, y entender ambos hace mejor el trabajo." data-en="I inspect network requests and talk to enterprise clients. Both sides of the problem matter, and understanding both makes for better work.">Inspecciono network requests y hablo con clientes enterprise. Los dos lados del problema importan, y entender ambos hace mejor el trabajo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- PROYECTOS -->
 <section id="proyectos">
   <div class="container">
@@ -931,7 +1035,7 @@
       <div class="project-card">
         <span class="project-tag">QA · RebelMouse</span>
         <h3 class="project-title">Penske Truck Rental</h3>
-        <p class="project-subtitle">Cliente enterprise principal</p>
+        <p class="project-subtitle" data-es="Cliente enterprise · 4 años" data-en="Enterprise client · 4 years">Cliente enterprise · 4 años</p>
         <p class="project-desc">Testing end-to-end del sitio más grande de la empresa, features nuevas, redesigns y QA prelaunch para un cliente enterprise con código propio integrado.</p>
         <ul class="project-highlights">
           <li>Testing de features nuevas, redesigns y validación prelaunch</li>
@@ -939,12 +1043,16 @@
           <li>Mejora del proceso de presentación de test cases al cliente</li>
           <li>Identificación de bugs críticos en etapas tempranas del ciclo de desarrollo</li>
         </ul>
+        <div class="project-callout">
+          <span class="callout-label" data-es="Caso destacado" data-en="Featured case">Caso destacado</span>
+          <p data-es="Detecté un bug crítico en el flujo de reserva — la feature de mayor impacto en el negocio. Analicé los requests de red, identifiqué el endpoint fallando y escalé con contexto de impacto. Resuelto en horas." data-en="Detected a critical bug in the reservation flow — the highest-impact business feature. Analyzed network requests, identified the failing endpoint, and escalated with full impact context. Resolved in hours.">Detecté un bug crítico en el flujo de reserva — la feature de mayor impacto en el negocio. Analicé los requests de red, identifiqué el endpoint fallando y escalé con contexto de impacto. Resuelto en horas.</p>
+        </div>
       </div>
 
       <div class="project-card">
         <span class="project-tag">QA · Freelance</span>
         <h3 class="project-title" data-es="Ecommerce — Freelance QA" data-en="Ecommerce — Freelance QA">Ecommerce — Freelance QA</h3>
-        <p class="project-subtitle" data-es="Cliente confidencial · 2025 — presente" data-en="Confidential client · 2025 — present">Cliente confidencial · 2025 — presente</p>
+        <p class="project-subtitle" data-es="2 clientes activos · 2025 — presente" data-en="2 active clients · 2025 — present">2 clientes activos · 2025 — presente</p>
         <p class="project-desc" data-es="Testing y planificación end-to-end de forma independiente para un cliente ecommerce. Soy responsable del proceso completo, desde definir qué testear hasta reportar resultados." data-en="End-to-end testing and planning as an independent QA for an ecommerce client. I own the full process, from defining what to test to reporting results.">Testing y planificación end-to-end de forma independiente para un cliente ecommerce. Soy responsable del proceso completo, desde definir qué testear hasta reportar resultados.</p>
         <ul class="project-highlights">
           <li data-es="Planificación de pruebas: qué cubrir, qué priorizar y con qué frecuencia" data-en="Test planning: what to cover, what to prioritize, and how often">Planificación de pruebas: qué cubrir, qué priorizar y con qué frecuencia</li>
