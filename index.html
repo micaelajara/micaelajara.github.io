@@ -2052,7 +2052,9 @@ JOIN orders ON users.id = orders.user_id;</code>
   })();
 
   // Language toggle
-  let lang = localStorage.getItem('lang') || 'es';
+  const storedLang = localStorage.getItem('lang');
+  const browserLang = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+  let lang = storedLang || browserLang;
   const langBtn = document.getElementById('lang-btn');
 
   function applyLang() {
