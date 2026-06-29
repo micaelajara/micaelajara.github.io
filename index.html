@@ -1102,7 +1102,7 @@
     }
     .hero-inner {
       max-width: 780px; margin: 0 auto;
-      padding: 5.5rem 2rem 4.5rem;
+      padding: 4.5rem 2rem 6rem;
       display: grid;
       grid-template-columns: 1fr 210px;
       gap: 2rem;
@@ -1143,23 +1143,29 @@
       letter-spacing: 0.07em; margin-bottom: 0.7rem;
     }
 
-    /* Photo B&W */
+    /* Photo B&W — recorte irregular estilo papel cortado */
     .hero-visual { display: flex; align-items: flex-end; justify-content: center; position: relative; }
     .hero-photo-main-wrap { position: relative; z-index: 2; }
     .hero-photo-bw {
-      width: 200px; display: block; border-radius: 4px;
+      width: 200px; display: block;
       filter: grayscale(100%) contrast(1.15) brightness(0.9);
       mix-blend-mode: multiply;
+      clip-path: polygon(
+        4% 1%, 10% 0%, 18% 2%, 26% 0%, 34% 2%, 42% 0%, 50% 2%, 58% 0%,
+        66% 2%, 74% 0%, 82% 1%, 90% 0%, 97% 2%, 100% 7%, 98% 15%, 100% 23%,
+        97% 31%, 100% 39%, 98% 47%, 100% 55%, 97% 63%, 100% 71%, 98% 79%,
+        100% 87%, 97% 94%, 100% 100%, 90% 98%, 82% 100%, 74% 97%, 66% 100%,
+        58% 97%, 50% 100%, 42% 98%, 34% 100%, 26% 97%, 18% 100%, 10% 98%,
+        2% 100%, 0% 94%, 2% 86%, 0% 78%, 3% 70%, 0% 62%, 2% 54%,
+        0% 46%, 3% 38%, 0% 30%, 2% 22%, 0% 14%, 3% 6%
+      );
     }
-
-    /* Snoopy repositioned as sticker */
-    .hero-colored .hero-snoopy-wrap {
-      position: absolute; bottom: -10px; right: -18px;
-      width: 80px; z-index: 3; transform: rotate(7deg);
+    .photo-star {
+      position: absolute; top: -14px; right: -10px;
+      width: 38px; height: 38px; transform: rotate(18deg);
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+      pointer-events: none;
     }
-    .hero-colored .hero-snoopy-wrap img { width: 100%; border-radius: 3px; }
-    .hero-colored .hero-snoopy-wrap::before,
-    .hero-colored .hero-snoopy-wrap::after { display: none; }
 
     /* Stickers */
     .hero-stickers {
@@ -1170,19 +1176,6 @@
     .s-star2 { width: 26px; height: 26px; right: 26%; top: 16%; transform: rotate(22deg); }
     .s-star3 { width: 18px; height: 18px; right: 18%; bottom: 12%; opacity: 0.75; }
     .s-spark  { width: 32px; height: 32px; left: 5%; top: 10%; opacity: 0.65; }
-    .s-pill {
-      border: 2px solid rgba(255,255,255,0.8); border-radius: 100px;
-      padding: 5px 14px; font-size: 0.6rem; font-family: var(--sans);
-      font-weight: 500; letter-spacing: 0.08em; white-space: nowrap;
-      bottom: 20%; right: 4%; transform: rotate(-7deg);
-    }
-    .s-check {
-      font-family: var(--sans); font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.07em;
-      background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.4);
-      border-radius: 100px; padding: 4px 12px;
-      top: 12%; right: 2%; transform: rotate(4deg);
-    }
 
     @media (max-width: 600px) {
       .hero-inner {
@@ -1193,47 +1186,10 @@
       .hero-stickers { display: none; }
     }
 
-    /* HERO TOP STRIP */
-    .hero-top-strip {
-      display: flex; justify-content: space-between;
-      padding: 0.55rem 2rem;
-      font-family: var(--display); font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.14em; color: rgba(255,255,255,0.48);
-      border-bottom: 1px solid rgba(255,255,255,0.14);
-      position: relative; z-index: 2;
-    }
-
-    /* HERO MARQUEE */
-    .hero-marquee { background: #1a1a1a; overflow: hidden; padding: 0.55rem 0; position: relative; z-index: 4; }
-    .hero-marquee-inner {
-      display: flex; width: max-content; white-space: nowrap;
-      animation: hero-marquee 28s linear infinite;
-      font-family: var(--display); font-size: 0.66rem; font-weight: 800;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
-    }
-    .hero-marquee-inner span { padding: 0 0.75rem; }
-    .hero-marquee-inner .mq-sep { color: rgba(201,107,107,0.4); padding: 0 0.2rem; }
-    @keyframes hero-marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* STICKERS IMAGEN */
-    .s-magnify {
-      width: 105px; mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1.15);
-      bottom: 6%; left: 1%; transform: rotate(5deg);
-    }
-    .s-megaphone {
-      width: 60px; mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1.2);
-      top: 8%; left: 43%; transform: rotate(12deg);
-    }
-
-    /* SNOOPY REPOSICIONADO — sticker grande, visible */
+    /* SNOOPY — parte baja del hero, lateral derecho */
     .hero-colored .hero-snoopy-wrap {
-      position: absolute; bottom: 8%; left: 36%;
-      width: 100px; z-index: 3; transform: rotate(-8deg);
+      position: absolute; bottom: 16px; right: 8%;
+      width: 88px; z-index: 3; transform: rotate(8deg);
     }
     .hero-colored .hero-snoopy-wrap img { width: 100%; border-radius: 3px; }
     .hero-colored .hero-snoopy-wrap::before,
@@ -1249,9 +1205,22 @@
     .s-folder1 { left: 3%; top: 30%; transform: rotate(-4deg); }
     .s-folder2 { right: 4%; top: 32%; transform: rotate(5deg); }
 
-    /* PILL y CHECK ajustados */
-    .s-pill { bottom: 30% !important; }
-    .s-check { top: 10% !important; right: 2% !important; }
+    /* STACK DECORACIONES */
+    #stack { position: relative; }
+    .stack-magnify-deco {
+      position: absolute; right: 2%; top: 2rem;
+      width: 115px; transform: rotate(-6deg);
+      pointer-events: none; opacity: 0.9; z-index: 1;
+    }
+    .stack-cat-deco {
+      position: absolute; left: 1.5%; top: 50%;
+      width: 95px; transform: rotate(5deg) translateY(-50%);
+      pointer-events: none; opacity: 0.88; z-index: 1;
+      border-radius: 6px;
+    }
+    @media (max-width: 920px) {
+      .stack-magnify-deco, .stack-cat-deco { display: none; }
+    }
 
     /* MANIFESTO CARDS INCLINADAS */
     .manifesto-card:nth-child(1) { transform: rotate(-2.8deg); }
@@ -1371,12 +1340,6 @@
 <!-- HERO -->
 <div class="hero hero-colored">
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-top-strip" aria-hidden="true">
-    <span>{QA}</span>
-    <span>{2025}</span>
-    <span>{disponible}</span>
-  </div>
-
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow" data-es="QA · Tech Enthusiast · Project Maker" data-en="QA · Tech Enthusiast · Project Maker">QA · Tech Enthusiast · Project Maker</p>
@@ -1404,18 +1367,11 @@
     <div class="hero-visual">
       <div class="hero-photo-main-wrap">
         <img src="img/micaela.jpg" alt="Micaela Jara" class="hero-photo-bw" />
+        <svg class="photo-star" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
       </div>
       <div class="hero-snoopy-wrap">
         <img src="img/snoopy.jpg" alt="Snoopy" />
       </div>
-    </div>
-  </div>
-
-  <!-- Marquee -->
-  <div class="hero-marquee" aria-hidden="true">
-    <div class="hero-marquee-inner">
-      <span>QA ENGINEER</span><span class="mq-sep">·</span><span>TECH ENTHUSIAST</span><span class="mq-sep">·</span><span>PROJECT MAKER</span><span class="mq-sep">·</span><span>DISPONIBLE</span><span class="mq-sep">·</span><span>FREELANCE QA</span><span class="mq-sep">·</span><span>BUENOS AIRES</span><span class="mq-sep">·</span><span>OPEN TO WORK</span><span class="mq-sep">·</span>
-      <span>QA ENGINEER</span><span class="mq-sep">·</span><span>TECH ENTHUSIAST</span><span class="mq-sep">·</span><span>PROJECT MAKER</span><span class="mq-sep">·</span><span>DISPONIBLE</span><span class="mq-sep">·</span><span>FREELANCE QA</span><span class="mq-sep">·</span><span>BUENOS AIRES</span><span class="mq-sep">·</span><span>OPEN TO WORK</span><span class="mq-sep">·</span>
     </div>
   </div>
 
@@ -1425,12 +1381,6 @@
     <svg class="sticker s-star2" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
     <svg class="sticker s-star3" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
     <svg class="sticker s-spark" viewBox="0 0 40 40"><path d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z" fill="white"/></svg>
-    <span class="sticker s-pill">QA · Project Maker</span>
-    <span class="sticker s-check">✓ available</span>
-    <!-- Nena con lupa — sticker QA vintage -->
-    <img class="sticker s-magnify" src="img/magnifying-girl.jpg" alt="" />
-    <!-- Megáfono halftone -->
-    <img class="sticker s-megaphone" src="img/megaphone.jpg" alt="" />
     <!-- Carpetas Mac -->
     <div class="sticker s-folder s-folder1">
       <svg viewBox="0 0 60 50" fill="none"><rect x="1" y="12" width="58" height="36" rx="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><rect x="1" y="6" width="22" height="10" rx="3" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
@@ -1619,6 +1569,8 @@
 
 <!-- STACK -->
 <section id="stack">
+  <img src="img/magnifying-girl.png" class="stack-magnify-deco" aria-hidden="true" alt="" />
+  <img src="img/gatito-stack.jpg" class="stack-cat-deco" aria-hidden="true" alt="" />
   <div class="container">
     <p class="section-eyebrow" data-es="Herramientas" data-en="Tools">Herramientas</p>
     <h2 class="section-title" data-es="Con qué trabajo." data-en="What I work with.">Con qué trabajo.</h2>
@@ -2250,7 +2202,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 <hr class="divider" />
 
 <footer>
-  <p class="footer-fin">fin.</p>
+  <p class="footer-fin">the end.</p>
   <img src="img/gatito1.jpg" alt="" class="footer-cat" />
   <p class="footer-name">Micaela Jara</p>
   <a class="footer-badge" href="#contacto">
