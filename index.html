@@ -1207,11 +1207,6 @@
 
     /* STACK DECORACIONES */
     #stack { position: relative; }
-    .stack-magnify-deco {
-      position: absolute; right: 2%; top: 2rem;
-      width: 115px; transform: rotate(-6deg);
-      pointer-events: none; opacity: 0.9; z-index: 1;
-    }
     .stack-cat-deco {
       position: absolute; left: 1.5%; top: 50%;
       width: 95px; transform: rotate(5deg) translateY(-50%);
@@ -1219,15 +1214,22 @@
       border-radius: 6px;
     }
     @media (max-width: 920px) {
-      .stack-magnify-deco, .stack-cat-deco { display: none; }
+      .stack-cat-deco { display: none; }
+    }
+
+    /* COMO TRABAJO — lupa decorativa */
+    #como-trabajo { position: relative; }
+    .manifesto-magnify-deco {
+      position: absolute; right: 3%; top: 50%;
+      width: 155px; transform: rotate(-8deg) translateY(-50%);
+      pointer-events: none; opacity: 0.92; z-index: 1;
+    }
+    @media (max-width: 920px) {
+      .manifesto-magnify-deco { display: none; }
     }
 
     /* MANIFESTO CARDS INCLINADAS */
-    .manifesto-card:nth-child(1) { transform: rotate(-2.8deg); }
-    .manifesto-card:nth-child(2) { transform: rotate(2deg); }
-    .manifesto-card:nth-child(3) { transform: rotate(-1.8deg); }
-    .manifesto-card:nth-child(4) { transform: rotate(2.5deg); }
-    .manifesto-card:hover { transform: rotate(0deg) translateY(-3px) !important; }
+    .manifesto-card:hover { transform: translateY(-3px); }
 
     /* FOOTER FIN retro */
     .footer-fin {
@@ -1450,6 +1452,7 @@
 
 <!-- CÓMO TRABAJO -->
 <section id="como-trabajo">
+  <img src="img/magnifying-girl.png" class="manifesto-magnify-deco" aria-hidden="true" alt="" />
   <div class="container">
     <p class="section-eyebrow" data-es="Mi forma de trabajar" data-en="My approach">Mi forma de trabajar</p>
     <h2 class="section-title" data-es="Cómo trabajo." data-en="How I work.">Cómo trabajo.</h2>
@@ -1569,7 +1572,6 @@
 
 <!-- STACK -->
 <section id="stack">
-  <img src="img/magnifying-girl.png" class="stack-magnify-deco" aria-hidden="true" alt="" />
   <img src="img/gatito-stack.jpg" class="stack-cat-deco" aria-hidden="true" alt="" />
   <div class="container">
     <p class="section-eyebrow" data-es="Herramientas" data-en="Tools">Herramientas</p>
