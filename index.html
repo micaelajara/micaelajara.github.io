@@ -1099,8 +1099,7 @@
     }
 
     /* Stickers — colores adaptados al fondo blanco */
-    .s-star1 polygon, .s-star2 polygon, .s-star3 polygon { fill: var(--accent); }
-    .s-spark path { fill: var(--accent); opacity: 0.7; }
+    .s-star1 polygon { fill: var(--accent); }
     .s-folder1 rect, .s-folder2 rect {
       stroke: var(--accent) !important; fill: rgba(201,107,107,0.07) !important;
     }
@@ -1129,10 +1128,7 @@
       position: absolute; inset: 0; z-index: 3; pointer-events: none;
     }
     .sticker { position: absolute; color: #fff; user-select: none; pointer-events: none; }
-    .s-star1 { width: 54px; height: 54px; left: 3%; bottom: 14%; transform: rotate(-18deg); }
-    .s-star2 { width: 26px; height: 26px; right: 26%; top: 16%; transform: rotate(22deg); }
-    .s-star3 { width: 18px; height: 18px; right: 18%; bottom: 12%; opacity: 0.75; }
-    .s-spark  { width: 32px; height: 32px; left: 5%; top: 10%; opacity: 0.65; }
+    .s-star1 { width: 48px; height: 48px; right: 6%; top: 12%; transform: rotate(-18deg); }
 
     @media (max-width: 600px) {
       .hero-inner {
@@ -1319,10 +1315,7 @@
 
   <!-- Stickers decorativos -->
   <div class="hero-stickers" aria-hidden="true">
-    <svg class="sticker s-star1" viewBox="0 0 50 50" fill="none" stroke="white" stroke-width="2.5"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18"/></svg>
-    <svg class="sticker s-star2" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
-    <svg class="sticker s-star3" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
-    <svg class="sticker s-spark" viewBox="0 0 40 40"><path d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z" fill="white"/></svg>
+    <svg class="sticker s-star1" viewBox="0 0 50 50" fill="none" stroke-width="2.5"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18"/></svg>
     <!-- Carpetas Mac -->
     <div class="sticker s-folder s-folder1">
       <svg viewBox="0 0 60 50" fill="none"><rect x="1" y="12" width="58" height="36" rx="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><rect x="1" y="6" width="22" height="10" rx="3" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
@@ -1365,12 +1358,6 @@
           <span class="stat-num" data-target="11">0</span>
         </div>
         <p class="stat-label" data-es="recomendaciones LinkedIn" data-en="LinkedIn recommendations">recomendaciones LinkedIn</p>
-      </div>
-      <div class="stat">
-        <div class="stat-top">
-          <span class="stat-num" data-target="5">0</span>
-        </div>
-        <p class="stat-label" data-es="dominios · Penske" data-en="domains · Penske">dominios · Penske</p>
       </div>
     </div>
 
