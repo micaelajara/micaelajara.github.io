@@ -1006,13 +1006,13 @@
       * { cursor: none !important; }
       .cursor-dot {
         position: fixed; width: 14px; height: 14px;
-        background: var(--accent); border-radius: 50%;
+        background: #1a1a1a; border-radius: 50%;
         pointer-events: none; z-index: 9999;
         transform: translate(-50%, -50%); opacity: 0;
         transition: opacity 0.2s, width 0.18s ease, height 0.18s ease;
       }
-      .cursor-dot.visible { opacity: 0.7; }
-      .cursor-dot.expanded { width: 36px; height: 36px; opacity: 0.15; }
+      .cursor-dot.visible { opacity: 0.75; }
+      .cursor-dot.expanded { width: 36px; height: 36px; opacity: 0.12; }
     }
 
     /* SNOOPY EASTER EGG */
@@ -1193,6 +1193,91 @@
       .hero-stickers { display: none; }
     }
 
+    /* HERO TOP STRIP */
+    .hero-top-strip {
+      display: flex; justify-content: space-between;
+      padding: 0.55rem 2rem;
+      font-family: var(--display); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.14em; color: rgba(255,255,255,0.48);
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+      position: relative; z-index: 2;
+    }
+
+    /* HERO MARQUEE */
+    .hero-marquee { background: #1a1a1a; overflow: hidden; padding: 0.55rem 0; position: relative; z-index: 4; }
+    .hero-marquee-inner {
+      display: flex; width: max-content; white-space: nowrap;
+      animation: hero-marquee 28s linear infinite;
+      font-family: var(--display); font-size: 0.66rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    }
+    .hero-marquee-inner span { padding: 0 0.75rem; }
+    .hero-marquee-inner .mq-sep { color: rgba(201,107,107,0.4); padding: 0 0.2rem; }
+    @keyframes hero-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* STICKERS IMAGEN */
+    .s-magnify {
+      width: 105px; mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1.15);
+      bottom: 6%; left: 1%; transform: rotate(5deg);
+    }
+    .s-megaphone {
+      width: 60px; mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1.2);
+      top: 8%; left: 43%; transform: rotate(12deg);
+    }
+
+    /* SNOOPY REPOSICIONADO — sticker grande, visible */
+    .hero-colored .hero-snoopy-wrap {
+      position: absolute; bottom: 8%; left: 36%;
+      width: 100px; z-index: 3; transform: rotate(-8deg);
+    }
+    .hero-colored .hero-snoopy-wrap img { width: 100%; border-radius: 3px; }
+    .hero-colored .hero-snoopy-wrap::before,
+    .hero-colored .hero-snoopy-wrap::after { display: none; }
+
+    /* FOLDER STICKERS */
+    .s-folder { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .s-folder svg { width: 52px; }
+    .s-folder-label {
+      font-family: 'Courier New', monospace; font-size: 0.49rem;
+      color: rgba(255,255,255,0.68); text-align: center; white-space: nowrap;
+    }
+    .s-folder1 { left: 3%; top: 30%; transform: rotate(-4deg); }
+    .s-folder2 { right: 4%; top: 32%; transform: rotate(5deg); }
+
+    /* PILL y CHECK ajustados */
+    .s-pill { bottom: 30% !important; }
+    .s-check { top: 10% !important; right: 2% !important; }
+
+    /* MANIFESTO CARDS INCLINADAS */
+    .manifesto-card:nth-child(1) { transform: rotate(-2.8deg); }
+    .manifesto-card:nth-child(2) { transform: rotate(2deg); }
+    .manifesto-card:nth-child(3) { transform: rotate(-1.8deg); }
+    .manifesto-card:nth-child(4) { transform: rotate(2.5deg); }
+    .manifesto-card:hover { transform: rotate(0deg) translateY(-3px) !important; }
+
+    /* FOOTER FIN retro */
+    .footer-fin {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic; font-size: 3.8rem; font-weight: 900;
+      color: var(--text); letter-spacing: -0.02em; line-height: 1;
+      margin-bottom: 1.5rem;
+      text-shadow:
+        2px 2px 0 var(--accent),
+        -1px -1px 0 rgba(70,165,170,0.45),
+        4px 4px 10px rgba(0,0,0,0.07);
+    }
+    body.dark .footer-fin {
+      text-shadow:
+        2px 2px 0 var(--accent),
+        -1px -1px 0 rgba(70,165,170,0.5),
+        4px 4px 10px rgba(0,0,0,0.3);
+    }
+
     /* HERO GREETING */
     .hero-greeting {
       font-family: var(--sans);
@@ -1286,10 +1371,14 @@
 <!-- HERO -->
 <div class="hero hero-colored">
   <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-top-strip" aria-hidden="true">
+    <span>{QA}</span>
+    <span>{2025}</span>
+    <span>{disponible}</span>
+  </div>
 
   <div class="hero-inner">
     <div class="hero-content">
-      <span class="hero-meet-badge">meet the</span>
       <p class="hero-eyebrow" data-es="QA · Tech Enthusiast · Project Maker" data-en="QA · Tech Enthusiast · Project Maker">QA · Tech Enthusiast · Project Maker</p>
       <p class="hero-greeting"><span id="greeting-text"></span><span class="greeting-cursor" id="greeting-cursor"></span></p>
       <h1>Micaela<br/>Jara</h1>
@@ -1322,20 +1411,35 @@
     </div>
   </div>
 
+  <!-- Marquee -->
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="hero-marquee-inner">
+      <span>QA ENGINEER</span><span class="mq-sep">·</span><span>TECH ENTHUSIAST</span><span class="mq-sep">·</span><span>PROJECT MAKER</span><span class="mq-sep">·</span><span>DISPONIBLE</span><span class="mq-sep">·</span><span>FREELANCE QA</span><span class="mq-sep">·</span><span>BUENOS AIRES</span><span class="mq-sep">·</span><span>OPEN TO WORK</span><span class="mq-sep">·</span>
+      <span>QA ENGINEER</span><span class="mq-sep">·</span><span>TECH ENTHUSIAST</span><span class="mq-sep">·</span><span>PROJECT MAKER</span><span class="mq-sep">·</span><span>DISPONIBLE</span><span class="mq-sep">·</span><span>FREELANCE QA</span><span class="mq-sep">·</span><span>BUENOS AIRES</span><span class="mq-sep">·</span><span>OPEN TO WORK</span><span class="mq-sep">·</span>
+    </div>
+  </div>
+
   <!-- Stickers decorativos -->
   <div class="hero-stickers" aria-hidden="true">
-    <!-- Estrella grande outlined -->
     <svg class="sticker s-star1" viewBox="0 0 50 50" fill="none" stroke="white" stroke-width="2.5"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18"/></svg>
-    <!-- Estrella pequeña filled -->
     <svg class="sticker s-star2" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
-    <!-- Estrella mini filled -->
     <svg class="sticker s-star3" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
-    <!-- Sparkle 4 puntas -->
     <svg class="sticker s-spark" viewBox="0 0 40 40"><path d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z" fill="white"/></svg>
-    <!-- Pill badge -->
     <span class="sticker s-pill">QA · Project Maker</span>
-    <!-- Check badge -->
     <span class="sticker s-check">✓ available</span>
+    <!-- Nena con lupa — sticker QA vintage -->
+    <img class="sticker s-magnify" src="img/magnifying-girl.jpg" alt="" />
+    <!-- Megáfono halftone -->
+    <img class="sticker s-megaphone" src="img/megaphone.jpg" alt="" />
+    <!-- Carpetas Mac -->
+    <div class="sticker s-folder s-folder1">
+      <svg viewBox="0 0 60 50" fill="none"><rect x="1" y="12" width="58" height="36" rx="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><rect x="1" y="6" width="22" height="10" rx="3" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+      <span class="s-folder-label">qa-reports</span>
+    </div>
+    <div class="sticker s-folder s-folder2">
+      <svg viewBox="0 0 60 50" fill="none"><rect x="1" y="12" width="58" height="36" rx="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><rect x="1" y="6" width="22" height="10" rx="3" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+      <span class="s-folder-label">test-cases</span>
+    </div>
   </div>
 </div>
 
@@ -2146,6 +2250,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 <hr class="divider" />
 
 <footer>
+  <p class="footer-fin">fin.</p>
   <img src="img/gatito1.jpg" alt="" class="footer-cat" />
   <p class="footer-name">Micaela Jara</p>
   <a class="footer-badge" href="#contacto">
@@ -2538,7 +2643,7 @@ JOIN orders ON users.id = orders.user_id;</code>
     const greetingTextEl = document.getElementById('greeting-text');
     const greetingCursorEl = document.getElementById('greeting-cursor');
     if (!greetingTextEl) return;
-    const msgs = { es: '¡Hola! Soy', en: "Hi! I'm" };
+    const msgs = { es: '¡Hola!', en: 'Hi!' };
     function typeWrite(text) {
       greetingTextEl.textContent = '';
       greetingCursorEl.style.display = 'inline-block';
@@ -2552,7 +2657,7 @@ JOIN orders ON users.id = orders.user_id;</code>
     }
     typeWrite(msgs[lang] || msgs.es);
     document.getElementById('lang-btn').addEventListener('click', () => {
-      greetingTextEl.textContent = msgs[lang] || msgs.es;
+      greetingTextEl.textContent = msgs[lang] || '¡Hola!';
       greetingCursorEl.style.display = 'none';
     });
   })();
