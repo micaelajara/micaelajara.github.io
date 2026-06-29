@@ -1,0 +1,12 @@
+{
+  "name": "Micaela Jara",
+  "short_name": "Micaela",
+  "description": "QA Engineer · Tech Enthusiast · Project Maker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c96b6b",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

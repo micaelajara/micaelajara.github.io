@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://micaelajara.github.io/" />
   <meta property="og:title" content="Micaela Jara — Tech Enthusiast" />
   <meta property="og:description" content="QA Engineer · Tech Enthusiast · Project Maker. Experiencia en proyectos enterprise, APIs, testing funcional y regresión." />
-  <meta property="og:image" content="https://micaelajara.github.io/preview.png" />
+  <meta property="og:image" content="https://micaelajara.github.io/img/preview.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Micaela Jara — Tech Enthusiast" />
   <meta name="twitter:description" content="QA Engineer · Tech Enthusiast · Project Maker." />
-  <meta name="twitter:image" content="https://micaelajara.github.io/preview.png" />
+  <meta name="twitter:image" content="https://micaelajara.github.io/img/preview.png" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLTYKBB8N1"></script>
@@ -31,6 +31,8 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#c96b6b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -1105,6 +1107,60 @@
       transform: translateY(0);
     }
 
+    /* HERO GREETING */
+    .hero-greeting {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      min-height: 1.8em;
+      letter-spacing: 0.02em;
+    }
+    .greeting-cursor {
+      display: inline-block;
+      width: 2px; height: 1em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink-cursor 0.75s step-end infinite;
+    }
+    @keyframes blink-cursor { 50% { opacity: 0; } }
+
+    /* DARK MODE */
+    body.dark {
+      --bg: #141414;
+      --bg-card: #1e1e1e;
+      --text: #e8e8e8;
+      --text-muted: #999;
+      --border: #2c2c2c;
+      --accent-light: #261414;
+    }
+    body.dark nav { background: rgba(20,20,20,0.95); }
+    body.dark .hero-bio { color: #aaa; }
+    body.dark .hero-badge.exp { background: #2a2a2a; border-color: #3a3a3a; color: #aaa; }
+    body.dark .hero-badge.available { background: #152515; border-color: #2a5a2a; }
+    body.dark .form-input,
+    body.dark .form-textarea { background: var(--bg-card); color: var(--text); border-color: var(--border); }
+    body.dark .li-card { background: var(--bg-card); }
+    body.dark .about-photo { filter: grayscale(20%) brightness(0.8); }
+    body.dark .projects-deco,
+    body.dark .contact-deco { filter: brightness(0.7); }
+    body.dark .copy-toast { background: #e8e8e8; color: #141414; }
+    @media (max-width: 640px) {
+      body.dark .nav-links { background: #141414; }
+    }
+
+    /* DARK TOGGLE */
+    .dark-toggle {
+      background: none; border: 1.5px solid var(--border);
+      color: var(--text-muted); padding: 0.3rem 0.5rem;
+      cursor: pointer; border-radius: 2px; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .dark-toggle svg { display: block; }
+
     /* COPY TOAST */
     .copy-toast {
       position: fixed; bottom: 4.5rem; right: 1.5rem;
@@ -1132,6 +1188,11 @@
     <li><a href="#intereses" data-es="Intereses" data-en="Interests">Intereses</a></li>
     <li><a href="#entrevistas" data-es="Conocimientos" data-en="Skills">Conocimientos</a></li>
     <li><a href="#testimonios" data-es="Testimonios" data-en="Testimonials">Testimonios</a></li>
+    <li>
+      <button class="dark-toggle" id="dark-btn" aria-label="Modo oscuro">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </li>
     <li><button class="lang-toggle" id="lang-btn">EN</button></li>
   </ul>
 </nav>
@@ -1140,6 +1201,7 @@
 <div class="hero">
   <div class="hero-content">
     <p class="hero-eyebrow" data-es="QA · Tech Enthusiast · Project Maker" data-en="QA · Tech Enthusiast · Project Maker">QA · Tech Enthusiast · Project Maker</p>
+    <p class="hero-greeting"><span id="greeting-text"></span><span class="greeting-cursor" id="greeting-cursor"></span></p>
     <h1>Micaela<br/>Jara</h1>
     <p class="hero-sub">quality, culture & everything in between.</p>
     <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things, thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
@@ -1155,13 +1217,13 @@
     </div>
     <div class="hero-links">
       <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
-      <a href="cv-micaela-jara.pdf" download class="btn btn-outline" data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a>
+      <a href="pdf/cv-micaela-jara.pdf" download class="btn btn-outline" data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a>
       <a href="#proyectos" class="btn btn-outline" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a>
     </div>
   </div>
   <div class="hero-snoopy">
     <div class="hero-snoopy-wrap">
-      <img src="snoopy.jpg" alt="Snoopy" />
+      <img src="img/snoopy.jpg" alt="Snoopy" />
     </div>
   </div>
 </div>
@@ -1175,7 +1237,7 @@
     <h2 class="section-title" data-es="Quién soy." data-en="Who I am.">Quién soy.</h2>
     <div class="about-grid">
       <div class="about-photo-wrap">
-        <img src="micaela.jpg" alt="Micaela Jara" class="about-photo" />
+        <img src="img/micaela.jpg" alt="Micaela Jara" class="about-photo" />
       </div>
       <div class="about-text">
         <p data-es="QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa, Penske Truck Rental, haciendo QA de features nuevas, redesigns y validación prelaunch." data-en="QA with experience in enterprise projects, focused on quality, processes, and user experience. I worked at RebelMouse testing the company's largest site, Penske Truck Rental, covering new features, redesigns, and prelaunch QA.">QA con experiencia en proyectos enterprise, con foco en calidad, procesos y experiencia del usuario. Trabajé en RebelMouse testeando el sitio más grande de la empresa, Penske Truck Rental, haciendo QA de features nuevas, redesigns y validación prelaunch.</p>
@@ -1262,7 +1324,7 @@
         <h2 class="section-title" data-es="Lo que hice." data-en="What I've done.">Lo que hice.</h2>
       </div>
       <div class="projects-deco-wrap">
-        <img src="carrie.jpg" alt="Working" class="projects-deco" />
+        <img src="img/carrie.jpg" alt="Working" class="projects-deco" />
       </div>
     </div>
     <div class="carousel-wrap">
@@ -1455,7 +1517,7 @@
         <h2 class="section-title" data-es="Lo que me mueve." data-en="What drives me.">Lo que me mueve.</h2>
       </div>
       <div class="projects-deco-wrap gatitos-wrap">
-        <img src="gatitos.png" alt="Gatitos" class="projects-deco gatitos-deco" />
+        <img src="img/gatitos.png" alt="Gatitos" class="projects-deco gatitos-deco" />
       </div>
     </div>
     <div class="interests-grid">
@@ -1510,7 +1572,7 @@
         <h2 class="section-title" data-es="Lo que sé hacer." data-en="What I do.">Lo que sé hacer.</h2>
       </div>
       <div class="projects-deco-wrap">
-        <img src="hannah.jpg" alt="Working" class="projects-deco" />
+        <img src="img/hannah.jpg" alt="Working" class="projects-deco" />
       </div>
     </div>
 
@@ -1935,7 +1997,7 @@ JOIN orders ON users.id = orders.user_id;</code>
           </a>
         </div>
         <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="li-card">
-          <img src="micaela.jpg" alt="Micaela Jara" class="li-card-photo" />
+          <img src="img/micaela.jpg" alt="Micaela Jara" class="li-card-photo" />
           <div class="li-card-info">
             <p class="li-card-name">Micaela Jara</p>
             <p class="li-card-title" data-es="QA Engineer · Tech Enthusiast · Project Maker" data-en="QA Engineer · Tech Enthusiast · Project Maker">QA Engineer · Tech Enthusiast · Project Maker</p>
@@ -1946,7 +2008,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 
       <div class="contact-right">
       <div class="projects-deco-wrap contact-deco-wrap">
-        <img src="hannah2.jpg" alt="All adventurous women do." class="projects-deco contact-deco" />
+        <img src="img/hannah2.jpg" alt="All adventurous women do." class="projects-deco contact-deco" />
       </div>
       <form class="contact-form" id="contact-form" action="https://formspree.io/f/xwvdbgdr" method="POST">
         <div class="form-group">
@@ -1973,7 +2035,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 <hr class="divider" />
 
 <footer>
-  <img src="gatito1.jpg" alt="" class="footer-cat" />
+  <img src="img/gatito1.jpg" alt="" class="footer-cat" />
   <p class="footer-name">Micaela Jara</p>
   <a class="footer-badge" href="#contacto">
     <span class="badge-dot"></span>
@@ -2344,6 +2406,114 @@ JOIN orders ON users.id = orders.user_id;</code>
       setTimeout(() => copyToast.classList.remove('show'), 2000);
     });
   });
+
+  // Dark mode
+  const darkBtn = document.getElementById('dark-btn');
+  const moonIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  const sunIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>';
+  function updateDarkIcon() {
+    darkBtn.innerHTML = document.body.classList.contains('dark') ? sunIcon : moonIcon;
+  }
+  if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+  updateDarkIcon();
+  darkBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+    updateDarkIcon();
+  });
+
+  // Typewriter greeting
+  (function() {
+    const greetingTextEl = document.getElementById('greeting-text');
+    const greetingCursorEl = document.getElementById('greeting-cursor');
+    if (!greetingTextEl) return;
+    const msgs = { es: '¡Hola! Soy', en: "Hi! I'm" };
+    function typeWrite(text) {
+      greetingTextEl.textContent = '';
+      greetingCursorEl.style.display = 'inline-block';
+      let i = 0;
+      function step() {
+        greetingTextEl.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(step, 75);
+        else setTimeout(() => { greetingCursorEl.style.display = 'none'; }, 700);
+      }
+      setTimeout(step, 500);
+    }
+    typeWrite(msgs[lang] || msgs.es);
+    document.getElementById('lang-btn').addEventListener('click', () => {
+      greetingTextEl.textContent = msgs[lang] || msgs.es;
+      greetingCursorEl.style.display = 'none';
+    });
+  })();
+
+  // Confetti
+  function fireConfetti(cx, cy) {
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const colors = ['#c96b6b','#f0c0c0','#f5d080','#8ec0e8','#b0dca0','#f0a0b0'];
+    const startX = cx ?? canvas.width / 2;
+    const startY = cy ?? canvas.height * 0.35;
+    const particles = Array.from({length: 90}, () => ({
+      x: startX, y: startY,
+      vx: (Math.random() - 0.5) * 12,
+      vy: Math.random() * -10 - 3,
+      w: Math.random() * 10 + 5, h: Math.random() * 6 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rot: Math.random() * Math.PI * 2, vr: (Math.random() - 0.5) * 0.2,
+      gravity: 0.28, opacity: 1
+    }));
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      frame++;
+      let alive = false;
+      particles.forEach(p => {
+        p.vy += p.gravity; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        p.opacity = Math.max(0, 1 - frame / 110);
+        if (p.opacity > 0) alive = true;
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      if (alive) requestAnimationFrame(draw);
+      else canvas.remove();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  // Confetti on CV download
+  const cvBtn = document.querySelector('a[href="pdf/cv-micaela-jara.pdf"]');
+  if (cvBtn) {
+    cvBtn.addEventListener('click', () => {
+      const r = cvBtn.getBoundingClientRect();
+      fireConfetti(r.left + r.width / 2, r.top);
+    });
+  }
+
+  // Konami code
+  (function() {
+    const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let idx = 0;
+    document.addEventListener('keydown', e => {
+      idx = e.key === seq[idx] ? idx + 1 : (e.key === seq[0] ? 1 : 0);
+      if (idx === seq.length) {
+        idx = 0;
+        fireConfetti();
+        const t = document.getElementById('copy-toast');
+        const prev = t.textContent;
+        t.textContent = 'All tests passed ✓';
+        t.classList.add('show');
+        setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.textContent = prev, 300); }, 3000);
+      }
+    });
+  })();
 </script>
 
 </body>
