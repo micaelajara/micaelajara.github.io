@@ -966,7 +966,7 @@
     .testi-card {
       flex: 0 0 calc(50% - 0.625rem);
       margin-right: 1.25rem;
-      background: white;
+      background: var(--bg-card);
       border: 1.5px solid var(--border);
       border-radius: 3px;
       padding: 1.75rem;
@@ -1101,17 +1101,10 @@
     /* Stickers — colores adaptados al fondo blanco */
     .s-star1 polygon, .s-star2 polygon, .s-star3 polygon { fill: var(--accent); }
     .s-spark path { fill: var(--accent); opacity: 0.7; }
-    body.dark .s-star1 polygon, body.dark .s-star2 polygon,
-    body.dark .s-star3 polygon { fill: rgba(255,255,255,0.75); }
-    body.dark .s-spark path { fill: rgba(255,255,255,0.55); }
     .s-folder1 rect, .s-folder2 rect {
       stroke: var(--accent) !important; fill: rgba(201,107,107,0.07) !important;
     }
-    body.dark .s-folder1 rect, body.dark .s-folder2 rect {
-      stroke: rgba(255,255,255,0.55) !important; fill: rgba(255,255,255,0.07) !important;
-    }
     .s-folder-label { color: var(--text-muted); }
-    body.dark .s-folder-label { color: rgba(255,255,255,0.55); }
 
     /* Botones en hero blanco */
     .hero-colored .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -1190,7 +1183,6 @@
       pointer-events: none;
     }
     .manifesto-magnify-wrap img { width: 100%; display: block; border-radius: 3px; }
-    body.dark .manifesto-magnify-wrap img { filter: invert(1) grayscale(1); }
 
     /* TESTIMONIOS — megáfono al lado del título */
     .testi-heading { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; }
@@ -1209,7 +1201,14 @@
     }
     .testi-megaphone-wrap img { width: 100%; display: block; border-radius: 3px; filter: grayscale(15%); }
     @media (max-width: 600px) { .testi-megaphone-wrap { display: none; } }
-    @media (max-width: 600px) { .manifesto-magnify-wrap { display: none; } }
+    @media (max-width: 600px) {
+      .manifesto-magnify-wrap { display: none; }
+      .manifesto-heading { margin-bottom: 1rem; }
+      .stack-cat-wrap { display: none; }
+      .stack-heading { margin-bottom: 1rem; }
+      .testi-megaphone-wrap { display: none; }
+      .testi-heading { margin-bottom: 1rem; }
+    }
 
     /* MANIFESTO CARDS INCLINADAS */
     .manifesto-card:hover { transform: translateY(-3px); }
@@ -1252,39 +1251,6 @@
     }
     @keyframes blink-cursor { 50% { opacity: 0; } }
 
-    /* DARK MODE */
-    body.dark {
-      --bg: #141414;
-      --bg-card: #1e1e1e;
-      --text: #e8e8e8;
-      --text-muted: #999;
-      --border: #2c2c2c;
-      --accent-light: #261414;
-    }
-    body.dark nav { background: rgba(20,20,20,0.95); }
-    body.dark .hero-bio { color: #aaa; }
-    body.dark .hero-badge.exp { background: #2a2a2a; border-color: #3a3a3a; color: #aaa; }
-    body.dark .hero-badge.available { background: #152515; border-color: #2a5a2a; }
-    body.dark .form-input,
-    body.dark .form-textarea { background: var(--bg-card); color: var(--text); border-color: var(--border); }
-    body.dark .li-card { background: var(--bg-card); }
-    body.dark .about-photo { filter: grayscale(20%) brightness(0.8); }
-    body.dark .projects-deco,
-    body.dark .contact-deco { filter: brightness(0.7); }
-    body.dark .copy-toast { background: #e8e8e8; color: #141414; }
-    @media (max-width: 640px) {
-      body.dark .nav-links { background: #141414; }
-    }
-
-    /* DARK TOGGLE */
-    .dark-toggle {
-      background: none; border: 1.5px solid var(--border);
-      color: var(--text-muted); padding: 0.3rem 0.5rem;
-      cursor: pointer; border-radius: 2px; transition: all 0.2s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .dark-toggle svg { display: block; }
 
     /* COPY TOAST */
     .copy-toast {
@@ -1313,11 +1279,6 @@
     <li><a href="#intereses" data-es="Intereses" data-en="Interests">Intereses</a></li>
     <li><a href="#entrevistas" data-es="Conocimientos" data-en="Skills">Conocimientos</a></li>
     <li><a href="#testimonios" data-es="Testimonios" data-en="Testimonials">Testimonios</a></li>
-    <li>
-      <button class="dark-toggle" id="dark-btn" aria-label="Modo oscuro">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </li>
     <li><button class="lang-toggle" id="lang-btn">EN</button></li>
   </ul>
 </nav>
@@ -1654,6 +1615,7 @@
       <div class="formation-col">
         <p class="formation-sublabel" data-es="Cursos y certificaciones" data-en="Courses & certifications">Cursos y certificaciones</p>
         <div class="formation-pills">
+          <span class="formation-pill">Fundamentos de Project Management <span class="pill-source">Coursera</span></span>
           <span class="formation-pill">API Testing with Postman <span class="pill-source">Udemy</span></span>
           <span class="formation-pill" data-es="Agile & Scrum Fundamentals" data-en="Agile & Scrum Fundamentals">Agile & Scrum Fundamentals</span>
           <span class="formation-pill" data-es="Fundamentos de UX/UI" data-en="UX/UI Fundamentals">Fundamentos de UX/UI</span>
@@ -2223,7 +2185,6 @@ JOIN orders ON users.id = orders.user_id;</code>
     </button>
   </div>
   <p class="footer-phrase" id="footer-phrase"></p>
-  <p class="footer-fin">the end.</p>
 </footer>
 
 <button class="scroll-top" id="scroll-top" aria-label="Volver arriba">↑</button>
@@ -2573,21 +2534,6 @@ JOIN orders ON users.id = orders.user_id;</code>
       copyToast.classList.add('show');
       setTimeout(() => copyToast.classList.remove('show'), 2000);
     });
-  });
-
-  // Dark mode
-  const darkBtn = document.getElementById('dark-btn');
-  const moonIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  const sunIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>';
-  function updateDarkIcon() {
-    darkBtn.innerHTML = document.body.classList.contains('dark') ? sunIcon : moonIcon;
-  }
-  if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
-  updateDarkIcon();
-  darkBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
-    updateDarkIcon();
   });
 
   // Typewriter greeting
