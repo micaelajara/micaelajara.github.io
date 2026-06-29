@@ -1143,29 +1143,8 @@
       letter-spacing: 0.07em; margin-bottom: 0.7rem;
     }
 
-    /* Photo B&W — recorte irregular estilo papel cortado */
-    .hero-visual { display: flex; align-items: flex-end; justify-content: center; position: relative; }
-    .hero-photo-main-wrap { position: relative; z-index: 2; }
-    .hero-photo-bw {
-      width: 200px; display: block;
-      filter: grayscale(100%) contrast(1.15) brightness(0.9);
-      mix-blend-mode: multiply;
-      clip-path: polygon(
-        4% 1%, 10% 0%, 18% 2%, 26% 0%, 34% 2%, 42% 0%, 50% 2%, 58% 0%,
-        66% 2%, 74% 0%, 82% 1%, 90% 0%, 97% 2%, 100% 7%, 98% 15%, 100% 23%,
-        97% 31%, 100% 39%, 98% 47%, 100% 55%, 97% 63%, 100% 71%, 98% 79%,
-        100% 87%, 97% 94%, 100% 100%, 90% 98%, 82% 100%, 74% 97%, 66% 100%,
-        58% 97%, 50% 100%, 42% 98%, 34% 100%, 26% 97%, 18% 100%, 10% 98%,
-        2% 100%, 0% 94%, 2% 86%, 0% 78%, 3% 70%, 0% 62%, 2% 54%,
-        0% 46%, 3% 38%, 0% 30%, 2% 22%, 0% 14%, 3% 6%
-      );
-    }
-    .photo-star {
-      position: absolute; top: -14px; right: -10px;
-      width: 38px; height: 38px; transform: rotate(18deg);
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
-      pointer-events: none;
-    }
+    /* Hero visual — Snoopy ocupa la columna derecha */
+    .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
 
     /* Stickers */
     .hero-stickers {
@@ -1186,12 +1165,12 @@
       .hero-stickers { display: none; }
     }
 
-    /* SNOOPY — parte baja del hero, lateral izquierdo */
+    /* SNOOPY — ocupa la columna visual del hero */
     .hero-colored .hero-snoopy-wrap {
-      position: absolute; bottom: 16px; left: 3%;
-      width: 90px; z-index: 3; transform: rotate(-6deg);
+      position: relative; width: 100%; z-index: 2;
+      transform: rotate(4deg);
     }
-    .hero-colored .hero-snoopy-wrap img { width: 100%; border-radius: 3px; }
+    .hero-colored .hero-snoopy-wrap img { width: 100%; border-radius: 6px; display: block; }
     .hero-colored .hero-snoopy-wrap::before,
     .hero-colored .hero-snoopy-wrap::after { display: none; }
 
@@ -1206,27 +1185,28 @@
     .s-folder2 { right: 4%; top: 32%; transform: rotate(5deg); }
 
     /* STACK DECORACIONES */
-    #stack { position: relative; }
-    .stack-cat-deco {
-      position: absolute; left: 1.5%; top: 50%;
-      width: 95px; transform: rotate(5deg) translateY(-50%);
-      pointer-events: none; opacity: 0.88; z-index: 1;
-      border-radius: 6px;
-    }
-    @media (max-width: 920px) {
-      .stack-cat-deco { display: none; }
-    }
+    .stack-heading { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+    .stack-cat-wrap { flex-shrink: 0; width: 90px; }
+    .stack-cat-wrap img { width: 100%; display: block; border-radius: 6px; }
+    @media (max-width: 600px) { .stack-cat-wrap { display: none; } }
 
-    /* COMO TRABAJO — lupa decorativa */
-    #como-trabajo { position: relative; }
-    .manifesto-magnify-deco {
-      position: absolute; right: 3%; top: 50%;
-      width: 155px; transform: rotate(-8deg) translateY(-50%);
-      pointer-events: none; opacity: 0.92; z-index: 1;
+    /* COMO TRABAJO — lupa al lado del título */
+    .manifesto-heading { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+    .manifesto-magnify-wrap {
+      position: relative; display: inline-block; flex-shrink: 0; width: 120px;
     }
-    @media (max-width: 920px) {
-      .manifesto-magnify-deco { display: none; }
+    .manifesto-magnify-wrap::before {
+      content: ''; position: absolute; inset: -8px;
+      border: 2px solid var(--accent); border-radius: 4px; opacity: 0.5;
+      pointer-events: none;
     }
+    .manifesto-magnify-wrap::after {
+      content: ''; position: absolute; inset: -4px;
+      border: 1px solid var(--accent); border-radius: 3px; opacity: 0.22;
+      pointer-events: none;
+    }
+    .manifesto-magnify-wrap img { width: 100%; display: block; border-radius: 3px; }
+    @media (max-width: 600px) { .manifesto-magnify-wrap { display: none; } }
 
     /* MANIFESTO CARDS INCLINADAS */
     .manifesto-card:hover { transform: translateY(-3px); }
@@ -1367,10 +1347,6 @@
     </div>
 
     <div class="hero-visual">
-      <div class="hero-photo-main-wrap">
-        <img src="img/micaela.jpg" alt="Micaela Jara" class="hero-photo-bw" />
-        <svg class="photo-star" viewBox="0 0 50 50"><polygon points="25,2 31,18 48,18 35,29 40,46 25,36 10,46 15,29 2,18 19,18" fill="white"/></svg>
-      </div>
       <div class="hero-snoopy-wrap">
         <img src="img/snoopy.jpg" alt="Snoopy" />
       </div>
@@ -1452,10 +1428,16 @@
 
 <!-- CÓMO TRABAJO -->
 <section id="como-trabajo">
-  <img src="img/magnifying-girl.png" class="manifesto-magnify-deco" aria-hidden="true" alt="" />
   <div class="container">
-    <p class="section-eyebrow" data-es="Mi forma de trabajar" data-en="My approach">Mi forma de trabajar</p>
-    <h2 class="section-title" data-es="Cómo trabajo." data-en="How I work.">Cómo trabajo.</h2>
+    <div class="manifesto-heading">
+      <div>
+        <p class="section-eyebrow" data-es="Mi forma de trabajar" data-en="My approach">Mi forma de trabajar</p>
+        <h2 class="section-title" data-es="Cómo trabajo." data-en="How I work.">Cómo trabajo.</h2>
+      </div>
+      <div class="manifesto-magnify-wrap" aria-hidden="true">
+        <img src="img/magnifying-girl.png" alt="" />
+      </div>
+    </div>
     <div class="manifesto-grid">
       <div class="manifesto-card">
         <span class="manifesto-num">01</span>
@@ -1572,10 +1554,16 @@
 
 <!-- STACK -->
 <section id="stack">
-  <img src="img/gatito-stack.jpg" class="stack-cat-deco" aria-hidden="true" alt="" />
   <div class="container">
-    <p class="section-eyebrow" data-es="Herramientas" data-en="Tools">Herramientas</p>
-    <h2 class="section-title" data-es="Con qué trabajo." data-en="What I work with.">Con qué trabajo.</h2>
+    <div class="stack-heading">
+      <div>
+        <p class="section-eyebrow" data-es="Herramientas" data-en="Tools">Herramientas</p>
+        <h2 class="section-title" data-es="Con qué trabajo." data-en="What I work with.">Con qué trabajo.</h2>
+      </div>
+      <div class="stack-cat-wrap" aria-hidden="true">
+        <img src="img/gatito-stack.jpg" alt="" />
+      </div>
+    </div>
     <div class="stack-group">
       <p class="stack-sublabel" data-es="Uso actualmente" data-en="Currently using">Uso actualmente</p>
       <div class="stack-grid">
@@ -2204,7 +2192,6 @@ JOIN orders ON users.id = orders.user_id;</code>
 <hr class="divider" />
 
 <footer>
-  <p class="footer-fin">the end.</p>
   <img src="img/gatito1.jpg" alt="" class="footer-cat" />
   <p class="footer-name">Micaela Jara</p>
   <a class="footer-badge" href="#contacto">
@@ -2226,6 +2213,7 @@ JOIN orders ON users.id = orders.user_id;</code>
     </button>
   </div>
   <p class="footer-phrase" id="footer-phrase"></p>
+  <p class="footer-fin">the end.</p>
 </footer>
 
 <button class="scroll-top" id="scroll-top" aria-label="Volver arriba">↑</button>
