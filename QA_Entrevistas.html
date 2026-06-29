@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Entrevistas QA — Micaela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf8f5;
+      --bg-card: #ffffff;
+      --text: #1c1917;
+      --text-muted: #78716c;
+      --accent: #8b5e3c;
+      --accent-light: #f5ede6;
+      --border: #e8e1d9;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* HEADER */
+    .page-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 2rem 1.5rem;
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      max-width: 760px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .header-top {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+    }
+    .header-title {
+      font-family: var(--serif);
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--text); line-height: 1.2;
+    }
+    .header-title em { font-style: italic; color: var(--accent); }
+    .header-meta {
+      font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;
+    }
+    .progress-pill {
+      font-size: 0.72rem; font-weight: 600;
+      background: var(--accent-light); color: var(--accent);
+      border: 1px solid #e2c9b8; border-radius: 20px;
+      padding: 0.25rem 0.75rem; white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* CONTROLES */
+    .controls {
+      display: flex; flex-direction: column; gap: 0.65rem;
+    }
+    #search {
+      width: 100%; padding: 0.65rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 6px;
+      font-size: 0.87rem; font-family: var(--sans);
+      background: var(--bg); outline: none; color: var(--text);
+      transition: border-color 0.2s;
+    }
+    #search:focus { border-color: var(--accent); background: white; }
+    #search::placeholder { color: #c0b8b0; }
+
+    .filters { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 0.3rem 0.8rem; border: 1.5px solid var(--border);
+      border-radius: 20px; background: white; cursor: pointer;
+      font-size: 0.74rem; font-weight: 600; font-family: var(--sans);
+      color: var(--text-muted); transition: all 0.2s; letter-spacing: 0.02em;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+    .counter { font-size: 0.74rem; color: #c0b8b0; }
+
+    /* LAYOUT */
+    .container { max-width: 760px; margin: 0 auto; padding: 2rem; }
+
+    /* BLOQUES */
+    .block-section { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2.25rem; }
+    .block-title {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #c0b8b0;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 0.2rem;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover { box-shadow: 0 2px 10px rgba(139,94,60,0.07); border-color: #d8c9bc; }
+    .card.hidden { display: none; }
+    .card.open { border-color: #d8c9bc; }
+
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.9rem 1.2rem; cursor: pointer; gap: 1rem; user-select: none;
+    }
+    .card-header:hover { background: #fdf9f6; }
+
+    .question { font-size: 0.88rem; font-weight: 500; color: var(--text); flex: 1; line-height: 1.45; }
+
+    .tag {
+      font-size: 0.66rem; font-weight: 600; padding: 0.18rem 0.55rem;
+      border-radius: 20px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.04em;
+    }
+    .tag-b1 { background: #ede9fe; color: #7c3aed; }
+    .tag-b2 { background: #dbeafe; color: #1d4ed8; }
+    .tag-b3 { background: #dcfce7; color: #15803d; }
+    .tag-b4 { background: #fef9c3; color: #a16207; }
+    .tag-exp { background: var(--accent-light); color: var(--accent); border: 1px solid #e2c9b8; }
+    .tag-learning { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+
+    .chevron { color: #c0b8b0; font-size: 0.78rem; transition: transform 0.25s; flex-shrink: 0; }
+    .card.open .chevron { transform: rotate(180deg); }
+
+    .card-body { display: none; padding: 0 1.2rem 1.2rem; border-top: 1px solid var(--border); }
+    .card.open .card-body { display: block; }
+
+    .answer {
+      background: var(--accent-light); border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0; padding: 0.85rem 1rem;
+      font-size: 0.87rem; line-height: 1.75; color: #44403c;
+      margin-top: 0.85rem; white-space: pre-wrap;
+    }
+
+    .card-body table { width: 100%; border-collapse: collapse; margin-top: 0.85rem; font-size: 0.82rem; }
+    .card-body th {
+      background: #f5f0eb; padding: 0.45rem 0.7rem;
+      text-align: left; font-weight: 600; color: var(--text-muted);
+      font-size: 0.76rem; letter-spacing: 0.03em;
+    }
+    .card-body td { padding: 0.45rem 0.7rem; border-top: 1px solid var(--border); color: #44403c; }
+    .card-body code {
+      background: #1c1917; color: #d6cfc8; padding: 0.85rem 1rem;
+      border-radius: 6px; display: block; margin-top: 0.85rem;
+      font-family: 'Courier New', monospace; font-size: 0.81rem;
+      line-height: 1.65; white-space: pre; overflow-x: auto;
+    }
+    .note { margin-top: 0.7rem; font-size: 0.79rem; color: var(--text-muted); font-style: italic; }
+
+    .empty-state { text-align: center; padding: 3rem; color: #c0b8b0; font-size: 0.9rem; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 2rem;
+      text-align: center; font-size: 0.76rem; color: #c0b8b0;
+      max-width: 760px; margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .page-header { padding: 1.25rem 1rem 1rem; }
+      .container { padding: 1.25rem 1rem; }
+      .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; scrollbar-width: none; }
+      .filters::-webkit-scrollbar { display: none; }
+      .filter-btn { flex-shrink: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <h1 class="header-title">Guía de entrevistas <em>QA</em></h1>
+        <p class="header-meta">Micaela Jara · QA Engineer · 4+ años · RebelMouse + 2 clientes freelance activos</p>
+      </div>
+      <span class="progress-pill" id="counter">...</span>
+    </div>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Buscar pregunta..." />
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="b1">B1 — Fundamentos</button>
+        <button class="filter-btn" data-filter="b2">B2 — Técnico</button>
+        <button class="filter-btn" data-filter="b3">B3 — IT</button>
+        <button class="filter-btn" data-filter="b4">B4 — CX</button>
+        <button class="filter-btn" data-filter="exp">Con experiencia real</button>
+        <button class="filter-btn" data-filter="soft">Estilo de trabajo</button>
+        <button class="filter-btn" data-filter="learning">En aprendizaje</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- BLOQUE 1 -->
+  <div class="block-section" data-block="b1">
+    <div class="block-title">Bloque 1 — Fundamentos de QA</div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cuál es la diferencia entre SDLC y STLC?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">El SDLC es el ciclo completo de desarrollo del software — desde la idea hasta el mantenimiento. El STLC es el ciclo específico de testing, que incluye planificación, diseño de casos, ejecución, reporte de defectos y cierre.
+
+El QA entra desde la fase de requisitos del SDLC, no cuando ya hay algo que probar. Eso permite detectar inconsistencias o ambigüedades en los requisitos antes de que lleguen al desarrollo, lo que reduce el costo de corrección.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">Contame sobre un desafío de QA que hayas enfrentado y cómo lo resolviste.</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">En RebelMouse trabajaba con clientes enterprise que tenían código propio integrado a la plataforma — Penske Truck Rental era el más grande. Cuando salían features nuevas, ese código personalizado a veces generaba bugs que el equipo de desarrollo no detectaba porque no conocían el contexto de cada cliente.
+
+El caso más claro fue un bug crítico en el flujo de reserva de Penske — la feature de mayor impacto en el negocio. Lo detecté durante el QA prelaunch: analicé los requests de red en DevTools, identifiqué el endpoint que estaba fallando y lo escalé con contexto de impacto de negocio, no solo el error técnico. Se resolvió en horas.
+
+Eso reducía el tiempo que un cliente enterprise estaba con algo roto, lo cual era importante porque cualquier hora de downtime tenía impacto directo en su operación.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cómo priorizás qué testear cuando el tiempo es limitado?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Priorizo por impacto en el negocio. Primero las funcionalidades críticas — las que si fallan afectan directamente al usuario o al cliente. Después regresión en las áreas que tocó el cambio, y si queda tiempo, el resto.
+
+En Penske lo hacía así constantemente: era un cliente enterprise y no había margen para que algo core estuviera roto en producción. También mejoré la forma de presentar los test cases al cliente — antes el proceso era poco claro; implementé una forma de mostrar la cobertura que daba visibilidad real de qué se había testeado y qué no, lo que generó más confianza y menos idas y vueltas.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cuál es la diferencia entre testing de regresión, smoke y sanity?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <table>
+          <tr><th></th><th>¿Cuándo?</th><th>¿Qué cubre?</th><th>¿Qué tan rápido?</th></tr>
+          <tr><td><strong>Smoke</strong></td><td>Antes de testear en profundidad</td><td>Lo más básico del sistema</td><td>Muy rápido</td></tr>
+          <tr><td><strong>Sanity</strong></td><td>Después de un fix puntual</td><td>Solo esa área</td><td>Rápido</td></tr>
+          <tr><td><strong>Regresión</strong></td><td>Después de un deploy</td><td>Todo lo que ya funcionaba</td><td>Más completo</td></tr>
+        </table>
+        <div class="answer">Regresión es para verificar que un deploy no rompió funcionalidad existente. Smoke es una prueba rápida para confirmar que el sistema está estable antes de testear en profundidad. Sanity es más acotada — la uso cuando hay un fix específico para verificar que ese fix funciona y no afectó lo que está alrededor.
+
+En RebelMouse después de cada fix hacía sanity para validar el cambio puntual, y después un smoke rápido comparando contra producción para asegurarme de que nada más se hubiera roto.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué información no puede faltar en un buen reporte de bug?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Un buen reporte de bug tiene que tener título claro, ambiente, dispositivo y OS, pasos para reproducir, resultado actual vs resultado esperado, severidad y evidencia — screenshots o video. Sin los pasos para reproducir, desarrollo pierde tiempo tratando de encontrar el bug. Sin la severidad, no se puede priorizar.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cómo manejás la relación con desarrollo cuando reportás un bug que el dev dice que no es un bug?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Primero pido que me muestren cómo lo reproducen ellos, porque a veces es un tema de ambiente o datos de prueba distintos. Si después de eso seguimos en desacuerdo, escalo con evidencia — los pasos exactos, el ambiente, screenshots — y si es necesario lo llevamos a producto o al negocio para decidir si el comportamiento es el esperado o no. El objetivo no es tener razón sino que el usuario tenga una buena experiencia.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cuál es el rol del QA en un equipo ágil? ¿Participás en las ceremonias?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">En RebelMouse participaba principalmente de la daily por cómo estaba organizado el equipo. Pero entiendo el rol del QA en cada ceremonia — en el planning para revisar criterios de aceptación, en la review para validar lo entregado, y en la retro para aportar desde la perspectiva de calidad. Es algo que quiero desarrollar más en mi próximo rol.</div>
+        <table>
+          <tr><th>Ceremonia</th><th>Rol del QA</th></tr>
+          <tr><td><strong>Sprint planning</strong></td><td>Revisás tickets, preguntás sobre criterios de aceptación, estimás esfuerzo de testing</td></tr>
+          <tr><td><strong>Daily</strong></td><td>Contás en qué estás, si hay bloqueos, si algo está listo para testear</td></tr>
+          <tr><td><strong>Sprint review</strong></td><td>Validás que lo construido cumple los criterios acordados</td></tr>
+          <tr><td><strong>Retrospectiva</strong></td><td>Aportás desde calidad: qué procesos fallaron, qué mejorar</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué es un test plan y qué contiene?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Un test plan es el documento que define cómo se va a enfocar el testing de un producto o feature. Incluye el alcance — qué se testea y qué queda fuera —, los objetivos, los tipos de testing a ejecutar, los criterios para saber cuándo el testing está completo, los recursos necesarios y los riesgos identificados.
+
+En RebelMouse el proceso era más ágil e informal, pero siempre definía el alcance antes de testear — qué features cubrir, qué quedaba fuera por tiempo, en qué ambiente y qué criterio usaba para considerar algo listo.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cómo explicarías la diferencia entre testing funcional y testing exploratorio?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">El testing funcional valida que una feature cumple con los requisitos — tenés casos definidos y los ejecutás. El exploratorio es sin guión: explorás el producto como un usuario, confiando en tu criterio para encontrar bugs que los casos formales no cubren. En la práctica uso los dos — funcional para tener cobertura sistemática, exploratorio para encontrar lo que nadie pensó en documentar.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué es el bug lifecycle? Describí los estados por los que pasa un bug.</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Un bug pasa por varios estados: se crea como New, se asigna a un dev, pasa a In Progress mientras lo trabajan, luego a Fixed o Ready for Review. El QA lo verifica — si está resuelto se cierra, si no se reabre. También puede ser rechazado si desarrollo determina que es comportamiento esperado. Los nombres exactos varían según la herramienta, pero el flujo es ese.</div>
+        <p class="note">New → Assigned → In Progress → Fixed/Ready for Review → Verified → Closed / Reopened / Rejected</p>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cómo diferenciás la severidad de la prioridad en un bug?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Son conceptos distintos. La severidad es el impacto técnico del bug — qué tan roto está algo. La prioridad es qué tan urgente es resolverlo según el negocio. Un bug puede ser severo pero de baja prioridad si afecta una funcionalidad poco crítica, o al revés — algo menor visualmente pero de alta prioridad si está en un lugar muy visible para el usuario.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b1" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué harías si encontrás un bug crítico el día antes de un release?</span>
+        <span class="tag tag-b1">B1</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Lo reporto de inmediato con toda la evidencia — severidad, impacto, pasos para reproducir — y lo escalo al equipo y a producto. No es una decisión que tomo sola: presento el riesgo claramente y dejo que el negocio decida si posponer el release, sacar la feature con un flag o asumir el riesgo. Mi rol es asegurarme de que tomen la decisión con información completa, no ocultarlo ni minimizarlo.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BLOQUE 2 -->
+  <div class="block-section" data-block="b2">
+    <div class="block-title">Bloque 2 — Testing técnico</div>
+
+    <div class="card" data-block="b2" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué es una API REST y cómo la testearías?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Una API REST es una interfaz que permite la comunicación entre sistemas usando HTTP. Para testearla uso Postman o DevTools — verifico el status code, el body de la respuesta y que la información del JSON sea correcta. También valido autenticación: un 401 significa que el usuario no está autenticado, un 403 que está autenticado pero no tiene permisos para esa acción.
+
+En Penske usaba DevTools para analizar los requests de red en tiempo real, lo que me permitió identificar endpoints fallando que de otra forma habrían sido difíciles de diagnosticar.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b2" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué son las variables de entorno en Postman y para qué las usarías?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Las variables de entorno en Postman permiten guardar valores que cambian según el ambiente — como la URL base o un token de autenticación — y reutilizarlos en todos los requests usando {{nombre_variable}}. Esto evita tener que modificar cada request manualmente cuando cambiás de staging a producción, por ejemplo. Las usé para testear APIs en distintos ambientes.</div>
+        <p class="note">Ejemplo: en lugar de escribir la URL completa en cada request, guardás {{base_url}} y cambiás solo el environment desde el dropdown.</p>
+      </div>
+    </div>
+
+    <div class="card" data-block="b2" data-type="learning">
+      <div class="card-header">
+        <span class="question">¿Qué son los scripts de test en Postman y para qué sirven?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-learning">Aprendiendo</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">En Postman se pueden escribir scripts de test en la pestaña Tests para automatizar la verificación de respuestas — status code, que existan ciertos campos en el body, valores específicos en el JSON. Es la diferencia entre testing manual de APIs, donde revisás cada respuesta a mano, y testing automatizado dentro de Postman, donde los scripts verifican todo solos. Útil cuando tenés una colección con muchos requests: los corrés todos juntos y ves de un vistazo cuáles pasaron y cuáles fallaron.</div>
+        <code>pm.test("Status code es 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("La respuesta tiene nombre", function () {
+    var body = pm.response.json();
+    pm.expect(body.name).to.exist;
+});</code>
+      </div>
+    </div>
+
+    <div class="card" data-block="b2" data-type="learning">
+      <div class="card-header">
+        <span class="question">¿Qué es el performance testing? ¿Cuál es la diferencia entre load, stress y spike?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-learning">Aprendiendo</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">El performance testing evalúa cómo se comporta un sistema bajo carga. Hay tres tipos principales: load testing, que simula la carga normal esperada para verificar que el sistema la aguanta; stress testing, que lleva el sistema más allá de su límite para identificar en qué punto falla; y spike testing, que simula un pico repentino de usuarios para ver si el sistema lo soporta.</div>
+        <table>
+          <tr><th>Tipo</th><th>¿Qué simula?</th><th>¿Para qué sirve?</th></tr>
+          <tr><td><strong>Load</strong></td><td>Carga normal sostenida</td><td>Verificar que el sistema aguanta el uso habitual</td></tr>
+          <tr><td><strong>Stress</strong></td><td>Carga progresiva hasta el límite</td><td>Encontrar el punto en que el sistema falla</td></tr>
+          <tr><td><strong>Spike</strong></td><td>Pico repentino de usuarios</td><td>Ver si el sistema soporta un golpe brusco de tráfico</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" data-block="b2" data-type="learning">
+      <div class="card-header">
+        <span class="question">¿Para qué usás SQL en testing? ¿Qué comandos conocés?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-learning">Aprendiendo</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">SQL es el lenguaje para consultar bases de datos relacionales. Como QA lo uso principalmente para verificar datos — por ejemplo, después de ejecutar una acción en la app, consulto la base de datos para confirmar que los datos se guardaron correctamente. Los comandos principales son SELECT para traer datos, WHERE para filtrar por condición, y JOIN para combinar datos de dos tablas relacionadas.</div>
+        <code>-- Traer todos los usuarios
+SELECT * FROM users;
+
+-- Filtrar por condición
+SELECT * FROM users WHERE email = 'test@test.com';
+
+-- Combinar dos tablas
+SELECT users.name, orders.product
+FROM users
+JOIN orders ON users.id = orders.user_id;</code>
+      </div>
+    </div>
+
+    <div class="card" data-block="b2" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué es el visual testing?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">El visual testing verifica que la implementación visual de una feature coincida con el diseño — ya sea un mockup, un Figma o una guía de estilos. Se revisan colores, tipografía, espaciado, alineación y comportamiento responsive. Es distinto del testing funcional: una feature puede funcionar correctamente pero verse diferente a lo que diseño especificó.
+
+En Penske lo apliqué especialmente en los redesigns — comparar la implementación contra el Figma era parte del proceso de prelaunch QA.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="b2" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué es el test design? ¿Qué técnicas conocés?</span>
+        <span class="tag tag-b2">B2</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">El test design son las técnicas que uso para decidir qué casos de prueba crear de manera sistemática, no al azar. Las dos principales son equivalence partitioning, que consiste en agrupar los inputs en clases que se comportan igual y testear un valor por clase — así evitás casos redundantes; y boundary value analysis, que testea los valores exactos en los límites del rango, donde suelen aparecer los bugs. En la práctica se usan juntas: los límites más un valor representativo de cada clase.</div>
+        <table>
+          <tr><th>Técnica</th><th>Qué hace</th><th>Ejemplo</th></tr>
+          <tr><td><strong>Equivalence partitioning</strong></td><td>Agrupa inputs en clases equivalentes, testea uno por clase</td><td>Campo edad 18-65: testear 15, 30 y 70</td></tr>
+          <tr><td><strong>Boundary value analysis</strong></td><td>Testea los valores exactos en los límites</td><td>Campo edad 18-65: testear 17, 18, 65 y 66</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BLOQUE ESTILO DE TRABAJO -->
+  <div class="block-section" data-block="soft">
+    <div class="block-title">Estilo de trabajo — preguntas de fit / comportamiento</div>
+
+    <div class="card" data-block="soft" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Cómo describís tu forma de encarar el trabajo?</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Siempre pregunto el por qué antes de testear. El testing sin contexto es disparar al aire — antes de armar un caso de prueba, quiero entender qué flujo protege y qué pasa si falla.
+
+También me muevo bien entre lo técnico y lo humano. Puedo inspeccionar network requests y al mismo tiempo comunicarle el impacto a un cliente enterprise sin usar jerga técnica. Los dos lados del problema importan.
+
+Y si algo no existe y hace falta, lo creo. Cuando entré a RebelMouse no había proceso formal de QA. Lo construí desde cero — casos de prueba, templates de bugs, forma de presentarle la cobertura al cliente.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="soft" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Qué herramientas de gestión y seguimiento de trabajo usás?</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Usé Jira como herramienta principal en RebelMouse — para crear y trackear bugs, seguir el lifecycle de cada ticket y coordinar con desarrollo. También trabajé con Azure DevOps para gestión de trabajo y seguimiento de sprints, y con Asana para coordinación de tareas en proyectos más livianos. Me adapto fácil a cualquier herramienta de tracking; lo que importa es el proceso, no la herramienta específica.</div>
+      </div>
+    </div>
+
+    <div class="card" data-block="soft" data-type="exp">
+      <div class="card-header">
+        <span class="question">¿Tenés experiencia trabajando de forma autónoma, sin equipo de QA?</span>
+        <span class="tag tag-exp">Experiencia</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Sí, bastante. Actualmente tengo dos clientes de ecommerce como freelance donde soy la única persona de QA — defino qué testear, lo ejecuto y reporto los resultados. No hay equipo ni proceso previo: lo armo yo.
+
+En RebelMouse también hubo períodos de trabajo muy autónomo, especialmente cuando el equipo era chico. Soy cómoda tomando decisiones de priorización sola y escalando solo cuando el riesgo lo justifica.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BLOQUE 3 -->
+  <div class="block-section" data-block="b3">
+    <div class="block-title">Bloque 3 — IT general (en progreso)</div>
+    <div class="card" data-block="b3" data-type="learning">
+      <div class="card-header">
+        <span class="question">Contenido en progreso — redes, Git, Linux, Cloud</span>
+        <span class="tag tag-b3">B3</span>
+        <span class="tag tag-learning">Aprendiendo</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Este bloque se completará en las próximas sesiones.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 4 -->
+  <div class="block-section" data-block="b4">
+    <div class="block-title">Bloque 4 — CX y habilidades blandas técnicas (en progreso)</div>
+    <div class="card" data-block="b4" data-type="learning">
+      <div class="card-header">
+        <span class="question">Contenido en progreso — NPS, CSAT, Zendesk, customer journey</span>
+        <span class="tag tag-b4">B4</span>
+        <span class="tag tag-learning">Aprendiendo</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="answer">Este bloque se completará en las próximas sesiones.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" id="empty" style="display:none;">No se encontraron preguntas.</div>
+
+</main>
+
+<footer>
+  Micaela Jara · Uso personal · Guía de preparación de entrevistas
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const searchInput = document.getElementById('search');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const counter = document.getElementById('counter');
+  const emptyState = document.getElementById('empty');
+  let activeFilter = 'all';
+
+  cards.forEach(card => {
+    card.querySelector('.card-header').addEventListener('click', () => {
+      card.classList.toggle('open');
+    });
+  });
+
+  function updateVisibility() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+
+    cards.forEach(card => {
+      const block = card.dataset.block;
+      const type = card.dataset.type;
+      const text = card.querySelector('.question').textContent.toLowerCase();
+
+      const matchesFilter =
+        activeFilter === 'all' ||
+        block === activeFilter ||
+        type === activeFilter;
+
+      const matchesSearch = query === '' || text.includes(query);
+
+      if (matchesFilter && matchesSearch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    document.querySelectorAll('.block-section').forEach(section => {
+      const vis = section.querySelectorAll('.card:not(.hidden)');
+      section.style.display = vis.length === 0 ? 'none' : 'flex';
+    });
+
+    counter.textContent = `${visible} pregunta${visible !== 1 ? 's' : ''}`;
+    emptyState.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      updateVisibility();
+    });
+  });
+
+  searchInput.addEventListener('input', updateVisibility);
+  updateVisibility();
+</script>
+
+</body>
+</html>

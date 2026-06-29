@@ -241,6 +241,19 @@
       margin-bottom: 2.5rem;
     }
 
+    .hero-badges { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      border-radius: 20px; padding: 0.28rem 0.8rem;
+    }
+    .hero-badge.available {
+      background: #f0faf2; border: 1px solid #a8d8b0; color: #3a7a48;
+    }
+    .hero-badge.lang {
+      background: var(--accent-light); border: 1px solid var(--accent); color: var(--accent);
+      opacity: 0.85;
+    }
     .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
     .btn {
@@ -857,6 +870,37 @@
       .projects-deco { height: 90px; }
     }
 
+    /* FORMACIÓN */
+    .formation-grid {
+      display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start;
+    }
+    @media (max-width: 640px) { .formation-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+    .formation-sublabel {
+      font-family: var(--display); font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .formation-item { margin-bottom: 0.5rem; }
+    .formation-title {
+      font-family: var(--display); font-size: 0.95rem; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.02em; color: var(--text);
+    }
+    .formation-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .formation-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+    .formation-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: white; border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 0.3rem 0.85rem;
+      font-size: 0.8rem; font-weight: 500; color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .formation-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .pill-source {
+      font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
+      background: var(--accent-light); border-radius: 10px;
+      padding: 0.1rem 0.45rem; letter-spacing: 0.03em;
+    }
+
     /* CÓMO TRABAJO — MANIFESTO */
     .manifesto-grid {
       display: grid;
@@ -950,6 +994,7 @@
     <li><a href="#como-trabajo" data-es="Cómo trabajo" data-en="Approach">Cómo trabajo</a></li>
     <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
     <li><a href="#stack">Stack</a></li>
+    <li><a href="#formacion" data-es="Formación" data-en="Education">Formación</a></li>
     <li><a href="#intereses" data-es="Intereses" data-en="Interests">Intereses</a></li>
     <li><a href="#entrevistas" data-es="Conocimientos" data-en="Skills">Conocimientos</a></li>
     <li><button class="lang-toggle" id="lang-btn">EN</button></li>
@@ -963,6 +1008,15 @@
     <h1>Micaela<br/>Jara</h1>
     <p class="hero-sub">quality, culture & everything in between.</p>
     <p class="hero-bio" data-es="QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas." data-en="QA focused on quality and user experience. Product management enthusiast and producer of an independent film cycle. I navigate the technical and the human side of things, thinking about processes, audiences, and how to improve both.">QA con foco en calidad y experiencia del usuario. Entusiasta de product management y productora de un ciclo de cine. Me muevo bien entre lo técnico y lo humano, pienso en procesos, en audiencias y en cómo mejorar las dos cosas.</p>
+    <div class="hero-badges">
+      <span class="hero-badge available">
+        <span class="badge-dot"></span>
+        <span data-es="Disponible para trabajar" data-en="Open to work">Disponible para trabajar</span>
+      </span>
+      <span class="hero-badge lang">
+        <span data-es="Inglés C1" data-en="English C1">Inglés C1</span>
+      </span>
+    </div>
     <div class="hero-links">
       <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="btn btn-primary">LinkedIn</a>
       <a href="cv-micaela-jara.pdf" download class="btn btn-outline" data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a>
@@ -1171,6 +1225,36 @@
         <div class="stack-card learning">
           <p class="stack-card-name">Git</p>
           <p class="stack-card-desc" data-es="Control de versiones y repositorios" data-en="Version control and repositories">Control de versiones y repositorios</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FORMACIÓN -->
+<section id="formacion">
+  <div class="container">
+    <p class="section-eyebrow" data-es="Formación" data-en="Education">Formación</p>
+    <h2 class="section-title" data-es="De dónde vengo." data-en="My background.">De dónde vengo.</h2>
+    <div class="formation-grid">
+      <div class="formation-col">
+        <p class="formation-sublabel" data-es="Estudios" data-en="Studies">Estudios</p>
+        <div class="formation-item">
+          <p class="formation-title" data-es="Gestión Cultural" data-en="Cultural Management">Gestión Cultural</p>
+          <p class="formation-meta">UNTREF · <span data-es="En curso" data-en="In progress">En curso</span></p>
+        </div>
+      </div>
+      <div class="formation-col">
+        <p class="formation-sublabel" data-es="Cursos y certificaciones" data-en="Courses & certifications">Cursos y certificaciones</p>
+        <div class="formation-pills">
+          <span class="formation-pill">API Testing with Postman <span class="pill-source">Udemy</span></span>
+          <span class="formation-pill" data-es="Agile & Scrum Fundamentals" data-en="Agile & Scrum Fundamentals">Agile & Scrum Fundamentals</span>
+          <span class="formation-pill" data-es="Fundamentos de UX/UI" data-en="UX/UI Fundamentals">Fundamentos de UX/UI</span>
+          <span class="formation-pill">Intro to Test Automation <span class="pill-source">Digital House</span></span>
+          <span class="formation-pill">QA Testing <span class="pill-source">TranSistemas</span></span>
+          <span class="formation-pill">JavaScript <span class="pill-source">Mediapila</span></span>
         </div>
       </div>
     </div>
