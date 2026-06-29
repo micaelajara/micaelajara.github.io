@@ -161,8 +161,8 @@
       .contact-grid { gap: 1.5rem; }
       .contact-links { margin-top: 0.75rem; gap: 0.65rem; }
 
-      .interests-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-      .interest-card { padding: 0.7rem 0.4rem; }
+      .interests-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+      .interest-card { height: 115px; }
 
       .divider { margin: 0; }
 
@@ -505,13 +505,16 @@
     /* INTERESES */
     .interests-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
-      gap: 0.85rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
     .interest-card {
       perspective: 600px;
-      height: 110px;
+      height: 148px;
       cursor: pointer;
+    }
+    @media (hover: hover) {
+      .interest-card:hover .interest-inner { transform: rotateY(180deg); }
     }
     .interest-inner {
       position: relative; width: 100%; height: 100%;
@@ -537,7 +540,7 @@
       border-color: #ecc0c0;
     }
 
-    .interest-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .interest-icon { font-size: 1.85rem; margin-bottom: 0.5rem; }
     .interest-label { font-size: 0.78rem; font-weight: 400; color: var(--text); }
     .interest-back-text {
       font-size: 0.73rem; line-height: 1.45; color: var(--text);
@@ -1862,9 +1865,13 @@ JOIN orders ON users.id = orders.user_id;</code>
 <div class="copy-toast" id="copy-toast">¡Copiado!</div>
 
 <script>
-  // Flip cards
+  // Flip cards — hover on pointer devices, click on touch
   document.querySelectorAll('.interest-card').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    card.addEventListener('click', () => {
+      if (!window.matchMedia('(hover: hover)').matches) {
+        card.classList.toggle('flipped');
+      }
+    });
   });
 
   // Projects carousel
