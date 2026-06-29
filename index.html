@@ -601,7 +601,7 @@
 
     .answer {
       padding: 0.9rem 0; font-size: 0.87rem;
-      line-height: 1.8; color: #555; margin-top: 0.9rem; white-space: pre-wrap;
+      line-height: 1.8; color: #555; margin-top: 0.9rem;
     }
 
     .card-body table { width: 100%; border-collapse: collapse; margin-top: 0.9rem; font-size: 0.82rem; }
@@ -631,6 +631,11 @@
       font-size: 1rem; font-weight: 300; color: #555; line-height: 1.85;
     }
     .contact-intro p + p { margin-top: 1rem; }
+
+    .contact-right { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-deco-wrap { width: 100%; }
+    .contact-deco { width: 100%; height: 180px; object-fit: cover; object-position: center top; border-radius: 3px; display: block; }
+    @media (max-width: 640px) { .contact-deco { height: 130px; } }
 
     .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
     .li-card {
@@ -1501,15 +1506,8 @@ JOIN orders ON users.id = orders.user_id;</code>
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="container">
-    <div class="projects-header">
-      <div>
-        <p class="section-eyebrow" data-es="Contacto" data-en="Contact">Contacto</p>
-        <h2 class="section-title" data-es="Hablemos." data-en="Let's talk.">Hablemos.</h2>
-      </div>
-      <div class="projects-deco-wrap">
-        <img src="hannah2.jpg" alt="All adventurous women do." class="projects-deco" />
-      </div>
-    </div>
+    <p class="section-eyebrow" data-es="Contacto" data-en="Contact">Contacto</p>
+    <h2 class="section-title" data-es="Hablemos." data-en="Let's talk.">Hablemos.</h2>
     <div class="contact-grid">
 
       <div class="contact-intro">
@@ -1535,6 +1533,10 @@ JOIN orders ON users.id = orders.user_id;</code>
         </a>
       </div>
 
+      <div class="contact-right">
+      <div class="projects-deco-wrap contact-deco-wrap">
+        <img src="hannah2.jpg" alt="All adventurous women do." class="projects-deco contact-deco" />
+      </div>
       <form class="contact-form" id="contact-form" action="https://formspree.io/f/xwvdbgdr" method="POST">
         <div class="form-group">
           <label class="form-label" for="name" data-es="Nombre" data-en="Name">Nombre</label>
@@ -1551,6 +1553,7 @@ JOIN orders ON users.id = orders.user_id;</code>
         <button type="submit" class="form-submit" data-es="Enviar" data-en="Send">Enviar</button>
         <div class="form-success" id="form-success">¡Mensaje enviado! Te respondo pronto.</div>
       </form>
+      </div><!-- /contact-right -->
 
     </div>
   </div>
