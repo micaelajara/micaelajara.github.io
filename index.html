@@ -1076,30 +1076,19 @@
       transform: translateY(0);
     }
 
-    /* HERO COLORED REDESIGN */
+    /* HERO */
     .hero-colored {
-      background: var(--accent);
+      background: var(--bg);
       max-width: 100%;
       padding-left: 0; padding-right: 0;
       overflow: hidden;
       position: relative;
+      border-bottom: 1px solid var(--border);
     }
     .hero-colored .hero-content,
     .hero-colored .hero-snoopy { position: relative; z-index: 2; }
+    .hero-grain { display: none; }
 
-    /* Grain texture */
-    .hero-grain {
-      position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      opacity: 0.14; mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
-      background-size: 160px 160px;
-    }
-
-    /* Content width inside colored hero */
-    .hero-colored > .hero-content,
-    .hero-colored > .hero-snoopy {
-      /* managed by existing grid via wrapper below */
-    }
     .hero-inner {
       max-width: 780px; margin: 0 auto;
       padding: 4.5rem 2rem 6rem;
@@ -1109,31 +1098,27 @@
       align-items: center;
     }
 
-    /* Text colors on salmon */
-    .hero-colored .hero-eyebrow { color: rgba(255,255,255,0.7); }
-    .hero-colored h1 { color: #fff; }
-    .hero-colored .hero-greeting { color: rgba(255,255,255,0.8); }
-    .hero-colored .greeting-cursor { background: #fff; }
-    .hero-colored .hero-sub { color: rgba(255,255,255,0.72); }
-    .hero-colored .hero-bio { color: rgba(255,255,255,0.85); }
+    /* Stickers — colores adaptados al fondo blanco */
+    .s-star1 polygon, .s-star2 polygon, .s-star3 polygon { fill: var(--accent); }
+    .s-spark path { fill: var(--accent); opacity: 0.7; }
+    body.dark .s-star1 polygon, body.dark .s-star2 polygon,
+    body.dark .s-star3 polygon { fill: rgba(255,255,255,0.75); }
+    body.dark .s-spark path { fill: rgba(255,255,255,0.55); }
+    .s-folder1 rect, .s-folder2 rect {
+      stroke: var(--accent) !important; fill: rgba(201,107,107,0.07) !important;
+    }
+    body.dark .s-folder1 rect, body.dark .s-folder2 rect {
+      stroke: rgba(255,255,255,0.55) !important; fill: rgba(255,255,255,0.07) !important;
+    }
+    .s-folder-label { color: var(--text-muted); }
+    body.dark .s-folder-label { color: rgba(255,255,255,0.55); }
 
-    /* Badges on salmon */
-    .hero-colored .hero-badge.available {
-      background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); color: #fff;
-    }
-    .hero-colored .hero-badge.available .badge-dot { background: #7fff9a; }
-    .hero-colored .hero-badge.lang {
-      background: rgba(0,0,0,0.22); border-color: rgba(255,255,255,0.3); color: #fff;
-    }
-    .hero-colored .hero-badge.exp {
-      background: rgba(0,0,0,0.18); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9);
-    }
-
-    /* Buttons on salmon */
-    .hero-colored .btn-primary { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
-    .hero-colored .btn-primary:hover { background: #333; border-color: #333; }
-    .hero-colored .btn-outline { border-color: rgba(255,255,255,0.55); color: #fff; }
-    .hero-colored .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    /* Botones en hero blanco */
+    .hero-colored .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .hero-colored .btn-primary:hover { background: #a94d4d; border-color: #a94d4d; }
+    .hero-colored .btn-outline { border-color: var(--border); color: var(--text); }
+    .hero-colored .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .hero-colored .greeting-cursor { background: var(--accent); }
 
     /* "meet the" badge */
     .hero-meet-badge {
@@ -1206,6 +1191,25 @@
       pointer-events: none;
     }
     .manifesto-magnify-wrap img { width: 100%; display: block; border-radius: 3px; }
+    body.dark .manifesto-magnify-wrap img { filter: invert(1) grayscale(1); }
+
+    /* TESTIMONIOS — megáfono al lado del título */
+    .testi-heading { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+    .testi-megaphone-wrap {
+      position: relative; display: inline-block; flex-shrink: 0; width: 100px;
+    }
+    .testi-megaphone-wrap::before {
+      content: ''; position: absolute; inset: -8px;
+      border: 2px solid var(--accent); border-radius: 4px; opacity: 0.45;
+      pointer-events: none;
+    }
+    .testi-megaphone-wrap::after {
+      content: ''; position: absolute; inset: -4px;
+      border: 1px solid var(--accent); border-radius: 3px; opacity: 0.2;
+      pointer-events: none;
+    }
+    .testi-megaphone-wrap img { width: 100%; display: block; border-radius: 3px; filter: grayscale(15%); }
+    @media (max-width: 600px) { .testi-megaphone-wrap { display: none; } }
     @media (max-width: 600px) { .manifesto-magnify-wrap { display: none; } }
 
     /* MANIFESTO CARDS INCLINADAS */
@@ -1993,8 +1997,15 @@ JOIN orders ON users.id = orders.user_id;</code>
 <!-- TESTIMONIOS -->
 <section id="testimonios">
   <div class="container">
-    <p class="section-eyebrow" data-es="Testimonios" data-en="Testimonials">Testimonios</p>
-    <h2 class="section-title" data-es="Lo que dicen." data-en="What they say.">Lo que dicen.</h2>
+    <div class="testi-heading">
+      <div>
+        <p class="section-eyebrow" data-es="Testimonios" data-en="Testimonials">Testimonios</p>
+        <h2 class="section-title" data-es="Lo que dicen." data-en="What they say.">Lo que dicen.</h2>
+      </div>
+      <div class="testi-megaphone-wrap" aria-hidden="true">
+        <img src="img/megaphone.jpg" alt="" />
+      </div>
+    </div>
     <div class="carousel-wrap">
       <div class="carousel-track-outer">
         <div class="testi-track" id="testi-track">
