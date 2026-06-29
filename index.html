@@ -971,6 +971,50 @@
       line-height: 1.6;
     }
 
+    /* TESTIMONIOS */
+    .testi-track {
+      display: flex;
+      transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
+    }
+    .testi-card {
+      flex: 0 0 calc(50% - 0.625rem);
+      margin-right: 1.25rem;
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      padding: 1.75rem;
+      box-sizing: border-box;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .testi-card:last-child { margin-right: 0; }
+    .testi-card:hover { border-color: #dba8a8; box-shadow: 0 4px 20px rgba(180,100,100,0.09); }
+    @media (max-width: 580px) {
+      .testi-card { flex: 0 0 calc(100% - 1rem); margin-right: 1rem; }
+    }
+    .testi-open-quote {
+      display: block; font-family: Georgia, serif;
+      font-size: 2.8rem; line-height: 0.8;
+      color: var(--accent); opacity: 0.28;
+    }
+    .testi-quote {
+      font-size: 0.88rem; line-height: 1.85;
+      color: #555; font-weight: 300; flex: 1;
+    }
+    .testi-sep { border: none; border-top: 1px solid var(--border); }
+    .testi-name {
+      font-family: var(--display); font-weight: 900;
+      font-size: 0.78rem; text-transform: uppercase;
+      letter-spacing: 0.07em; color: var(--text);
+    }
+    .testi-role { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; line-height: 1.4; }
+    .testi-relation {
+      display: block; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent); opacity: 0.65; margin-bottom: 0.25rem;
+    }
+
     /* COPY TOAST */
     .copy-toast {
       position: fixed; bottom: 4.5rem; right: 1.5rem;
@@ -1588,6 +1632,149 @@ JOIN orders ON users.id = orders.user_id;</code>
 
 <hr class="divider" />
 
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="container">
+    <p class="section-eyebrow" data-es="Testimonios" data-en="Testimonials">Testimonios</p>
+    <h2 class="section-title" data-es="Lo que dicen." data-en="What they say.">Lo que dicen.</h2>
+    <div class="carousel-wrap">
+      <div class="carousel-track-outer">
+        <div class="testi-track" id="testi-track">
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">Micaela is an exceptional QA Engineer I've had the pleasure of working with for four years at RebelMouse — an essential partner in delivering high-quality work across multiple clients with complex needs. Beyond her technical skill and her strong sense of how quality supports both users and client goals, she's truly a joy to work with.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Account Project Manager · managed Micaela directly</span>
+              <p class="testi-name">Carmen Reategui</p>
+              <p class="testi-role">Account Project Manager · RebelMouse</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">She is incredibly detail-oriented: nothing slips past her. Her bug reports were always precise and actionable, and she had a natural ability to catch edge cases before they became real problems. She's proactive by nature — she never waited to be asked, she just saw what needed to be done and did it.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Frontend Developer · same team · 4 years</span>
+              <p class="testi-name">Mauro Frete</p>
+              <p class="testi-role">Frontend Developer · RebelMouse</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">What stood out most was her attention to detail and her sense of ownership. She didn't just test for bugs — she thought about the product, the user, and the design as a whole. Her eye for UX issues caught things that most QA professionals would have missed.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">IT Project Manager · RebelMouse</span>
+              <p class="testi-name">Nicolás Peralta</p>
+              <p class="testi-role">IT Project Manager · Delivery Manager</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">Micaela es una profesional de excelencia, muy hands-on, tiene una visión de producto tanto para oportunidades de negocio como de métricas de éxito. Su amplia experiencia como QA le da la posibilidad de entender el producto desde lo funcional, con una sobresaliente comunicación con el equipo de ingeniería.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Tech Lead · managed Micaela directly</span>
+              <p class="testi-name">Lucas Della Sala</p>
+              <p class="testi-role">Tech Lead & Senior Backend Engineer</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">Mica is not only a great specialist with deep knowledge of software development and QA processes, but also an amazing team player. She has a strong understanding of quality standards, knows how to balance manual and automated testing, and always keeps the bigger product picture in mind.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">QA Automation Engineer · managed Micaela directly</span>
+              <p class="testi-name">Anna Maevskaya</p>
+              <p class="testi-role">QA Automation Engineer · RebelMouse</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">She is highly detail-oriented, proactive, and always thorough when testing and reporting issues. Her bug reports were consistently clear, actionable, and helpful. Beyond her technical skills, she is great to work with: communicative, reliable, and always focused on finding solutions.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Computer Science · same team</span>
+              <p class="testi-name">Nadra Naveda Boscán</p>
+              <p class="testi-role">RebelMouse</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">Tiene el ojo técnico de una QA experta y la sagazidad de una productora, consciente de que los proyectos se sacan adelante con estrategia y foco. Lo que más destaco es su capacidad para planificar sin perder de vista la narrativa y el impacto en la gente. Testea, investiga, cuestiona y mejora.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Head of Strategic Projects · mentor</span>
+              <p class="testi-name">Sebastián Leonel Encinas</p>
+              <p class="testi-role">Head of Strategic Projects & Operations · Bloka</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">She's incredibly proactive, always looking for new tools and ideas that could improve our work, and a huge help when dealing with complex cases. She's also a very supportive teammate, always willing to help, share knowledge, and step in when needed.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Project Manager · RebelMouse</span>
+              <p class="testi-name">Clara Savi</p>
+              <p class="testi-role">Project Manager</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">As the Project Manager, I found her to have an excellent eye for detail. Requirements were always understood quickly, which allowed us to consistently deliver client expectations. In a fast-paced environment, Micaela's work ethic helped us ensure the project was always in tune with the timeline.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Digital Operations & Projects · RebelMouse</span>
+              <p class="testi-name">Michelle Coetzee</p>
+              <p class="testi-role">Digital Operations & Projects</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">She's always willing to help, approachable, and brings a very positive energy to everything she does. You can really count on her to show up for others and contribute in a meaningful way. She's someone who makes teams better just by being part of them.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">Head of HR · RebelMouse</span>
+              <p class="testi-name">Milagros Linale</p>
+              <p class="testi-role">Psicóloga Clínica · Head of HR · Talent Acquisition</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <span class="testi-open-quote">"</span>
+            <p class="testi-quote">Micaela is a very disciplined and committed person. She is a diligent and detail-oriented professional with a strong understanding of quality assurance processes. Very proactive and a quick learner — and most importantly, well-communicated and a great person.</p>
+            <hr class="testi-sep" />
+            <div>
+              <span class="testi-relation">QA Analyst · same team</span>
+              <p class="testi-name">Mariano Laville</p>
+              <p class="testi-role">QA Analyst · RebelMouse</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="testi-prev" aria-label="Anterior">&#8592;</button>
+        <div class="carousel-dots" id="testi-dots"></div>
+        <button class="carousel-btn" id="testi-next" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="container">
@@ -1802,6 +1989,59 @@ JOIN orders ON users.id = orders.user_id;</code>
       navLinks.classList.remove('open');
     });
   });
+
+  // Testimonials carousel
+  (function() {
+    const track = document.getElementById('testi-track');
+    const prevBtn = document.getElementById('testi-prev');
+    const nextBtn = document.getElementById('testi-next');
+    const dotsWrap = document.getElementById('testi-dots');
+    if (!track) return;
+
+    const testiCards = track.querySelectorAll('.testi-card');
+    const isMobile = () => window.innerWidth <= 580;
+    const perPage = () => isMobile() ? 1 : 2;
+    let current = 0;
+
+    const total = () => Math.ceil(testiCards.length / perPage());
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      for (let i = 0; i < total(); i++) {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Ir a slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+      }
+    }
+
+    function goTo(n) {
+      current = Math.max(0, Math.min(n, total() - 1));
+      const pp = perPage();
+      const cardW = testiCards[0].offsetWidth + (isMobile() ? 16 : 20);
+      track.style.transform = 'translateX(-' + (current * pp * cardW) + 'px)';
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= total() - 1;
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    buildDots();
+    goTo(0);
+    window.addEventListener('resize', () => { buildDots(); goTo(0); });
+  })();
 
   // Language toggle
   let lang = localStorage.getItem('lang') || 'es';
