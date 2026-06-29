@@ -183,7 +183,24 @@
     }
     .hero-content { display: flex; flex-direction: column; }
     .hero-snoopy { display: flex; align-items: flex-end; justify-content: center; }
-    .hero-snoopy img { width: 180px; opacity: 0.92; }
+    .hero-snoopy-wrap {
+      position: relative; display: inline-block;
+    }
+    .hero-snoopy-wrap::before {
+      content: '';
+      position: absolute; inset: -8px;
+      border: 2px solid var(--accent);
+      border-radius: 4px; opacity: 0.45;
+      pointer-events: none;
+    }
+    .hero-snoopy-wrap::after {
+      content: '';
+      position: absolute; inset: -4px;
+      border: 1px solid var(--accent);
+      border-radius: 3px; opacity: 0.2;
+      pointer-events: none;
+    }
+    .hero-snoopy img { width: 180px; opacity: 0.92; display: block; border-radius: 3px; }
     @media (max-width: 600px) {
       .hero { grid-template-columns: 1fr; }
       .hero-snoopy { display: none; }
@@ -868,7 +885,9 @@
     </div>
   </div>
   <div class="hero-snoopy">
-    <img src="snoopy.jpg" alt="Snoopy" />
+    <div class="hero-snoopy-wrap">
+      <img src="snoopy.jpg" alt="Snoopy" />
+    </div>
   </div>
 </div>
 
