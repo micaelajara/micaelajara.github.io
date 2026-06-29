@@ -1709,13 +1709,11 @@ JOIN orders ON users.id = orders.user_id;</code>
   });
 
   // Language toggle
-  let lang = 'es';
+  let lang = localStorage.getItem('lang') || 'es';
   const langBtn = document.getElementById('lang-btn');
 
-  langBtn.addEventListener('click', () => {
-    lang = lang === 'es' ? 'en' : 'es';
+  function applyLang() {
     langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
-
     if (lang === 'en') document.body.classList.add('en');
     else document.body.classList.remove('en');
 
@@ -1734,6 +1732,14 @@ JOIN orders ON users.id = orders.user_id;</code>
     if (badgeSpan) badgeSpan.textContent = lang === 'en' ? 'Open to work' : 'Disponible para trabajar';
     const copyBtn = document.querySelector('#copy-email-btn span');
     if (copyBtn) copyBtn.textContent = lang === 'en' ? 'Copy email' : 'Copiar email';
+  }
+
+  applyLang();
+
+  langBtn.addEventListener('click', () => {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('lang', lang);
+    applyLang();
   });
 
   // Rotating footer phrases
