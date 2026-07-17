@@ -1055,7 +1055,7 @@
     }
     .stat-suffix {
       font-family: var(--display); font-size: 1.4rem;
-      font-weight: 900; color: var(--accent);
+      font-weight: 900; color: var(--accent); line-height: 1;
     }
     .stat-label {
       font-size: 0.68rem; color: var(--text-muted);
@@ -1356,9 +1356,22 @@
       </div>
       <div class="stat">
         <div class="stat-top">
-          <span class="stat-num" data-target="11">0</span>
+          <span class="stat-num" data-target="2">0</span>
         </div>
-        <p class="stat-label" data-es="recomendaciones LinkedIn" data-en="LinkedIn recommendations">recomendaciones LinkedIn</p>
+        <p class="stat-label" data-es="clientes enterprise" data-en="enterprise clients">clientes enterprise</p>
+      </div>
+      <div class="stat">
+        <div class="stat-top">
+          <span class="stat-num" data-target="2">0</span>
+        </div>
+        <p class="stat-label" data-es="clientes freelance activos" data-en="active freelance clients">clientes freelance activos</p>
+      </div>
+      <div class="stat">
+        <div class="stat-top">
+          <span class="stat-num" data-target="100">0</span>
+          <span class="stat-suffix">%</span>
+        </div>
+        <p class="stat-label" data-es="trabajo en inglés" data-en="work in English">trabajo en inglés</p>
       </div>
     </div>
 
@@ -1455,6 +1468,23 @@
         <div class="project-links">
           <a href="https://opticaglobal.store/ar" target="_blank" class="project-link" data-es="↗ Sitio en vivo" data-en="↗ Live site">↗ Sitio en vivo</a>
           <a href="https://github.com/micaelajara/optica-global-playwright-tests" target="_blank" class="project-link" data-es="↗ Repo de tests (Playwright)" data-en="↗ Test repo (Playwright)">↗ Repo de tests (Playwright)</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Coding · IA</span>
+        <h3 class="project-title" data-es="Nunca Fuiste al Cine — Sitio del programa" data-en="Nunca Fuiste al Cine — Show website">Nunca Fuiste al Cine — Sitio del programa</h3>
+        <p class="project-subtitle" data-es="Sitio multi-página · HTML/CSS/JS + GitHub Actions" data-en="Multi-page site · HTML/CSS/JS + GitHub Actions">Sitio multi-página · HTML/CSS/JS + GitHub Actions</p>
+        <p class="project-desc" data-es="Diseño, construcción y mantenimiento del sitio del programa de radio, trabajando con Claude Code como par de programación. Maquetación, automatización y testing end-to-end de punta a punta." data-en="Design, build and maintenance of the radio show's website, working with Claude Code as a coding partner. Layout, automation and end-to-end testing, start to finish.">Diseño, construcción y mantenimiento del sitio del programa de radio, trabajando con Claude Code como par de programación. Maquetación, automatización y testing end-to-end de punta a punta.</p>
+        <ul class="project-highlights">
+          <li data-es="Sitio multi-página (home, columnas, merch, FAQ, páginas de equipo) en HTML/CSS/JS vanilla" data-en="Multi-page site (home, columns, merch, FAQ, team pages) in vanilla HTML/CSS/JS">Sitio multi-página (home, columnas, merch, FAQ, páginas de equipo) en HTML/CSS/JS vanilla</li>
+          <li data-es="CSS responsive fluido con clamp() para que el diseño escale sin saltos entre mobile y desktop" data-en="Fluid responsive CSS with clamp() so the design scales without jumps between mobile and desktop">CSS responsive fluido con clamp() para que el diseño escale sin saltos entre mobile y desktop</li>
+          <li data-es="Automatización con GitHub Actions: un workflow diario consulta la API de Spotify y commitea solo el último episodio" data-en="GitHub Actions automation: a daily workflow queries the Spotify API and commits the latest episode on its own">Automatización con GitHub Actions: un workflow diario consulta la API de Spotify y commitea solo el último episodio</li>
+          <li data-es="Testing end-to-end con Playwright" data-en="End-to-end testing with Playwright">Testing end-to-end con Playwright</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://micaelajara.github.io/nunca-fuiste-al-cine/" target="_blank" class="project-link" data-es="↗ Sitio en vivo" data-en="↗ Live site">↗ Sitio en vivo</a>
+          <a href="https://github.com/micaelajara/nunca-fuiste-al-cine" target="_blank" class="project-link" data-es="↗ Ver repo" data-en="↗ View repo">↗ Ver repo</a>
         </div>
       </div>
 
@@ -2153,10 +2183,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">Micaela is an exceptional QA Engineer I've had the pleasure of working with for four years at RebelMouse — an essential partner in delivering high-quality work across multiple clients with complex needs. Beyond her technical skill and her strong sense of how quality supports both users and client goals, she's truly a joy to work with.</p>
+            <p class="testi-quote" data-es="Micaela es una QA Engineer excepcional con quien tuve el placer de trabajar durante cuatro años en RebelMouse — una socia esencial para entregar trabajo de alta calidad en múltiples clientes con necesidades complejas. Más allá de su habilidad técnica y su fuerte sentido de cómo la calidad sostiene tanto a los usuarios como a los objetivos del cliente, es un placer trabajar con ella." data-en="Micaela is an exceptional QA Engineer I've had the pleasure of working with for four years at RebelMouse — an essential partner in delivering high-quality work across multiple clients with complex needs. Beyond her technical skill and her strong sense of how quality supports both users and client goals, she's truly a joy to work with.">Micaela es una QA Engineer excepcional con quien tuve el placer de trabajar durante cuatro años en RebelMouse — una socia esencial para entregar trabajo de alta calidad en múltiples clientes con necesidades complejas. Más allá de su habilidad técnica y su fuerte sentido de cómo la calidad sostiene tanto a los usuarios como a los objetivos del cliente, es un placer trabajar con ella.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">Account Project Manager · managed Micaela directly</span>
+              <span class="testi-relation" data-es="Account Project Manager · gestionó a Micaela directamente" data-en="Account Project Manager · managed Micaela directly">Account Project Manager · gestionó a Micaela directamente</span>
               <p class="testi-name">Carmen Reategui</p>
               <p class="testi-role">Account Project Manager · RebelMouse</p>
             </div>
@@ -2164,10 +2194,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">She is incredibly detail-oriented: nothing slips past her. Her bug reports were always precise and actionable, and she had a natural ability to catch edge cases before they became real problems. She's proactive by nature — she never waited to be asked, she just saw what needed to be done and did it.</p>
+            <p class="testi-quote" data-es="Es increíblemente detallista: nada se le escapa. Sus reportes de bugs siempre fueron precisos y accionables, y tenía una habilidad natural para detectar casos límite antes de que se convirtieran en problemas reales. Es proactiva por naturaleza — nunca esperó a que se lo pidieran, simplemente veía lo que había que hacer y lo hacía." data-en="She is incredibly detail-oriented: nothing slips past her. Her bug reports were always precise and actionable, and she had a natural ability to catch edge cases before they became real problems. She's proactive by nature — she never waited to be asked, she just saw what needed to be done and did it.">Es increíblemente detallista: nada se le escapa. Sus reportes de bugs siempre fueron precisos y accionables, y tenía una habilidad natural para detectar casos límite antes de que se convirtieran en problemas reales. Es proactiva por naturaleza — nunca esperó a que se lo pidieran, simplemente veía lo que había que hacer y lo hacía.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">Frontend Developer · same team · 4 years</span>
+              <span class="testi-relation" data-es="Frontend Developer · mismo equipo · 4 años" data-en="Frontend Developer · same team · 4 years">Frontend Developer · mismo equipo · 4 años</span>
               <p class="testi-name">Mauro Frete</p>
               <p class="testi-role">Frontend Developer · RebelMouse</p>
             </div>
@@ -2175,7 +2205,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">What stood out most was her attention to detail and her sense of ownership. She didn't just test for bugs — she thought about the product, the user, and the design as a whole. Her eye for UX issues caught things that most QA professionals would have missed.</p>
+            <p class="testi-quote" data-es="Lo que más se destacaba era su atención al detalle y su sentido de pertenencia. No solo testeaba en busca de bugs — pensaba en el producto, en el usuario y en el diseño como un todo. Su ojo para detectar problemas de UX captaba cosas que la mayoría de los profesionales de QA hubiera pasado por alto." data-en="What stood out most was her attention to detail and her sense of ownership. She didn't just test for bugs — she thought about the product, the user, and the design as a whole. Her eye for UX issues caught things that most QA professionals would have missed.">Lo que más se destacaba era su atención al detalle y su sentido de pertenencia. No solo testeaba en busca de bugs — pensaba en el producto, en el usuario y en el diseño como un todo. Su ojo para detectar problemas de UX captaba cosas que la mayoría de los profesionales de QA hubiera pasado por alto.</p>
             <hr class="testi-sep" />
             <div>
               <span class="testi-relation">IT Project Manager · RebelMouse</span>
@@ -2186,10 +2216,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">Micaela es una profesional de excelencia, muy hands-on, tiene una visión de producto tanto para oportunidades de negocio como de métricas de éxito. Su amplia experiencia como QA le da la posibilidad de entender el producto desde lo funcional, con una sobresaliente comunicación con el equipo de ingeniería.</p>
+            <p class="testi-quote" data-es="Micaela es una profesional de excelencia, muy hands-on, tiene una visión de producto tanto para oportunidades de negocio como de métricas de éxito. Su amplia experiencia como QA le da la posibilidad de entender el producto desde lo funcional, con una sobresaliente comunicación con el equipo de ingeniería." data-en="Micaela is an outstanding professional, very hands-on, with a product mindset for both business opportunities and success metrics. Her broad QA experience gives her the ability to understand the product from a functional standpoint, with excellent communication with the engineering team.">Micaela es una profesional de excelencia, muy hands-on, tiene una visión de producto tanto para oportunidades de negocio como de métricas de éxito. Su amplia experiencia como QA le da la posibilidad de entender el producto desde lo funcional, con una sobresaliente comunicación con el equipo de ingeniería.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">Tech Lead · managed Micaela directly</span>
+              <span class="testi-relation" data-es="Tech Lead · gestionó a Micaela directamente" data-en="Tech Lead · managed Micaela directly">Tech Lead · gestionó a Micaela directamente</span>
               <p class="testi-name">Lucas Della Sala</p>
               <p class="testi-role">Tech Lead & Senior Backend Engineer</p>
             </div>
@@ -2197,10 +2227,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">Mica is not only a great specialist with deep knowledge of software development and QA processes, but also an amazing team player. She has a strong understanding of quality standards, knows how to balance manual and automated testing, and always keeps the bigger product picture in mind.</p>
+            <p class="testi-quote" data-es="Mica no es solo una gran especialista con un conocimiento profundo de los procesos de desarrollo de software y QA, sino también una compañera de equipo excepcional. Tiene un fuerte entendimiento de los estándares de calidad, sabe cómo equilibrar el testing manual y automatizado, y siempre tiene presente la visión más amplia del producto." data-en="Mica is not only a great specialist with deep knowledge of software development and QA processes, but also an amazing team player. She has a strong understanding of quality standards, knows how to balance manual and automated testing, and always keeps the bigger product picture in mind.">Mica no es solo una gran especialista con un conocimiento profundo de los procesos de desarrollo de software y QA, sino también una compañera de equipo excepcional. Tiene un fuerte entendimiento de los estándares de calidad, sabe cómo equilibrar el testing manual y automatizado, y siempre tiene presente la visión más amplia del producto.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">QA Automation Engineer · managed Micaela directly</span>
+              <span class="testi-relation" data-es="QA Automation Engineer · gestionó a Micaela directamente" data-en="QA Automation Engineer · managed Micaela directly">QA Automation Engineer · gestionó a Micaela directamente</span>
               <p class="testi-name">Anna Maevskaya</p>
               <p class="testi-role">QA Automation Engineer · RebelMouse</p>
             </div>
@@ -2208,10 +2238,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">She is highly detail-oriented, proactive, and always thorough when testing and reporting issues. Her bug reports were consistently clear, actionable, and helpful. Beyond her technical skills, she is great to work with: communicative, reliable, and always focused on finding solutions.</p>
+            <p class="testi-quote" data-es="Es muy detallista, proactiva, y siempre minuciosa al testear y reportar issues. Sus reportes de bugs fueron siempre claros, accionables y útiles. Más allá de sus habilidades técnicas, es genial para trabajar en equipo: comunicativa, confiable y siempre enfocada en encontrar soluciones." data-en="She is highly detail-oriented, proactive, and always thorough when testing and reporting issues. Her bug reports were consistently clear, actionable, and helpful. Beyond her technical skills, she is great to work with: communicative, reliable, and always focused on finding solutions.">Es muy detallista, proactiva, y siempre minuciosa al testear y reportar issues. Sus reportes de bugs fueron siempre claros, accionables y útiles. Más allá de sus habilidades técnicas, es genial para trabajar en equipo: comunicativa, confiable y siempre enfocada en encontrar soluciones.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">Computer Science · same team</span>
+              <span class="testi-relation" data-es="Ciencias de la Computación · mismo equipo" data-en="Computer Science · same team">Ciencias de la Computación · mismo equipo</span>
               <p class="testi-name">Nadra Naveda Boscán</p>
               <p class="testi-role">RebelMouse</p>
             </div>
@@ -2219,10 +2249,10 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">Tiene el ojo técnico de una QA experta y la sagazidad de una productora, consciente de que los proyectos se sacan adelante con estrategia y foco. Lo que más destaco es su capacidad para planificar sin perder de vista la narrativa y el impacto en la gente. Testea, investiga, cuestiona y mejora.</p>
+            <p class="testi-quote" data-es="Tiene el ojo técnico de una QA experta y la sagazidad de una productora, consciente de que los proyectos se sacan adelante con estrategia y foco. Lo que más destaco es su capacidad para planificar sin perder de vista la narrativa y el impacto en la gente. Testea, investiga, cuestiona y mejora." data-en="She has the technical eye of an expert QA and the sharpness of a producer, aware that projects move forward through strategy and focus. What stands out most is her ability to plan without losing sight of the narrative and the impact on people. She tests, investigates, questions, and improves.">Tiene el ojo técnico de una QA experta y la sagazidad de una productora, consciente de que los proyectos se sacan adelante con estrategia y foco. Lo que más destaco es su capacidad para planificar sin perder de vista la narrativa y el impacto en la gente. Testea, investiga, cuestiona y mejora.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">Head of Strategic Projects · mentor</span>
+              <span class="testi-relation" data-es="Head of Strategic Projects · mentor" data-en="Head of Strategic Projects · mentor">Head of Strategic Projects · mentor</span>
               <p class="testi-name">Sebastián Leonel Encinas</p>
               <p class="testi-role">Head of Strategic Projects & Operations · Bloka</p>
             </div>
@@ -2230,7 +2260,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">She's incredibly proactive, always looking for new tools and ideas that could improve our work, and a huge help when dealing with complex cases. She's also a very supportive teammate, always willing to help, share knowledge, and step in when needed.</p>
+            <p class="testi-quote" data-es="Es increíblemente proactiva, siempre buscando nuevas herramientas e ideas que puedan mejorar nuestro trabajo, y una gran ayuda al lidiar con casos complejos. También es una compañera de equipo muy solidaria, siempre dispuesta a ayudar, compartir conocimiento y dar un paso al frente cuando hace falta." data-en="She's incredibly proactive, always looking for new tools and ideas that could improve our work, and a huge help when dealing with complex cases. She's also a very supportive teammate, always willing to help, share knowledge, and step in when needed.">Es increíblemente proactiva, siempre buscando nuevas herramientas e ideas que puedan mejorar nuestro trabajo, y una gran ayuda al lidiar con casos complejos. También es una compañera de equipo muy solidaria, siempre dispuesta a ayudar, compartir conocimiento y dar un paso al frente cuando hace falta.</p>
             <hr class="testi-sep" />
             <div>
               <span class="testi-relation">Project Manager · RebelMouse</span>
@@ -2241,7 +2271,7 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">As the Project Manager, I found her to have an excellent eye for detail. Requirements were always understood quickly, which allowed us to consistently deliver client expectations. In a fast-paced environment, Micaela's work ethic helped us ensure the project was always in tune with the timeline.</p>
+            <p class="testi-quote" data-es="Como Project Manager, noté que tiene un excelente ojo para el detalle. Los requerimientos siempre se entendían rápidamente, lo que nos permitió cumplir consistentemente con las expectativas del cliente. En un entorno de mucho ritmo, la ética de trabajo de Micaela nos ayudó a asegurar que el proyecto siempre estuviera alineado con los tiempos." data-en="As the Project Manager, I found her to have an excellent eye for detail. Requirements were always understood quickly, which allowed us to consistently deliver client expectations. In a fast-paced environment, Micaela's work ethic helped us ensure the project was always in tune with the timeline.">Como Project Manager, noté que tiene un excelente ojo para el detalle. Los requerimientos siempre se entendían rápidamente, lo que nos permitió cumplir consistentemente con las expectativas del cliente. En un entorno de mucho ritmo, la ética de trabajo de Micaela nos ayudó a asegurar que el proyecto siempre estuviera alineado con los tiempos.</p>
             <hr class="testi-sep" />
             <div>
               <span class="testi-relation">Digital Operations & Projects · RebelMouse</span>
@@ -2252,21 +2282,21 @@ JOIN orders ON users.id = orders.user_id;</code>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">She's always willing to help, approachable, and brings a very positive energy to everything she does. You can really count on her to show up for others and contribute in a meaningful way. She's someone who makes teams better just by being part of them.</p>
+            <p class="testi-quote" data-es="Siempre está dispuesta a ayudar, es accesible y le pone una energía muy positiva a todo lo que hace. Realmente se puede contar con ella para estar presente para los demás y contribuir de una manera significativa. Es alguien que hace mejores a los equipos solo por formar parte de ellos." data-en="She's always willing to help, approachable, and brings a very positive energy to everything she does. You can really count on her to show up for others and contribute in a meaningful way. She's someone who makes teams better just by being part of them.">Siempre está dispuesta a ayudar, es accesible y le pone una energía muy positiva a todo lo que hace. Realmente se puede contar con ella para estar presente para los demás y contribuir de una manera significativa. Es alguien que hace mejores a los equipos solo por formar parte de ellos.</p>
             <hr class="testi-sep" />
             <div>
               <span class="testi-relation">Head of HR · RebelMouse</span>
               <p class="testi-name">Milagros Linale</p>
-              <p class="testi-role">Psicóloga Clínica · Head of HR · Talent Acquisition</p>
+              <p class="testi-role" data-es="Psicóloga Clínica · Head of HR · Talent Acquisition" data-en="Clinical Psychologist · Head of HR · Talent Acquisition">Psicóloga Clínica · Head of HR · Talent Acquisition</p>
             </div>
           </div>
 
           <div class="testi-card">
             <span class="testi-open-quote">"</span>
-            <p class="testi-quote">Micaela is a very disciplined and committed person. She is a diligent and detail-oriented professional with a strong understanding of quality assurance processes. Very proactive and a quick learner — and most importantly, well-communicated and a great person.</p>
+            <p class="testi-quote" data-es="Micaela es una persona muy disciplinada y comprometida. Es una profesional diligente y detallista con un fuerte entendimiento de los procesos de quality assurance. Muy proactiva y de aprendizaje rápido — y lo más importante, con buena comunicación y una gran persona." data-en="Micaela is a very disciplined and committed person. She is a diligent and detail-oriented professional with a strong understanding of quality assurance processes. Very proactive and a quick learner — and most importantly, well-communicated and a great person.">Micaela es una persona muy disciplinada y comprometida. Es una profesional diligente y detallista con un fuerte entendimiento de los procesos de quality assurance. Muy proactiva y de aprendizaje rápido — y lo más importante, con buena comunicación y una gran persona.</p>
             <hr class="testi-sep" />
             <div>
-              <span class="testi-relation">QA Analyst · same team</span>
+              <span class="testi-relation" data-es="QA Analyst · mismo equipo" data-en="QA Analyst · same team">QA Analyst · mismo equipo</span>
               <p class="testi-name">Mariano Laville</p>
               <p class="testi-role">QA Analyst · RebelMouse</p>
             </div>
@@ -2613,6 +2643,26 @@ JOIN orders ON users.id = orders.user_id;</code>
     expBadge.textContent = qaYears + '+ años en QA';
   }
 
+  // Rotating footer phrases
+  const phrasesByLang = {
+    es: [
+      'Siempre pregunto el por qué antes del cómo.',
+      'Lista para trabajar.',
+      'QA · Tech Enthusiast · Project Maker.',
+      'El detalle importa.',
+      'Construyo procesos donde no había ninguno.',
+    ],
+    en: [
+      'I always ask why before how.',
+      'Ready to work.',
+      'QA · Tech Enthusiast · Project Maker.',
+      'Details matter.',
+      'I build processes where there were none.',
+    ],
+  };
+  const phraseEl = document.getElementById('footer-phrase');
+  let phraseIdx = 0;
+
   // Language toggle
   const storedLang = localStorage.getItem('lang');
   const browserLang = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
@@ -2639,6 +2689,8 @@ JOIN orders ON users.id = orders.user_id;</code>
     if (badgeSpan) badgeSpan.textContent = lang === 'en' ? 'Open to work' : 'Disponible para trabajar';
     const copyBtn = document.querySelector('#copy-email-btn span');
     if (copyBtn) copyBtn.textContent = lang === 'en' ? 'Copy email' : 'Copiar email';
+
+    phraseEl.textContent = phrasesByLang[lang][phraseIdx];
   }
 
   applyLang();
@@ -2649,25 +2701,16 @@ JOIN orders ON users.id = orders.user_id;</code>
     applyLang();
   });
 
-  // Rotating footer phrases
-  const phrases = [
-    'Siempre pregunto el por qué antes del cómo.',
-    'Ready to work.',
-    'QA · Tech Enthusiast · Project Maker.',
-    'El detalle importa.',
-    'Construyo procesos donde no había ninguno.',
-  ];
-  const phraseEl = document.getElementById('footer-phrase');
-  let phraseIdx = 0;
   function rotatePhrases() {
     phraseEl.classList.add('fade');
     setTimeout(() => {
+      const phrases = phrasesByLang[lang];
       phraseIdx = (phraseIdx + 1) % phrases.length;
       phraseEl.textContent = phrases[phraseIdx];
       phraseEl.classList.remove('fade');
     }, 400);
   }
-  phraseEl.textContent = phrases[0];
+  phraseEl.textContent = phrasesByLang[lang][phraseIdx];
   setInterval(rotatePhrases, 3200);
 
   // Scroll to top
