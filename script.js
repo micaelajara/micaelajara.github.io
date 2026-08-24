@@ -1,60 +1,3 @@
-      // Flip cards — hover on pointer devices, click on touch
-      document.querySelectorAll(".interest-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          if (!window.matchMedia("(hover: hover)").matches) {
-            card.classList.toggle("flipped");
-          }
-        });
-      });
-
-      const searchInput = document.getElementById("search");
-      if (searchInput) {
-        const cards = document.querySelectorAll(".card");
-        const filterBtns = document.querySelectorAll(".filter-btn");
-        const emptyState = document.getElementById("empty");
-        let activeFilter = "all";
-
-        function updateVisibility() {
-          const query = searchInput.value.toLowerCase().trim();
-          let visible = 0;
-          cards.forEach((card) => {
-            const block = card.dataset.block;
-            const type = card.dataset.type;
-            const text = card
-              .querySelector(".question")
-              .textContent.toLowerCase();
-            const matchesFilter =
-              activeFilter === "all" ||
-              block === activeFilter ||
-              type === activeFilter;
-            const matchesSearch = query === "" || text.includes(query);
-            if (matchesFilter && matchesSearch) {
-              card.classList.remove("hidden");
-              visible++;
-            } else card.classList.add("hidden");
-          });
-          document.querySelectorAll(".block-section").forEach((s) => {
-            s.style.display =
-              s.querySelectorAll(".card:not(.hidden)").length === 0
-                ? "none"
-                : "flex";
-          });
-          emptyState.style.display = visible === 0 ? "block" : "none";
-        }
-
-        filterBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            filterBtns.forEach((b) => b.classList.remove("active"));
-            btn.classList.add("active");
-            activeFilter = btn.dataset.filter;
-            updateVisibility();
-          });
-        });
-
-        searchInput.addEventListener("input", updateVisibility);
-        updateVisibility();
-      }
-
       // Contact form
       const contactForm = document.getElementById("contact-form");
       const formSuccess = document.getElementById("form-success");
@@ -118,10 +61,6 @@
           const text = el.dataset[lang];
           if (text) el.textContent = text;
         });
-
-        const searchEl = document.getElementById("search");
-        if (searchEl)
-          searchEl.placeholder = lang === "en" ? "Search..." : "Buscar...";
 
         const successEl = document.getElementById("form-success");
         if (successEl)
@@ -192,7 +131,7 @@
         );
         document
           .querySelectorAll(
-            "a, button, .interest-card, .stack-card, .testi-card, .project-card, .manifesto-card",
+            "a, button, .stack-card, .project-card, .manifesto-card",
           )
           .forEach((el) => {
             el.addEventListener("mouseenter", () =>
