@@ -212,7 +212,7 @@
       }
 
       // Confetti on CV download
-      const cvBtn = document.querySelector('a[href="pdf/cv-micaela-jara.pdf"]');
+      const cvBtn = document.querySelector('a[href="/pdf/cv-micaela-jara.pdf"]');
       if (cvBtn) {
         cvBtn.addEventListener("click", () => {
           const r = cvBtn.getBoundingClientRect();
