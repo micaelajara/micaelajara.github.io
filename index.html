@@ -37,7 +37,7 @@
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#7c3aed" />
+    <meta name="theme-color" content="#5b1ecf" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -82,18 +82,14 @@
     <div class="hero hero-split">
       <div class="hero-half hero-half-content">
         <div class="hero-content-inner">
-          <p class="hero-wave" aria-hidden="true">👋</p>
-          <h1>
-            <span data-es="Soy Micaela Jara." data-en="I'm Micaela Jara."
-              >Soy Micaela Jara.</span
-            >
-            <br />
-            <span
-              data-es="Soy QA Engineer de Buenos Aires, Argentina."
-              data-en="I'm a QA Engineer from Buenos Aires, Argentina."
-              >Soy QA Engineer de Buenos Aires, Argentina.</span
-            >
-          </h1>
+          <p class="hero-fact-line" data-es="QA Engineer, Productora, Coordinadora de aire" data-en="QA Engineer, Producer, On-air coordinator">QA Engineer, Productora, Coordinadora de aire</p>
+          <div class="cutout-title" id="cutout-title" role="heading" aria-level="1" aria-label="Micaela Jara"></div>
+          <p class="hero-location-line">
+            <img src="/icons/pin.png" alt="" />
+            <img src="/icons/ar-flag.png" alt="" />
+            Ciudad Autónoma de Buenos Aires, Argentina
+          </p>
+          <a href="/contacto/" class="btn btn-primary" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
         </div>
       </div>
 
@@ -107,8 +103,8 @@
           >
           <span class="hero-scroll-arrow" aria-hidden="true">↓</span>
         </button>
-        <div class="hero-snoopy-wrap">
-          <img src="/img/micaela-outline.svg" alt="Micaela Jara" />
+        <div class="hero-photo-circle">
+          <img src="/img/micaela.jpg" alt="Micaela Jara" />
         </div>
       </div>
     </div>
@@ -134,12 +130,11 @@
               Rental.
             </p>
             <p
-              data-es="Automatizo testing end-to-end con Playwright, y estoy sumando cloud (AWS) y ciberseguridad (diplomatura en UNTREF) a mi perfil QA."
-              data-en="I automate end-to-end testing with Playwright, and I'm adding cloud (AWS) and cybersecurity (a diploma at UNTREF) to my QA profile."
+              data-es="Automatizo testing end-to-end con Playwright, y estoy sumando cloud (AWS) a mi perfil QA."
+              data-en="I automate end-to-end testing with Playwright, and I'm adding cloud (AWS) to my QA profile."
             >
               Automatizo testing end-to-end con Playwright, y estoy sumando
-              cloud (AWS) y ciberseguridad (diplomatura en UNTREF) a mi perfil
-              QA.
+              cloud (AWS) a mi perfil QA.
             </p>
             <p
               data-es="Y fuera de lo tech, coordino el aire de un programa de cine en Radio La Tribu, una radio comunitaria: un proyecto que me mantiene conectada con audiencias y equipos reales, no solo con código."
@@ -219,6 +214,36 @@
       ↑
     </button>
     <div class="copy-toast" id="copy-toast">¡Copiado!</div>
+    <script>
+      (function () {
+        var el = document.getElementById('cutout-title');
+        if (!el) return;
+        var letters = ['sel-M', 'sel-I', 'sel-C', 'sel-A1', 'sel-E', 'sel-L', 'sel-A2', 'SP', 'sel-J', 'sel-A3', 'sel-R', 'sel-A4'];
+        var seed = 0;
+        function rand() {
+          seed += 1;
+          var x = Math.sin(seed * 999.7) * 10000;
+          return x - Math.floor(x);
+        }
+        letters.forEach(function (key) {
+          if (key === 'SP') {
+            var space = document.createElement('span');
+            space.style.width = '10px';
+            space.setAttribute('aria-hidden', 'true');
+            el.appendChild(space);
+            return;
+          }
+          var img = document.createElement('img');
+          img.className = 'cutout-letter';
+          img.src = '/letters/' + key + '.png';
+          img.alt = '';
+          var rot = (rand() * 10 - 5).toFixed(1);
+          var lift = (rand() * 5 - 2.5).toFixed(1);
+          img.style.transform = 'rotate(' + rot + 'deg) translateY(' + lift + 'px)';
+          el.appendChild(img);
+        });
+      })();
+    </script>
     <script src="/script.js"></script>
   </body>
 </html>

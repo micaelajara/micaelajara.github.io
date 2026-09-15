@@ -163,12 +163,12 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         const colors = [
-          "#7c3aed",
-          "#f0c0c0",
-          "#f5d080",
-          "#8ec0e8",
-          "#b0dca0",
-          "#f0a0b0",
+          "#6420d6",
+          "#d61fb0",
+          "#f2c14e",
+          "#5b1ecf",
+          "#2f8f5b",
+          "#f4839a",
         ];
         const startX = cx ?? canvas.width / 2;
         const startY = cy ?? canvas.height * 0.35;
