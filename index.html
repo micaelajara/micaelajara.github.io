@@ -37,7 +37,7 @@
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#7c3aed" />
+    <meta name="theme-color" content="#5b1ecf" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -46,179 +46,375 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li>
-          <a href="/" data-es="Home" data-en="Home" class="active"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="/proyectos/"
-            data-es="Proyectos"
-            data-en="Projects"
-            >Proyectos</a
-          >
-        </li>
-        <li>
-          <a
-            href="/experiencia/"
-            data-es="Experiencia"
-            data-en="Experience"
-            >Experiencia</a
-          >
-        </li>
-        <li>
-          <a
-            href="/contacto/"
-            data-es="Contacto"
-            data-en="Contact"
-            >Contacto</a
-          >
-        </li>
+        <li><a href="#about" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+        <li><a href="#education" data-es="Formación" data-en="Education">Formación</a></li>
+        <li><a href="#work" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+        <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
       </ul>
       <button class="lang-toggle" id="lang-btn">EN</button>
     </nav>
-    <!-- HERO -->
-    <div class="hero hero-split">
-      <div class="hero-half hero-half-content">
-        <div class="hero-content-inner">
-          <p class="hero-wave" aria-hidden="true">👋</p>
-          <h1>
-            <span data-es="Soy Micaela Jara." data-en="I'm Micaela Jara."
-              >Soy Micaela Jara.</span
-            >
-            <br />
-            <span
-              data-es="Soy QA Engineer de Buenos Aires, Argentina."
-              data-en="I'm a QA Engineer from Buenos Aires, Argentina."
-              >Soy QA Engineer de Buenos Aires, Argentina.</span
-            >
-          </h1>
-        </div>
-      </div>
 
-      <div class="hero-half hero-half-visual">
-        <button
-          class="hero-scroll-cue"
-          onclick="document.getElementById('sobre-mi').scrollIntoView({behavior:'smooth'})"
-        >
-          <span data-es="Deslizá para ver más" data-en="Scroll to see more"
-            >Deslizá para ver más</span
-          >
-          <span class="hero-scroll-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="hero-snoopy-wrap">
-          <img src="/img/micaela-outline.svg" alt="Micaela Jara" />
+    <header class="hero" id="top">
+      <svg class="hero-deco" viewBox="0 0 100 100" aria-hidden="true" style="top:14%; left:5%; width:34px;">
+        <path d="M50,0 C54,35 65,46 100,50 C65,54 54,65 50,100 C46,65 35,54 0,50 C35,46 46,35 50,0 Z"/>
+      </svg>
+      <svg class="hero-deco" viewBox="0 0 100 100" aria-hidden="true" style="top:60%; left:3%; width:20px;">
+        <path d="M50,0 C54,35 65,46 100,50 C65,54 54,65 50,100 C46,65 35,54 0,50 C35,46 46,35 50,0 Z"/>
+      </svg>
+      <svg class="hero-deco" viewBox="0 0 100 100" aria-hidden="true" style="top:10%; right:6%; width:26px; transform:rotate(10deg);">
+        <path d="M50,2 L61.76,33.82 L95.65,35.17 L69.02,56.18 L78.21,88.83 L50,70 L21.79,88.83 L30.98,56.18 L4.35,35.17 L38.24,33.82 Z"/>
+      </svg>
+
+      <div class="hero-inner">
+        <div>
+          <p class="hero-fact" data-es="QA Engineer, Productora, Coordinadora de aire" data-en="QA Engineer, Producer, On-air coordinator">QA Engineer, Productora, Coordinadora de aire</p>
+          <div class="cutout-title" id="cutout-title" role="heading" aria-level="1" aria-label="Micaela Jara"></div>
+          <p class="hero-location">
+            <img src="/icons/pin.png" alt="" class="hero-icon" />
+            <img src="/icons/ar-flag.png" alt="" class="hero-icon" />
+            Ciudad Autónoma de Buenos Aires, Argentina
+          </p>
+          <a class="hero-cta" href="#contact" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
         </div>
-      </div>
-    </div>
-    <hr class="divider" />
-    <section id="sobre-mi">
-      <div class="container">
-        <p class="section-eyebrow" data-es="Sobre mí" data-en="About me">
-          Sobre mí
-        </p>
-        <h2 class="section-title" data-es="Quién soy." data-en="Who I am.">
-          Quién soy.
-        </h2>
-        <div class="about-grid about-grid-text-only">
-          <div class="about-text">
-            <p
-              data-es="QA Engineer con foco en calidad, procesos y experiencia del usuario. Trabajo con clientes reales como Óptica Global (ecommerce B2B), y construí el proceso de QA desde cero en RebelMouse, testeando clientes enterprise como Penske Truck Rental."
-              data-en="QA Engineer focused on quality, process, and user experience. I work with real clients like Óptica Global (B2B ecommerce), and I built the QA process from scratch at RebelMouse, testing enterprise clients like Penske Truck Rental."
-            >
-              QA Engineer con foco en calidad, procesos y experiencia del
-              usuario. Trabajo con clientes reales como Óptica Global
-              (ecommerce B2B), y construí el proceso de QA desde cero en
-              RebelMouse, testeando clientes enterprise como Penske Truck
-              Rental.
-            </p>
-            <p
-              data-es="Automatizo testing end-to-end con Playwright, y estoy sumando cloud (AWS) y ciberseguridad (diplomatura en UNTREF) a mi perfil QA."
-              data-en="I automate end-to-end testing with Playwright, and I'm adding cloud (AWS) and cybersecurity (a diploma at UNTREF) to my QA profile."
-            >
-              Automatizo testing end-to-end con Playwright, y estoy sumando
-              cloud (AWS) y ciberseguridad (diplomatura en UNTREF) a mi perfil
-              QA.
-            </p>
-            <p
-              data-es="Y fuera de lo tech, coordino el aire de un programa de cine en Radio La Tribu, una radio comunitaria: un proyecto que me mantiene conectada con audiencias y equipos reales, no solo con código."
-              data-en="And outside of tech, I coordinate the on-air flow of a cinema program at Radio La Tribu, a community radio station: a project that keeps me connected to real audiences and teams, not just code."
-            >
-              Y fuera de lo tech, coordino el aire de un programa de cine en
-              Radio La Tribu, una radio comunitaria: un proyecto que me
-              mantiene conectada con audiencias y equipos reales, no solo con
-              código.
-            </p>
+        <div class="hero-photo-col">
+          <div class="hero-photo-wrap">
+            <img class="hero-photo" src="/img/micaela.jpg" alt="Micaela Jara" />
           </div>
         </div>
-        <div class="hero-links about-links">
-          <a
-            href="https://linkedin.com/in/micaela-jara"
-            target="_blank"
-            class="btn btn-primary"
-            >LinkedIn</a
-          >
-          <a
-            href="/pdf/cv-micaela-jara.pdf"
-            download
-            class="btn btn-outline"
-            data-es="Descargar CV ↓"
-            data-en="Download CV ↓"
-            >Descargar CV ↓</a
-          >
-          <a
-            href="/proyectos/"
-            class="btn btn-outline"
-            data-es="Ver proyectos"
-            data-en="See projects"
-            >Ver proyectos</a
-          >
+      </div>
+    </header>
+
+    <section class="block" id="about">
+      <div class="container">
+        <h2 class="sec-label" data-es="sobre mí." data-en="about.">sobre mí.</h2>
+        <div class="sec-body">
+          <div class="sec-lead">
+            <p data-es="QA Engineer con más de 4 años de experiencia en testing de producto y procesos ágiles, en entornos enterprise y freelance. En paralelo, trabajo en producción cultural y coordino al aire en Nunca Fuiste al Cine, en Radio La Tribu." data-en="QA Engineer with 4+ years of experience in product testing and agile processes, across enterprise and freelance environments. In parallel, I work in cultural production and coordinate on-air at Nunca Fuiste al Cine, on Radio La Tribu.">QA Engineer con más de 4 años de experiencia en testing de producto y procesos ágiles, en entornos enterprise y freelance. En paralelo, trabajo en producción cultural y coordino al aire en Nunca Fuiste al Cine, en Radio La Tribu.</p>
+          </div>
+          <div class="timeline-groups">
+            <div class="timeline-group">
+              <h3 class="timeline-group-label">QA</h3>
+              <ul class="timeline">
+                <li>
+                  <span class="timeline-date" data-es="2026-presente" data-en="2026-present">2026-presente</span>
+                  <span class="timeline-title">QA Freelance</span>
+                  <p data-es="Óptica Global y otros clientes vía Kelmo: planes de prueba end-to-end, automatización con Playwright, bugs críticos documentados." data-en="Óptica Global and other clients via Kelmo: end-to-end test plans, Playwright automation, critical bugs documented.">Óptica Global y otros clientes vía Kelmo: planes de prueba end-to-end, automatización con Playwright, bugs críticos documentados.</p>
+                </li>
+                <li>
+                  <span class="timeline-date">2022-2026</span>
+                  <span class="timeline-title">QA Engineer · RebelMouse</span>
+                  <p data-es="Testing enterprise, regresión y prelanzamiento, soporte técnico (Okta) y colaboración directa con producto, 100% en inglés." data-en="Enterprise testing, regression and prelaunch, technical support (Okta), and direct collaboration with product, 100% in English.">Testing enterprise, regresión y prelanzamiento, soporte técnico (Okta) y colaboración directa con producto, 100% en inglés.</p>
+                </li>
+              </ul>
+            </div>
+            <div class="timeline-group">
+              <h3 class="timeline-group-label" data-es="Producción" data-en="Production">Producción</h3>
+              <ul class="timeline">
+                <li>
+                  <span class="timeline-date" data-es="Abril 2026-actualidad" data-en="April 2026-present">Abril 2026-actualidad</span>
+                  <span class="timeline-title" data-es="Productora y coordinación de aire · Nunca Fuiste al Cine" data-en="Producer &amp; on-air coordinator · Nunca Fuiste al Cine">Productora y coordinación de aire · Nunca Fuiste al Cine</span>
+                  <p data-es="Producción integral del programa semanal en Radio La Tribu: armado de grillas, coordinación con el operador, recepción de invitados y cierre de entrevistas." data-en="Full production of the weekly show on Radio La Tribu: lineup building, coordination with the operator, guest reception and closing interviews.">Producción integral del programa semanal en Radio La Tribu: armado de grillas, coordinación con el operador, recepción de invitados y cierre de entrevistas.</p>
+                </li>
+                <li>
+                  <span class="timeline-date">2026-presente</span>
+                  <span class="timeline-title" data-es="Co-creadora y productora · Club Classics" data-en="Co-creator &amp; producer · Club Classics">Co-creadora y productora · Club Classics</span>
+                  <p data-es="Programación curatorial de cine contemporáneo y de culto, producción de eventos con proyección, arte y música, y desarrollo de la identidad del ciclo." data-en="Curatorial programming of contemporary and cult cinema, production of events with screenings, art and music, and development of the series' identity.">Programación curatorial de cine contemporáneo y de culto, producción de eventos con proyección, arte y música, y desarrollo de la identidad del ciclo.</p>
+                </li>
+                <li>
+                  <span class="timeline-date">2025</span>
+                  <span class="timeline-title" data-es="Colaboradora de guión · Mujeres en Tecnología" data-en="Script collaborator · Mujeres en Tecnología">Colaboradora de guión · Mujeres en Tecnología</span>
+                  <p data-es='Guión técnico y literario del episodio &quot;Reescribiendo el Código&quot; (entrevista a Emilse Garzón), 2da temporada.' data-en='Technical and narrative script for the episode &quot;Rewriting the Code&quot; (interview with Emilse Garzón), season 2.'>Guión técnico y literario del episodio "Reescribiendo el Código" (entrevista a Emilse Garzón), 2da temporada.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <hr class="divider" />
+
+    <section class="block" id="education">
+      <div class="container">
+        <h2 class="sec-label" data-es="formación." data-en="education.">formación.</h2>
+        <div class="sec-body">
+          <div class="timeline-group">
+            <h3 class="timeline-group-label" data-es="Estudios" data-en="Studies">Estudios</h3>
+            <ul class="timeline">
+              <li>
+                <span class="timeline-title">Lic. en Gestión del Arte y la Cultura</span>
+                <p data-es="UNTREF · Febrero 2025 – actualidad" data-en="UNTREF · February 2025 – present">UNTREF · Febrero 2025 – actualidad</p>
+              </li>
+              <li>
+                <span class="timeline-title">Producción Audiovisual</span>
+                <p data-es="ETER · Febrero 2024 – Mayo 2025" data-en="ETER · February 2024 – May 2025">ETER · Febrero 2024 – Mayo 2025</p>
+              </li>
+              <li>
+                <span class="timeline-title">AWS Cloud Practitioner Essentials</span>
+                <p data-es="Women in Tech · En curso" data-en="Women in Tech · In progress">Women in Tech · En curso</p>
+              </li>
+              <li>
+                <span class="timeline-title">AWS Certified AI Practitioner</span>
+                <p data-es="Women in Tech · En curso" data-en="Women in Tech · In progress">Women in Tech · En curso</p>
+              </li>
+            </ul>
+          </div>
+          <div class="ethic-col">
+            <h3 class="ethic-label" data-es="Cursos y certificaciones" data-en="Courses &amp; certifications">Cursos y certificaciones</h3>
+            <ul class="ethic-list ethic-list--plain">
+              <li>Fundamentos de Project Management <span class="ethic-issuer">(Coursera)</span></li>
+              <li>API Testing with Postman <span class="ethic-issuer">(Udemy)</span></li>
+              <li>Agile &amp; Scrum Fundamentals</li>
+              <li data-es="Fundamentos de UX/UI" data-en="UX/UI Fundamentals">Fundamentos de UX/UI</li>
+              <li>Intro to Test Automation <span class="ethic-issuer">(Digital House)</span></li>
+              <li>QA Testing <span class="ethic-issuer">(TranSistemas)</span></li>
+              <li>JavaScript <span class="ethic-issuer">(Mediapila)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="approach">
+      <div class="container">
+        <h2 class="sec-label" data-es="cómo trabajo." data-en="how i work.">cómo trabajo.</h2>
+        <div class="approach-body">
+          <div class="approach-list">
+            <div class="approach-item">
+              <h3 data-es="Repregunto" data-en="I ask again">Repregunto</h3>
+              <p data-es="No me quedo con la primera respuesta: repregunto hasta entender qué es lo que realmente hay que resolver." data-en="I don't settle for the first answer: I keep asking until I understand what actually needs solving.">No me quedo con la primera respuesta: repregunto hasta entender qué es lo que realmente hay que resolver.</p>
+            </div>
+            <div class="approach-item">
+              <h3 data-es="Construyo y optimizo procesos" data-en="I build and improve processes">Construyo y optimizo procesos</h3>
+              <p data-es="Si no hay un proceso, lo armo. Si ya existe, lo reviso y lo hago mejor." data-en="If there's no process, I create one. If it already exists, I review it and make it better.">Si no hay un proceso, lo armo. Si ya existe, lo reviso y lo hago mejor.</p>
+            </div>
+            <div class="approach-item">
+              <h3 data-es="Entiendo antes de escribir" data-en="I understand before I write">Entiendo antes de escribir</h3>
+              <p data-es="El reporte sale completo porque hay criterio detrás: entendí el problema antes de documentarlo." data-en="The report comes out complete because there's judgment behind it: I understood the problem before documenting it.">El reporte sale completo porque hay criterio detrás: entendí el problema antes de documentarlo.</p>
+            </div>
+            <div class="approach-item">
+              <h3 data-es="Hablo los dos idiomas" data-en="I speak both languages">Hablo los dos idiomas</h3>
+              <p data-es="El técnico y el humano: entiendo tanto un log de errores como una conversación con un cliente." data-en="The technical and the human: I understand an error log as well as a conversation with a client.">El técnico y el humano: entiendo tanto un log de errores como una conversación con un cliente.</p>
+            </div>
+          </div>
+          <div class="ethic-col">
+            <h3 class="ethic-label" data-es="Ética laboral" data-en="Work ethic">Ética laboral</h3>
+            <ul class="ethic-list">
+              <li><strong data-es="Comunicación:" data-en="Communication:">Comunicación:</strong> <span data-es="reportes de bugs claros y accionables. Comunicación directa con clientes en inglés." data-en="clear, actionable bug reports. Direct client communication in English.">reportes de bugs claros y accionables. Comunicación directa con clientes en inglés.</span></li>
+              <li><strong data-es="Trabajo remoto:" data-en="Remote work:">Trabajo remoto:</strong> <span data-es="4 años 100% remoto en un equipo distribuido con autonomía total." data-en="4 years 100% remote in a distributed team with full autonomy.">4 años 100% remoto en un equipo distribuido con autonomía total.</span></li>
+              <li><strong data-es="Documentación:" data-en="Documentation:">Documentación:</strong> <span data-es="casos de prueba y cobertura orientados a la visibilidad real del cliente." data-en="test cases and coverage oriented toward real client visibility.">casos de prueba y cobertura orientados a la visibilidad real del cliente.</span></li>
+              <li><strong data-es="Autonomía:" data-en="Autonomy:">Autonomía:</strong> <span data-es="identifico huecos y reporto sin que me lo pidan. No espero instrucciones para mejorar un proceso." data-en="I identify gaps and report without being told. I don't wait for instructions to improve a process.">identifico huecos y reporto sin que me lo pidan. No espero instrucciones para mejorar un proceso.</span></li>
+              <li><strong data-es="Priorización por impacto:" data-en="Impact-based prioritization:">Priorización por impacto:</strong> <span data-es="prioridad siempre al mayor impacto de negocio. En Penske, una hora rota era una hora de impacto operativo real." data-en="priority always to the highest business impact. At Penske, one broken hour was one hour of real operational impact.">prioridad siempre al mayor impacto de negocio. En Penske, una hora rota era una hora de impacto operativo real.</span></li>
+              <li><strong data-es="Inglés C1:" data-en="English C1:">Inglés C1:</strong> <span data-es="4 años de bugs, tickets y llamadas con clientes enterprise, en inglés de trabajo real, no de currículum." data-en="4 years of bugs, tickets, and enterprise client calls, in real working English, not resume English.">4 años de bugs, tickets y llamadas con clientes enterprise, en inglés de trabajo real, no de currículum.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="work">
+      <div class="container">
+        <h2 class="sec-label" data-es="proyectos." data-en="projects.">proyectos.</h2>
+        <div class="work-intro">
+          <p data-es="Un poco de cada faceta: testing enterprise, QA freelance y producción cultural." data-en="A bit of every facet: enterprise testing, freelance QA and cultural production.">Un poco de cada faceta: testing enterprise, QA freelance y producción cultural.</p>
+        </div>
+        <div class="work-grid">
+
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-tag" data-es="QA · Freelance" data-en="QA · Freelance">QA · Freelance</span>
+              <span class="work-meta" data-es="2 clientes activos · 2025-presente" data-en="2 active clients · 2025-present">2 clientes activos · 2025-presente</span>
+            </div>
+            <h3>Óptica Global · Freelance QA</h3>
+            <p data-es="Testing end-to-end y planificación como QA independiente para Óptica Global, un ecommerce B2B de anteojos al por mayor (Medusa JS) ya en producción. Manejo el proceso completo, desde definir qué testear hasta reportar resultados." data-en="End-to-end testing and planning as an independent QA for Óptica Global, a B2B wholesale eyewear ecommerce (Medusa JS) now live in production. I own the full process, from defining what to test to reporting results.">Testing end-to-end y planificación como QA independiente para Óptica Global, un ecommerce B2B de anteojos al por mayor (Medusa JS) ya en producción. Manejo el proceso completo, desde definir qué testear hasta reportar resultados.</p>
+            <ul class="work-stack">
+              <li>Medusa JS</li><li>Playwright</li><li>Postman</li><li>API Testing</li>
+            </ul>
+            <ul class="work-bullets">
+              <li data-es="Plan de pruebas end-to-end de 111 casos (checkout, pagos, cuentas, SEO, API)" data-en="111-case end-to-end test plan (checkout, payments, accounts, SEO, API)">Plan de pruebas end-to-end de 111 casos (checkout, pagos, cuentas, SEO, API)</li>
+              <li data-es="Suite de Playwright con login OTP real y pedidos reales para validar el checkout end-to-end" data-en="Playwright suite with real OTP login and real orders to validate checkout end-to-end">Suite de Playwright con login OTP real y pedidos reales para validar el checkout end-to-end</li>
+              <li data-es="Tests de control de acceso a nivel de API (OWASP API Top 10) en endpoints de Admin" data-en="API-level access control tests (OWASP API Top 10) on Admin endpoints">Tests de control de acceso a nivel de API (OWASP API Top 10) en endpoints de Admin</li>
+              <li data-es="23 bugs encontrados y documentados con evidencia real, incluyendo 2 críticos" data-en="23 bugs found and documented with real evidence, including 2 critical ones">23 bugs encontrados y documentados con evidencia real, incluyendo 2 críticos</li>
+            </ul>
+            <div class="work-case">
+              <span class="work-case-label" data-es="Caso destacado" data-en="Featured case">Caso destacado</span>
+              <p data-es="Encontré que un descuento aplicado en el carrito desaparecía al completar la orden: el cliente terminaba pagando el precio completo sin darse cuenta. Reproduje el bug con evidencia real de la API y lo escalé como crítico." data-en="Found that a discount applied in the cart disappeared when the order was completed: the customer ended up paying full price without realizing it. Reproduced the bug with real API evidence and escalated it as critical.">Encontré que un descuento aplicado en el carrito desaparecía al completar la orden: el cliente terminaba pagando el precio completo sin darse cuenta. Reproduje el bug con evidencia real de la API y lo escalé como crítico.</p>
+            </div>
+            <div class="work-links">
+              <a href="https://opticaglobal.store/ar" target="_blank" data-es="Sitio en vivo →" data-en="Live site →">Sitio en vivo →</a>
+              <a href="https://github.com/micaelajara/optica-global-playwright-tests" target="_blank" data-es="Repo de tests →" data-en="Test repo →">Repo de tests →</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-tag" data-es="Coding · IA" data-en="Coding · IA">Coding · IA</span>
+              <span class="work-meta" data-es="Sitio multi-página · HTML/CSS/JS + GitHub Actions" data-en="Multi-page site · HTML/CSS/JS + GitHub Actions">Sitio multi-página · HTML/CSS/JS + GitHub Actions</span>
+            </div>
+            <h3 data-es="Nunca Fuiste al Cine · Sitio del programa" data-en="Nunca Fuiste al Cine · Show website">Nunca Fuiste al Cine · Sitio del programa</h3>
+            <p data-es="Diseño, desarrollo y mantenimiento del sitio del programa de radio, trabajando con Claude Code como compañero de código. Maquetado, automatización y testing end-to-end, de punta a punta." data-en="Design, build and maintenance of the radio show's website, working with Claude Code as a coding partner. Layout, automation and end-to-end testing, start to finish.">Diseño, desarrollo y mantenimiento del sitio del programa de radio, trabajando con Claude Code como compañero de código. Maquetado, automatización y testing end-to-end, de punta a punta.</p>
+            <ul class="work-stack">
+              <li>HTML/CSS/JS</li><li>GitHub Actions</li><li>Playwright</li><li>Vercel</li>
+            </ul>
+            <ul class="work-bullets">
+              <li data-es="Sitio multi-página (home, columnas, merch, FAQ, equipo) en HTML/CSS/JS puro" data-en="Multi-page site (home, columns, merch, FAQ, team pages) in vanilla HTML/CSS/JS">Sitio multi-página (home, columnas, merch, FAQ, equipo) en HTML/CSS/JS puro</li>
+              <li data-es="CSS fluido con clamp() para que el diseño escale sin saltos entre mobile y desktop" data-en="Fluid responsive CSS with clamp() so the design scales without jumps between mobile and desktop">CSS fluido con clamp() para que el diseño escale sin saltos entre mobile y desktop</li>
+              <li data-es="Automatización con GitHub Actions: un workflow diario consulta la API de Spotify y comitea el último episodio solo" data-en="GitHub Actions automation: a daily workflow queries the Spotify API and commits the latest episode on its own">Automatización con GitHub Actions: un workflow diario consulta la API de Spotify y comitea el último episodio solo</li>
+              <li data-es="Testing end-to-end con Playwright" data-en="End-to-end testing with Playwright">Testing end-to-end con Playwright</li>
+              <li data-es="Migración de hosting a Vercel con dominio propio (nuncafuistealcine.ar): delegación de nameservers, debugging de DNS con dig/nslookup, y verificación end-to-end del deploy" data-en="Hosting migration to Vercel with a custom domain (nuncafuistealcine.ar): nameserver delegation, DNS debugging with dig/nslookup, and end-to-end deploy verification">Migración de hosting a Vercel con dominio propio (nuncafuistealcine.ar): delegación de nameservers, debugging de DNS con dig/nslookup, y verificación end-to-end del deploy</li>
+            </ul>
+            <div class="work-links">
+              <a href="https://www.nuncafuistealcine.ar" target="_blank" data-es="Sitio en vivo →" data-en="Live site →">Sitio en vivo →</a>
+              <a href="https://github.com/micaelajara/nunca-fuiste-al-cine" target="_blank" data-es="Ver repo →" data-en="View repo →">Ver repo →</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-tag" data-es="QA · RebelMouse" data-en="QA · RebelMouse">QA · RebelMouse</span>
+              <span class="work-meta" data-es="Cliente enterprise · 5 dominios · 4 años" data-en="Enterprise client · 5 domains · 4 years">Cliente enterprise · 5 dominios · 4 años</span>
+            </div>
+            <h3>Penske Truck Rental</h3>
+            <p data-es="El proyecto más importante de la empresa. Testing end-to-end de Penske Truck Rental, un cliente enterprise con 5 dominios y código integrado a medida, cubriendo features nuevas, rediseños completos y QA prelanzamiento en cada ciclo de desarrollo." data-en="The company's most important project. End-to-end testing of Penske Truck Rental, an enterprise client with 5 domains and custom integrated code, covering new features, full redesigns and prelaunch QA across every development cycle.">El proyecto más importante de la empresa. Testing end-to-end de Penske Truck Rental, un cliente enterprise con 5 dominios y código integrado a medida, cubriendo features nuevas, rediseños completos y QA prelanzamiento en cada ciclo de desarrollo.</p>
+            <ul class="work-bullets">
+              <li data-es="Cobertura de QA en 5 dominios del sitio con código a medida del cliente" data-en="QA coverage across 5 site domains with custom client code">Cobertura de QA en 5 dominios del sitio con código a medida del cliente</li>
+              <li data-es="Testing de features nuevas, rediseños y validación prelanzamiento" data-en="New features, redesigns and prelaunch validation testing">Testing de features nuevas, rediseños y validación prelanzamiento</li>
+              <li data-es="Mejora del proceso de presentación de casos de prueba al cliente" data-en="Improved the process for presenting test cases to the client">Mejora del proceso de presentación de casos de prueba al cliente</li>
+              <li data-es="Identificación temprana de bugs críticos en el ciclo de desarrollo" data-en="Early identification of critical bugs in the development cycle">Identificación temprana de bugs críticos en el ciclo de desarrollo</li>
+            </ul>
+            <div class="work-case">
+              <span class="work-case-label" data-es="Caso destacado" data-en="Featured case">Caso destacado</span>
+              <p data-es="Detecté un bug crítico en el flujo de reserva: la feature de mayor impacto de negocio. Analicé requests de red, identifiqué el endpoint que fallaba y lo escalé con el contexto de impacto completo. Resuelto en horas." data-en="Detected a critical bug in the reservation flow: the highest-impact business feature. Analyzed network requests, identified the failing endpoint, and escalated with full impact context. Resolved in hours.">Detecté un bug crítico en el flujo de reserva: la feature de mayor impacto de negocio. Analicé requests de red, identifiqué el endpoint que fallaba y lo escalé con el contexto de impacto completo. Resuelto en horas.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-tag" data-es="Soporte · RebelMouse" data-en="Support · RebelMouse">Soporte · RebelMouse</span>
+              <span class="work-meta" data-es="Cliente enterprise · Compliance · Soporte técnico" data-en="Enterprise client · Compliance · Technical support">Cliente enterprise · Compliance · Soporte técnico</span>
+            </div>
+            <h3>J.J. Keller</h3>
+            <p data-es="Gestión de cuenta enterprise en RebelMouse para J.J. Keller, una empresa líder en compliance. Troubleshooting de integraciones, configuración de plataforma y resolución de problemas técnicos en vivo por chat, mail y Zoom." data-en="Enterprise account management at RebelMouse for J.J. Keller, a leading compliance company. Troubleshooting integrations, platform configurations, and resolving technical issues live via chat, email, and Zoom.">Gestión de cuenta enterprise en RebelMouse para J.J. Keller, una empresa líder en compliance. Troubleshooting de integraciones, configuración de plataforma y resolución de problemas técnicos en vivo por chat, mail y Zoom.</p>
+            <ul class="work-stack">
+              <li>RebelMouse CMS</li><li>Okta</li>
+            </ul>
+            <ul class="work-bullets">
+              <li data-es="Soporte técnico B2B directo con el cliente, en inglés" data-en="Direct B2B technical support with the client in English">Soporte técnico B2B directo con el cliente, en inglés</li>
+              <li data-es="Troubleshooting de integraciones de terceros, incluyendo Okta" data-en="Troubleshooting of third-party integrations, including Okta">Troubleshooting de integraciones de terceros, incluyendo Okta</li>
+              <li data-es="Diagnóstico: ¿bug de plataforma, configuración del cliente o integración fallida?" data-en="Diagnosis: platform bug, client setup, or failed integration?">Diagnóstico: ¿bug de plataforma, configuración del cliente o integración fallida?</li>
+              <li data-es="Onboarding y capacitación de usuarios no técnicos vía Zoom" data-en="Onboarding and training of non-technical users via Zoom">Onboarding y capacitación de usuarios no técnicos vía Zoom</li>
+            </ul>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-tag is-production" data-es="Producción · Radio" data-en="Production · Radio">Producción · Radio</span>
+              <span class="work-meta" data-es="Coordinadora de aire · FM La Tribu 88.7 · Sábados" data-en="On-air coordinator · FM La Tribu 88.7 · Saturdays">Coordinadora de aire · FM La Tribu 88.7 · Sábados</span>
+            </div>
+            <h3>Nunca Fuiste al Cine</h3>
+            <p data-es="Programa de radio comunitario dedicado al cine: entrevistas, columnistas, estrenos y especiales. Coordino el flujo de aire: timing, transiciones y coordinación del equipo en vivo, todos los sábados." data-en="Community radio program dedicated to cinema: interviews, columnists, new releases and specials. I coordinate the on-air flow: timing, transitions, and live team coordination every Saturday.">Programa de radio comunitario dedicado al cine: entrevistas, columnistas, estrenos y especiales. Coordino el flujo de aire: timing, transiciones y coordinación del equipo en vivo, todos los sábados.</p>
+            <ul class="work-bullets">
+              <li data-es="Coordinación en vivo de la emisión semanal" data-en="Live coordination of the weekly broadcast">Coordinación en vivo de la emisión semanal</li>
+              <li data-es="Manejo de timing y estructura del programa" data-en="Timing and program structure management">Manejo de timing y estructura del programa</li>
+              <li data-es="Trabajo en equipo en un contexto de radio comunitaria" data-en="Teamwork in a community radio context">Trabajo en equipo en un contexto de radio comunitaria</li>
+            </ul>
+            <div class="work-links">
+              <a href="https://instagram.com/nuncafuistecine" target="_blank">@nuncafuistecine →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block contact-block" id="contact">
+      <div class="container">
+        <h2 class="sec-label" data-es="contacto." data-en="contact.">contacto.</h2>
+        <div class="contact-grid">
+          <div class="contact-body">
+            <p data-es="¿Hablamos?" data-en="Let's talk?">¿Hablamos?</p>
+            <ul class="contact-links">
+              <li><a href="mailto:micaaelajara@gmail.com">micaaelajara@gmail.com</a></li>
+              <li><a href="https://linkedin.com/in/micaela-jara" target="_blank">linkedin.com/in/micaela-jara</a></li>
+              <li><a href="https://github.com/micaelajara" target="_blank">github.com/micaelajara</a></li>
+              <li><a href="/pdf/cv-micaela-jara.pdf" download data-es="Descargar CV ↓" data-en="Download CV ↓">Descargar CV ↓</a></li>
+              <li>Ciudad Autónoma de Buenos Aires, Argentina</li>
+            </ul>
+          </div>
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xwvdbgdr" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="name" data-es="Nombre" data-en="Name">Nombre</label>
+              <input class="form-input" type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
+              <textarea class="form-textarea" id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="form-submit" data-es="Enviar" data-en="Send">Enviar</button>
+            <div class="form-success" id="form-success">¡Mensaje enviado! Te respondo pronto.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="footer-socials">
-        <a
-          href="https://linkedin.com/in/micaela-jara"
-          target="_blank"
-          class="social-btn"
-        >
+        <a href="https://linkedin.com/in/micaela-jara" target="_blank" class="social-btn">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57A1.32 1.32 0 0 1 14.24 12.25A1.32 1.32 0 0 1 15.56 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"
-            />
+            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57A1.32 1.32 0 0 1 14.24 12.25A1.32 1.32 0 0 1 15.56 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
           </svg>
           <span>LinkedIn</span>
         </a>
-        <a
-          href="https://github.com/micaelajara"
-          target="_blank"
-          class="social-btn"
-        >
+        <a href="https://github.com/micaelajara" target="_blank" class="social-btn">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"
-            />
+            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
           </svg>
           <span>GitHub</span>
         </a>
         <button class="social-btn" id="copy-email-btn">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-            />
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
           </svg>
           <span data-es="Copiar email" data-en="Copy email">Copiar email</span>
         </button>
       </div>
     </footer>
 
-    <button class="scroll-top" id="scroll-top" aria-label="Volver arriba">
-      ↑
-    </button>
+    <button class="scroll-top" id="scroll-top" aria-label="Volver arriba">↑</button>
     <div class="copy-toast" id="copy-toast">¡Copiado!</div>
+
+    <script>
+      (function () {
+        var el = document.getElementById('cutout-title');
+        if (!el) return;
+        var letters = ['sel-M', 'sel-I', 'sel-C', 'sel-A1', 'sel-E', 'sel-L', 'sel-A2', 'SP', 'sel-J', 'sel-A3', 'sel-R', 'sel-A4'];
+        var seed = 0;
+        function rand() {
+          seed += 1;
+          var x = Math.sin(seed * 999.7) * 10000;
+          return x - Math.floor(x);
+        }
+        letters.forEach(function (key) {
+          if (key === 'SP') {
+            var space = document.createElement('span');
+            space.style.width = '10px';
+            space.setAttribute('aria-hidden', 'true');
+            el.appendChild(space);
+            return;
+          }
+          var img = document.createElement('img');
+          img.className = 'cutout-letter';
+          img.src = '/letters/' + key + '.png';
+          img.alt = '';
+          var rot = (rand() * 10 - 5).toFixed(1);
+          var lift = (rand() * 5 - 2.5).toFixed(1);
+          img.style.transform = 'rotate(' + rot + 'deg) translateY(' + lift + 'px)';
+          el.appendChild(img);
+        });
+      })();
+    </script>
     <script src="/script.js"></script>
   </body>
 </html>

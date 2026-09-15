@@ -97,25 +97,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" }),
       );
 
-      // Reveal on scroll
-      (function () {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
-        );
-        document.querySelectorAll("section .container").forEach((el) => {
-          el.classList.add("reveal");
-          observer.observe(el);
-        });
-      })();
-
       // Custom cursor (desktop only)
       if (window.matchMedia("(hover: hover)").matches) {
         const cursorDot = document.createElement("div");
@@ -131,7 +112,7 @@
         );
         document
           .querySelectorAll(
-            "a, button, .stack-card, .project-card, .manifesto-card",
+            "a, button, .work-card, .approach-item, .timeline li",
           )
           .forEach((el) => {
             el.addEventListener("mouseenter", () =>
@@ -163,12 +144,12 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         const colors = [
-          "#7c3aed",
-          "#f0c0c0",
-          "#f5d080",
-          "#8ec0e8",
-          "#b0dca0",
-          "#f0a0b0",
+          "#6420d6",
+          "#d61fb0",
+          "#f2c14e",
+          "#5b1ecf",
+          "#2f8f5b",
+          "#f4839a",
         ];
         const startX = cx ?? canvas.width / 2;
         const startY = cy ?? canvas.height * 0.35;
