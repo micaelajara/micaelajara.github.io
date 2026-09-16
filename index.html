@@ -389,29 +389,30 @@
       (function () {
         var el = document.getElementById('cutout-title');
         if (!el) return;
-        var letters = ['sel-M', 'sel-I', 'sel-C', 'sel-A1', 'sel-E', 'sel-L', 'sel-A2', 'SP', 'sel-J', 'sel-A3', 'sel-R', 'sel-A4'];
+        var words = [
+          ['sel-M', 'sel-I', 'sel-C', 'sel-A1', 'sel-E', 'sel-L', 'sel-A2'],
+          ['sel-J', 'sel-A3', 'sel-R', 'sel-A4'],
+        ];
         var seed = 0;
         function rand() {
           seed += 1;
           var x = Math.sin(seed * 999.7) * 10000;
           return x - Math.floor(x);
         }
-        letters.forEach(function (key) {
-          if (key === 'SP') {
-            var space = document.createElement('span');
-            space.style.width = '10px';
-            space.setAttribute('aria-hidden', 'true');
-            el.appendChild(space);
-            return;
-          }
-          var img = document.createElement('img');
-          img.className = 'cutout-letter';
-          img.src = '/letters/' + key + '.png';
-          img.alt = '';
-          var rot = (rand() * 10 - 5).toFixed(1);
-          var lift = (rand() * 5 - 2.5).toFixed(1);
-          img.style.transform = 'rotate(' + rot + 'deg) translateY(' + lift + 'px)';
-          el.appendChild(img);
+        words.forEach(function (letters) {
+          var word = document.createElement('span');
+          word.className = 'cutout-word';
+          letters.forEach(function (key) {
+            var img = document.createElement('img');
+            img.className = 'cutout-letter';
+            img.src = '/letters/' + key + '.png';
+            img.alt = '';
+            var rot = (rand() * 10 - 5).toFixed(1);
+            var lift = (rand() * 5 - 2.5).toFixed(1);
+            img.style.transform = 'rotate(' + rot + 'deg) translateY(' + lift + 'px)';
+            word.appendChild(img);
+          });
+          el.appendChild(word);
         });
       })();
     </script>

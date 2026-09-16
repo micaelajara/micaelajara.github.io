@@ -191,6 +191,10 @@ body.en .lang-en { display: inline; }
   pointer-events: none;
 }
 
+@media (max-width: 760px) {
+  .hero-deco { display: none; }
+}
+
 .hero-inner {
   max-width: 1080px;
   margin: 0 auto;
@@ -210,12 +214,18 @@ body.en .lang-en { display: inline; }
 .cutout-title {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 8px;
   margin: 0 0 18px;
 }
 
 @media (max-width: 760px) {
   .cutout-title { justify-content: center; }
+}
+
+.cutout-word {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2px;
 }
 
 .cutout-letter {
