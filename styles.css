@@ -256,7 +256,8 @@ body.en .lang-en { display: inline; }
 }
 
 @media (max-width: 760px) {
-  .hero-location { justify-content: center; }
+  .hero-location { display: block; text-align: center; }
+  .hero-location .hero-icon { display: inline-block; vertical-align: -4px; margin-right: 4px; }
 }
 
 .hero-icon { width: 22px; height: 22px; object-fit: contain; }
